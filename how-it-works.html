@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - RukaPay</title>
+    <meta name="description" content="Learn how RukaPay works - Scan to Pay, Tap to Pay, and USSD services explained.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #1f429a;
+            --secondary: #0d1e4a;
+            --accent: #4361ee;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #343a40;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+            --nav-height: 70px;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa, #e4e7f1);
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 0; /* Remove top padding so hero touches the top */
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(31, 66, 154, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(31, 66, 154, 0.4);
+        }
+
+        /* ===== NAVBAR STYLES ===== */
+        header {
+            position: fixed;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #08163D;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 0 40px;
+            height: var(--nav-height);
+            pointer-events: auto;
+            border: 2px solid #08163D;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            background: #08163D;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: #1F429A !important;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #1F429A !important;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-icons {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-icons button, .mobile-menu-toggle {
+            color: #fff !important;
+        }
+
+        .mobile-icons button {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .mobile-icons button:hover {
+            color: var(--primary);
+            background: rgba(31, 66, 154, 0.1);
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: calc(var(--nav-height) + 24px);
+                left: 50%;
+                transform: translate(-50%, -30px) scale(0.98);
+                right: auto;
+                background: #08163D;
+                color: #fff;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+                z-index: 100;
+                opacity: 0;
+                height: auto;
+                min-width: 85vw;
+                border-radius: 22px;
+                overflow: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+                pointer-events: auto;
+            }
+
+            .nav-link {
+                color: #fff !important;
+                padding: 0.9rem 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                font-size: 18px;
+                background: transparent;
+                transition: background 0.2s;
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .nav-link:hover,
+            .nav-link.active {
+                color: #ffe066 !important;
+                background: rgba(255,255,255,0.06);
+            }
+
+            .mobile-icons {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* ===== PAGE CONTENT STYLES ===== */
+        .hero, .hero.enhanced-hero, .page-hero {
+            background: linear-gradient(135deg, #08163D, #1F429A) !important;
+            text-align: center;
+        }
+
+        .page-hero .container {
+            padding-top: calc(var(--nav-height) + 40px); /* Lower the text so it doesn't hide behind navbar */
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .page-hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .payment-methods {
+            padding: 80px 0;
+        }
+
+        .method-card {
+            display: flex;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(31, 66, 154, 0.08);
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0) scale(1);
+            animation: slideInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(31, 66, 154, 0.1);
+            position: relative;
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #08163D, #1F429A);
+            transform: scaleX(0);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .method-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 24px 64px rgba(31, 66, 154, 0.15);
+            border-color: rgba(31, 66, 154, 0.2);
+        }
+
+        .method-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .method-card:nth-child(1) { animation-delay: 0.1s; }
+        .method-card:nth-child(2) { animation-delay: 0.3s; }
+        .method-card:nth-child(3) { animation-delay: 0.5s; }
+        .method-card:nth-child(4) { animation-delay: 0.7s; }
+
+        .method-icon {
+            flex: 0 0 120px;
+            background: linear-gradient(135deg, #08163D, #1F429A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .method-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .method-card:hover .method-icon::before {
+            left: 100%;
+        }
+
+        .method-icon i {
+            font-size: 42px;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .method-card:hover .method-icon i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .method-content {
+            flex: 1;
+            padding: 40px 35px;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .method-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #08163D;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .method-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #08163D, #1F429A);
+            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .method-card:hover .method-content h3::after {
+            width: 60px;
+        }
+
+        .method-visual {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(248, 250, 253, 0.8), rgba(241, 245, 249, 0.6));
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(31, 66, 154, 0.03) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .method-card:hover .method-visual::before {
+            transform: translateX(100%);
+        }
+
+        .method-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 66, 154, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .method-card:hover .method-image {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(31, 66, 154, 0.2);
+        }
+
+        .method-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .step {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #08163D, #1F429A);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(31, 66, 154, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(31, 66, 154, 0.4);
+        }
+
+        .step p {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .security-banner {
+            background: linear-gradient(135deg, #0d1e4a, #1f429a);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .security-banner h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .security-banner h2 i {
+            margin-right: 15px;
+            color: white;
+        }
+
+        .security-banner p {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+        }
+
+        .security-features {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .security-features {
+                flex-wrap: wrap;
+            }
+        }
+
+        .security-feature {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            transform: scale(1);
+            animation: fadeInScale 0.6s ease-out;
+        }
+
+        .security-feature:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .security-feature:nth-child(1) { animation-delay: 0.2s; }
+        .security-feature:nth-child(2) { animation-delay: 0.4s; }
+        .security-feature:nth-child(3) { animation-delay: 0.6s; }
+        .security-feature:nth-child(4) { animation-delay: 0.8s; }
+
+        .security-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: white;
+        }
+
+        /* ===== FOOTER STYLES ===== */
+        .footer {
+            background: #08163D;
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3, .footer-section h4 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after, .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon,
+        .social-icon:link,
+        .social-icon:visited,
+        .social-icon:hover,
+        .social-icon:active {
+            text-decoration: none !important;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            padding: 15px 25px;
+            box-shadow: 0 8px 25px rgba(31, 66, 154, 0.3);
+            z-index: 900;
+            transition: var(--transition);
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(31, 66, 154, 0.4);
+        }
+
+        .cta-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1F429A 0%, #08163D 100%);
+            transform: scale(1.05);
+        }
+
+        /* App Download Dropdown Styles */
+        .app-download-dropdown {
+            position: absolute;
+            left: 50%;
+            bottom: 60px;
+            transform: translateX(-50%) scale(0.95);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 18px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2001;
+            min-width: 220px;
+            transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+            animation: dropdownIn 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        
+        .app-download-dropdown.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(-50%) scale(1);
+        }
+        
+        .store-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background: #f8f9fa;
+        }
+        
+        .store-option:hover {
+            background: #e9ecef;
+            transform: translateX(4px);
+            color: #1F429A;
+        }
+        
+        .store-option i {
+            font-size: 1.5rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .store-option span {
+            font-size: 0.95rem;
+        }
+        
+        @keyframes dropdownIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.9) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) scale(1) translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .method-card {
+                flex-direction: column;
+            }
+            
+            .method-icon {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* ===== SEARCH MODAL STYLES ===== */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 22, 61, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .search-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(8, 22, 61, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .search-modal.active .search-modal-content {
+            transform: scale(1);
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f8fafc;
+        }
+
+        .search-header h3 {
+            color: var(--dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .search-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-close:hover {
+            background: #e5e7eb;
+            color: var(--dark);
+        }
+
+        .search-body {
+            padding: 25px;
+        }
+
+        .search-input-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+
+        #searchInput:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(31, 66, 154, 0.1);
+        }
+
+        .search-submit {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .search-submit:hover {
+            background: var(--secondary);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .search-suggestions {
+            margin-bottom: 20px;
+        }
+
+        .suggestion-category {
+            margin-bottom: 25px;
+        }
+
+        .suggestion-category h4 {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .suggestion-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .suggestion-tag {
+            background: #f3f4f6;
+            color: var(--dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .suggestion-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(31, 66, 154, 0.2);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quick-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 66, 154, 0.15);
+        }
+
+        .quick-link i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .search-results {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .results-header h4 {
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .results-count {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        .results-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .result-item {
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .result-item:hover {
+            background: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(31, 66, 154, 0.1);
+        }
+
+        .result-item h5 {
+            color: var(--dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .result-item p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Mobile Responsive Search Modal */
+        @media (max-width: 768px) {
+            .search-modal-content {
+                width: 95%;
+                max-height: 85vh;
+                border-radius: 16px;
+            }
+
+            .search-header {
+                padding: 16px 20px;
+            }
+
+            .search-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .search-body {
+                padding: 20px;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .suggestion-tags {
+                gap: 6px;
+            }
+
+            .suggestion-tag {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="assets/images/main logo.webp" alt="RukaPay Logo"></a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="how-it-works.html" class="nav-link active">How It Works</a>
+                <a href="merchants.html" class="nav-link">Merchants</a>
+                <a href="tariffs.html" class="nav-link">Tariffs</a>
+                <a href="help-center.html" class="nav-link">Help Center</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="careers.html" class="nav-link">Careers</a>
+                
+            </div>
+            <div class="mobile-icons">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>How RukaPay Works</h1>
+            <p>Simple, secure, and smart payment solutions for everyone</p>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section class="payment-methods">
+        <div class="container">
+            <div class="method-card">
+                <div class="method-icon"><i class="fa-solid fa-qrcode"></i></div>
+                <div class="method-content">
+                    <h3>Scan to Pay</h3>
+                    <div class="method-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Open RukaPay app and select "Scan to Pay"</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Point camera at merchant's QR code</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>Enter amount and confirm payment</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Transaction complete! Receipt sent instantly</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-visual">
+                    <img src="assets/images/TAP2PAY.webp" alt="NFC Tap Demo" class="method-image">
+                </div>
+            </div>
+
+            <div class="method-card">
+                <div class="method-visual">
+                    <img src="./assets/images/NFC CARD.webp" alt="NFC Tap Demo" class="method-image">
+                </div>
+                <div class="method-content">
+                    <h3>Tap to Pay</h3>
+                    <div class="method-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Enable NFC on your smartphone</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Open RukaPay app and select "Tap to Pay"</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>Tap phone on merchant's NFC terminal</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Confirm with PIN or biometric authentication</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-icon"><i class="fa-solid fa-money-check-dollar"></i></div>
+            </div>
+
+            <div class="method-card">
+                <div class="method-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <div class="method-content">
+                    <h3>APP TO APP</h3>
+                    <div class="method-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Open RukaPay app on your smartphone</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Navigate to "Send Money" or "Payments"</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>Enter recipient phone number and amount</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Confirm with PIN or biometric to complete</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-visual">
+                    <img src="assets/images/app tp app.webp" alt="App to App Demo" class="method-image">
+                </div>
+            </div>
+
+            <div class="method-card">
+                <div class="method-visual">
+                    <img src="assets/images/USSD.webp" alt="USSD Demo" class="method-image">
+                </div>
+                <div class="method-content">
+                    <h3>USSD Service</h3>
+                    <div class="method-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Dial *289# on any phone</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Select service from menu</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>Enter recipient details and amount</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Confirm with PIN to complete transaction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-icon"><i class="fa-solid fa-signal"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Banner -->
+    <section class="security-banner">
+        <div class="container">
+            <div class="security-content">
+                <h2><i class="fa-solid fa-shield-halved"></i> Bank-Level Security</h2>
+                <p>Your transactions are protected with end-to-end encryption, multi-factor authentication, and compliance with Bank of Uganda regulations.</p>
+                <div class="security-features">
+                    <div class="security-feature">
+                        <span class="security-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                        <span>256-bit Encryption</span>
+                    </div>
+                    <div class="security-feature">
+                        <span class="security-icon"><i class="fa-solid fa-lock"></i></span>
+                        <span>Multi-Factor Authentication</span>
+                    </div>
+                    <div class="security-feature">
+                        <span class="security-icon"><i class="fa-solid fa-check"></i></span>
+                        <span>Bank of Uganda Licensed</span>
+                    </div>
+                    <div class="security-feature">
+                        <span class="security-icon"><i class="fa-solid fa-file-pen"></i></span>
+                        <span>KYC/AML Compliant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RukaPay</h3>
+                    <p>Secure, reliable, advanced payment solutions for Ugandan businesses.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/rukapay.ug?mibextid=wwXIfr&rdid=NRSNTPzqwpnCBJp3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16G2dBLQWx%2F%3Fmibextid%3DwwXIfr#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/rukapay_ug" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frukapay.ug%2F%3Figsh%3DdWFhbm5nZ2YybWF4&is_from_rle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/rhino-payment-company?trk=public_profile_topcard-current-company" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@RukaPay-p4v" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p>Scan to Pay</p>
+                  <p>Tap to Pay</p>
+                  <p>USSD Payments</p>
+                  <p>Merchant Services</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>TMT Atrium Building 2nd Floor</p>
+                <p>Naguru-Bukoto, kira rd, Kampala</p>
+                <p>Po BOX 111498</p>
+                                                <p><i class="fas fa-phone"></i> <a href="tel:+256200244400" style="color: #fff !important; text-decoration: none;">0200 244 400</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@rukapay.co.ug" style="color: #fff !important; text-decoration: none;">info@rukapay.co.ug</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <p>Licensed Payment Service Provider / Payment System Operator</p>
+                    <p>
+                        <a href="privacy-policies.html" style="color: #fff !important; text-decoration: none;">Privacy Policy</a>
+                    </p>
+                    <p>
+                        <a href="privacy-policies.html#cookies-tracking" style="color: #fff !important; text-decoration: none;">Terms and Conditions</a>
+                    </p>
+                    
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rhino Payment Services Ltd (trading as RukaPay). All rights reserved.</p>
+                <p>Licensed Payment Service Provider / Payment System Operator by the Bank of Uganda</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <div class="search-header">
+                <h3>Search RukaPay</h3>
+                <button class="search-close" id="searchClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-body">
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" placeholder="Search for services, features, or help..." autocomplete="off">
+                    <button class="search-submit" id="searchSubmit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-suggestions" id="searchSuggestions">
+                    <div class="suggestion-category">
+                        <h4>Popular Searches</h4>
+                        <div class="suggestion-tags">
+                            <span class="suggestion-tag" data-search="mobile money">Mobile Money</span>
+                            <span class="suggestion-tag" data-search="QR payments">QR Payments</span>
+                            <span class="suggestion-tag" data-search="merchant services">Merchant Services</span>
+                            <span class="suggestion-tag" data-search="USSD">USSD *289#</span>
+                        </div>
+                    </div>
+                    <div class="suggestion-category">
+                        <h4>Quick Links</h4>
+                        <div class="quick-links">
+                            <a href="how-it-works.html" class="quick-link">
+                                <i class="fas fa-play-circle"></i>
+                                How It Works
+                            </a>
+                            <a href="tariffs.html" class="quick-link">
+                                <i class="fas fa-tags"></i>
+                                Pricing & Tariffs
+                            </a>
+                            <a href="merchants.html" class="quick-link">
+                                <i class="fas fa-store"></i>
+                                Merchant Services
+                            </a>
+                            <a href="help-center.html" class="quick-link">
+                                <i class="fas fa-question-circle"></i>
+                                Help Center
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-results" id="searchResults" style="display: none;">
+                    <div class="results-header">
+                        <h4>Search Results</h4>
+                        <span class="results-count" id="resultsCount"></span>
+                    </div>
+                    <div class="results-list" id="resultsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <div class="cta-content">
+            <button class="cta-button" id="downloadNowBtn">Download Now</button>
+            <div class="app-download-dropdown" id="appDropdownFloating">
+                <a href="https://apps.apple.com/ug/app/rukapay/id6748399426" class="store-option">
+                    <i class="fab fa-apple"></i>
+                    <span>App Store</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.rhinopaymentservices.rukapay" class="store-option">
+                    <i class="fab fa-google-play"></i>
+                    <span>Play Store</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const searchBtn = document.querySelector('.search-btn');
+        const menuIcon = mobileMenuToggle.querySelector('i');
+        
+        // Toggle mobile menu
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Change menu icon
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+        
+        // Search functionality
+        const searchModal = document.getElementById('searchModal');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.getElementById('searchInput');
+        const searchSubmit = document.getElementById('searchSubmit');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+        const searchResults = document.getElementById('searchResults');
+        const resultsList = document.getElementById('resultsList');
+        const resultsCount = document.getElementById('resultsCount');
+        const suggestionTags = document.querySelectorAll('.suggestion-tag');
+
+        // Open search modal
+        searchBtn.addEventListener('click', function() {
+            searchModal.classList.add('active');
+            setTimeout(() => {
+                searchInput.focus();
+            }, 300);
+        });
+
+        // Close search modal
+        searchClose.addEventListener('click', function() {
+            searchModal.classList.remove('active');
+            searchInput.value = '';
+            showSuggestions();
+        });
+
+        // Close modal when clicking outside
+        searchModal.addEventListener('click', function(e) {
+            if (e.target === searchModal) {
+                searchModal.classList.remove('active');
+                searchInput.value = '';
+                showSuggestions();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+                searchModal.classList.remove('active');
+                searchInput.value = '';
+                showSuggestions();
+            }
+        });
+
+        // Search on Enter key
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Search on submit button click
+        searchSubmit.addEventListener('click', performSearch);
+
+        // Suggestion tags click
+        suggestionTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                searchInput.value = this.getAttribute('data-search');
+                performSearch();
+            });
+        });
+
+        // Search input change
+        searchInput.addEventListener('input', function() {
+            if (this.value.trim() === '') {
+                showSuggestions();
+            } else {
+                // Real-time search suggestions could be implemented here
+            }
+        });
+
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (query === '') return;
+
+            // Search data - in a real app, this would come from a backend
+            const searchData = [
+                { title: 'Mobile Money Services', description: 'Send and receive money using mobile money integration', url: 'how-it-works.html' },
+                { title: 'QR Code Payments', description: 'Scan QR codes to make instant payments at merchant locations', url: 'how-it-works.html' },
+                { title: 'USSD Services', description: 'Access RukaPay services using *289# on any mobile phone', url: 'how-it-works.html' },
+                { title: 'Merchant Services', description: 'Accept payments and grow your business with RukaPay', url: 'merchants.html' },
+                { title: 'Transaction Fees', description: 'View our competitive pricing and transaction fees', url: 'tariffs.html' },
+                { title: 'Security Features', description: 'Learn about our bank-grade security and encryption', url: 'about.html' },
+                { title: 'Customer Support', description: 'Get help with your RukaPay account and transactions', url: 'help-center.html' },
+                { title: 'Business Solutions', description: 'Tools and services designed for Ugandan businesses', url: 'merchants.html' },
+                { title: 'Digital Wallet', description: 'Store money securely in your RukaPay digital wallet', url: 'how-it-works.html' },
+                { title: 'Payment Methods', description: 'Multiple ways to pay including scan, tap, and USSD', url: 'how-it-works.html' }
+            ];
+
+            // Filter results based on query
+            const results = searchData.filter(item => 
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.description.toLowerCase().includes(query.toLowerCase())
+            );
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            searchSuggestions.style.display = 'none';
+            searchResults.style.display = 'block';
+            
+            resultsCount.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
+            
+            resultsList.innerHTML = '';
+            
+            if (results.length === 0) {
+                resultsList.innerHTML = `
+                    <div class="result-item">
+                        <h5>No results found</h5>
+                        <p>Try searching with different keywords or browse our quick links below.</p>
+                    </div>
+                `;
+            } else {
+                results.forEach(result => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    resultItem.innerHTML = `
+                        <h5>${result.title}</h5>
+                        <p>${result.description}</p>
+                    `;
+                    resultItem.addEventListener('click', () => {
+                        window.location.href = result.url;
+                    });
+                    resultsList.appendChild(resultItem);
+                });
+            }
+        }
+
+        function showSuggestions() {
+            searchSuggestions.style.display = 'block';
+            searchResults.style.display = 'none';
+        }
+        
+        // App Download Dropdown Functionality
+        const downloadBtn = document.getElementById('downloadNowBtn');
+        const appDropdown = document.getElementById('appDropdownFloating');
+        
+        if (downloadBtn && appDropdown) {
+            downloadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                appDropdown.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!downloadBtn.contains(e.target) && !appDropdown.contains(e.target)) {
+                    appDropdown.classList.remove('show');
+                }
+            });
+            
+            // Close dropdown when selecting an option
+            const storeOptions = appDropdown.querySelectorAll('.store-option');
+            storeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    appDropdown.classList.remove('show');
+                });
+            });
+        }
+        
+        // Close menu when clicking on a link
+        const navLinksItems = document.querySelectorAll('.nav-link');
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    });
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>

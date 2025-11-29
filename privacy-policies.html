@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+  <style>
+    :root {
+      --primary-dark: #08163D;
+      --primary: #1F429A;
+      --accent: #FFFFFF;
+      --grey-light: #f8f9fa;
+      --grey-medium: #e4e7f1;
+      --radius: 18px;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+      --nav-height: 70px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      background: #fff;
+      color: var(--primary-dark);
+    }
+    /* Navbar styles (copied from privacy-policies.html) */
+    header {
+      position: fixed;
+      top: 32px;
+      left: 0;
+      width: 100%;
+      background: transparent;
+      box-shadow: none;
+      z-index: 1000;
+      padding: 0;
+      transition: var(--transition);
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90vw;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #08163D;
+      border-radius: 28px;
+      box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+      padding: 0 40px;
+      height: var(--nav-height);
+      pointer-events: auto;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo a {
+      height: 40px;
+    }
+    .nav-logo img {
+      height: 32px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      background: #08163D;
+    }
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 5px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+    .nav-link:hover {
+      color: #1F429A !important;
+      background: rgba(255,255,255,0.06);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: #1F429A !important;
+      font-weight: 600;
+    }
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .mobile-icons {
+      display: none;
+      align-items: center;
+      gap: 15px;
+    }
+    .mobile-icons button, .mobile-menu-toggle {
+      color: #fff !important;
+    }
+    .mobile-icons button {
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+    .mobile-icons button:hover {
+      color: var(--primary);
+      background: rgba(31, 66, 154, 0.1);
+    }
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: calc(var(--nav-height) + 24px);
+        left: 50%;
+        transform: translate(-50%, -30px) scale(0.98);
+        right: auto;
+        background: #08163D;
+        color: #fff;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 1.2rem 2rem;
+        box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+        z-index: 100;
+        opacity: 0;
+        height: auto;
+        min-width: 85vw;
+        border-radius: 22px;
+        overflow: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+          transform 0.45s cubic-bezier(0.4,0,0.2,1),
+          box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+      }
+      .nav-links.active {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+        box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+        pointer-events: auto;
+      }
+      .nav-link {
+        color: #fff !important;
+        padding: 0.9rem 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+        font-size: 18px;
+        background: transparent;
+        transition: background 0.2s;
+      }
+      .nav-link:last-child {
+        border-bottom: none;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: #ffe066 !important;
+        background: rgba(255,255,255,0.06);
+      }
+      .mobile-icons {
+        display: flex;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+    }
+    /* Hero section styles (copied from privacy-policies.html) */
+    .hero-section {
+      background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+      padding: 90px 0 60px 0;
+      text-align: center;
+    }
+    .hero-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.97);
+      border-radius: 22px;
+      box-shadow: 0 4px 20px rgba(8,22,61,0.10);
+      padding: 28px 16px 22px 16px;
+      max-width: 400px;
+      margin: 24px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-icon {
+      background: linear-gradient(135deg, #1F429A 0%, #08163D 100%);
+      color: #fff;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 18px rgba(31,66,154,0.13);
+    }
+    .hero-title {
+      font-size: 2.7rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+    }
+    .hero-subtitle {
+      font-size: 1.18rem;
+      color: #23346a;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 600px) {
+      .hero-card {
+        padding: 28px 8px 24px 8px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-section {
+        padding: 60px 0 30px 0;
+      }
+    }
+    /* Existing content-container, sidebar, and main-content styles remain unchanged */
+    .content-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 50px auto 80px;
+      padding: 0 20px;
+    }
+    .sidebar {
+      background: var(--grey-light);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      box-shadow: 0 4px 16px rgba(31, 66, 154, 0.06);
+      border: 1.5px solid var(--grey-medium);
+      position: sticky;
+      top: 120px;
+      height: fit-content;
+      min-width: 0;
+    }
+    .sidebar-header {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--primary-dark);
+    }
+    .sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--primary);
+      text-align: left;
+      padding: 10px 15px;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      outline: none;
+    }
+    .sidebar-btn:hover,
+    .sidebar-btn.active {
+      background: var(--grey-medium);
+      color: var(--primary-dark);
+    }
+    .sidebar-btn .arrow {
+      display: inline-block;
+      margin-left: 0.7em;
+      font-size: 1.1em;
+      transition: transform var(--transition);
+      color: inherit;
+    }
+    .sidebar-btn.active .arrow {
+      transform: rotate(90deg);
+    }
+    .main-content, .content {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      box-shadow: 0 4px 16px rgba(31, 66, 154, 0.06);
+      border: 1.5px solid var(--grey-medium);
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+    }
+    .main-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+    .main-intro {
+      font-size: 1.1rem;
+      margin-bottom: 2.2rem;
+      color: #23346a;
+    }
+    .accordion-container {
+      display: none;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    .accordion-container.active {
+      display: flex;
+    }
+    .accordion {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      overflow: hidden;
+      border: 1px solid var(--grey-medium);
+      transition: box-shadow var(--transition);
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--grey-light);
+      font-weight: 600;
+      font-size: 1.08rem;
+      padding: 1.1rem 1.3rem;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid var(--grey-medium);
+      transition: background var(--transition);
+    }
+    .accordion-header:hover {
+      background: #e4e7f1;
+    }
+    .accordion-chevron {
+      transition: transform var(--transition);
+      font-size: 1.2em;
+      margin-left: 1em;
+      color: var(--primary);
+    }
+    .accordion.open .accordion-chevron {
+      transform: rotate(90deg);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      background: #fff;
+      padding: 0 1.3rem;
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.85;
+      transition: max-height var(--transition), padding var(--transition);
+      /* Make content scrollable if it exceeds a certain height */
+      box-sizing: border-box;
+      position: relative;
+      /* Add smooth scrolling for overflow */
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) #e4e7f1;
+    }
+    .accordion.open .accordion-content {
+      padding: 1.1rem 1.3rem 1.3rem 1.3rem;
+      max-height: 350px;
+      overflow-y: auto;
+    }
+    /* Custom scrollbar for webkit browsers */
+    .accordion-content::-webkit-scrollbar {
+      width: 8px;
+      background: #e4e7f1;
+      border-radius: 6px;
+    }
+    .accordion-content::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 6px;
+    }
+    @media (max-width: 900px) {
+      .content-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .sidebar {
+        position: static;
+        margin-bottom: 30px;
+        max-width: 100%;
+      }
+      .main-content, .content {
+        padding: 24px 10px;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-content, .content {
+        padding: 16px 2px;
+      }
+      .sidebar {
+        padding: 18px 8px;
+      }
+      .main-title {
+        font-size: 1.3rem;
+      }
+      .hero-card {
+        padding: 28px 8px 24px 8px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-section {
+        padding: 60px 0 30px 0;
+      }
+    }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+<body>
+  <!-- Header Navigation (Copied from index.html) -->
+  <header class="header">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html"><img src="assets/images/main logo.webp" alt="RukaPay Logo"></a>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link ">Home</a>
+            <a href="how-it-works.html" class="nav-link">How It Works</a>
+            <a href="merchants.html" class="nav-link ">Merchants</a>
+            <a href="tariffs.html" class="nav-link">Tariffs</a>
+            <a href="help-center.html" class="nav-link">Help Center</a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="contact.html" class="nav-link">Contact Us</a>
+            
+        </div>
+        <div class="mobile-icons">
+            <button class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
+  <!-- Hero Section (copied from privacy-policies.html) -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <div class="hero-card">
+        <div class="hero-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h1 class="hero-title">Privacy Policies</h1>
+        <p class="hero-subtitle">Your privacy is our priority. Learn how RukaPay protects your data and keeps your payments secure.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Update last modified date (copied from privacy-policies.html)
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = today.toLocaleDateString('en-US', options);
+      const lastUpdated = document.querySelector('.last-updated span');
+      if (lastUpdated) lastUpdated.textContent = `Last Updated: ${formattedDate}`;
+    });
+  </script>
+  <!-- Main Content -->
+  <div class="content-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">Menu</div>
+      <ul class="sidebar-list">
+        <li><button class="sidebar-btn active" data-target="privacy-policies">Privacy Policies <span class="arrow">&#9654;</span></button></li>
+        <li><button class="sidebar-btn" data-target="terms-conditions">Terms and Conditions <span class="arrow">&#9654;</span></button></li>
+      </ul>
+    </aside>
+    <main class="main-content content">
+      <!-- Privacy Policies Section -->
+      <div class="accordion-container active" id="privacy-policies">
+        <div class="accordion">
+          <div class="accordion-header">
+            Who are we? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>In this privacy notice, "RukaPay", "we", "our", and "us" refer to RukaPay, a registered trademark and product of Rhino Payment Services Limited.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Who does this notice apply to? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>This notice applies to the following individuals:</p>
+            <ul>
+              <li>
+                <strong>Customers:</strong> Any person(s) who contracts with us for the provision of products and services, or who purchases a product from us ("customers"), including potential customers to the extent RukaPay processes your Personal Data.
+              </li>
+              <li>
+                <strong>Users:</strong> Any person(s) who uses our website, mobile applications, or any RukaPay products or services ("users").
+              </li>
+              <li>
+                <strong>Suppliers:</strong> All suppliers, contractors, and service providers of RukaPay ("suppliers"), including potential suppliers to the extent RukaPay processes your Personal Data.
+              </li>
+              <li>
+                <strong>Resellers:</strong> Resellers such as RukaPay distributors, agents, and partners ("resellers"), including potential resellers to the extent RukaPay processes your Personal Data.
+              </li>
+              <li>
+                <strong>Other Data Subjects:</strong> Any other persons (excluding employees and job applicants) who share Personal Data with RukaPay. This includes beneficiaries, trustees, or donors to RukaPay trusts or charitable causes, as well as RukaPay guests.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion">
+            <div class="accordion-header">
+                Important terms you need to understand when reading this notice? <span class="accordion-chevron">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+              <h3></h3>
+              <ul>
+                <li>
+                  <strong>Data Subject:</strong> An identified or identifiable natural person. An identifiable natural person is one who can be identified, directly or indirectly, by reference to an identifier or one or more factors specific to their physical, physiological, genetic, mental, economic, cultural, or social identity. This term also encompasses any additional persons granted data privacy rights and protection of Personal Data under applicable data privacy laws.
+                </li>
+                <li>
+                  <strong>Local Regulatory Requirements:</strong> Legal, statutory, regulatory, licensing conditions, rules, guidelines, ministerial or national security orders or directives, and public-safety or data-sovereignty–related requirements with which RukaPay is required to comply in the jurisdictions where we operate.<br>
+                  <em>Data sovereignty</em> refers to the laws and governance structures that apply to Personal Data based on the geographic location where it is processed.
+                </li>
+                <li>
+                  <strong>Personal Data:</strong> Any information relating to a Data Subject from which that person can be identified. Examples include, but are not limited to:
+                  <ul>
+                    <li>Name, date of birth, nationality, marital status</li>
+                    <li>Educational level or occupation</li>
+                    <li>Identifying numbers or symbols (e.g., national ID, customer number)</li>
+                    <li>Contact information (e.g., email address, postal address, telephone number)</li>
+                    <li>Location data or physical address</li>
+                    <li>Online identifiers or other unique assignments</li>
+                    <li>Biometric information (e.g., fingerprint, facial recognition data)</li>
+                    <li>Personal opinions, views, or preferences</li>
+                    <li>Correspondence of a private or confidential nature</li>
+                    <li>Opinions of others about the Data Subject</li>
+                    <li>Any combination of data that, when linked to a name, reveals further personal information</li>
+                    <li>Sensitive Personal Data (see below)</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Processing:</strong> Any operation or set of operations performed on Personal Data—whether by automated means or not—including: collection, receipt, recording, organization, structuring, collation, storage; adaptation or alteration; retrieval, consultation, use; dissemination or disclosure by transmission; alignment or combination; restriction, erasure, destruction, or degradation.
+                </li>
+                <li>
+                  <strong>Sensitive Personal Data:</strong> A subset of Personal Data deemed more sensitive and deserving of additional protection. This includes, but is not limited to:
+                  <ul>
+                    <li>Racial or ethnic origin</li>
+                    <li>Political opinions or affiliations</li>
+                    <li>Religious or philosophical beliefs</li>
+                    <li>Trade-union membership</li>
+                    <li>Criminal history or proceedings</li>
+                    <li>Genetic or biometric data</li>
+                    <li>Health-related information</li>
+                    <li>Data concerning sex life or sexual orientation</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            What Personal Data does RukaPay collect and use? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              To run our business, we may need to collect, use, store, and otherwise process your Personal Data. The categories of Personal Data we collect will depend on the RukaPay products and services you use, the way you interact with those products and services, and the channels through which you engage with us.
+            </p>
+            <p>
+              We will only collect Personal Data that is adequate, relevant, and limited to what is necessary for the specific purposes described in this notice.
+            </p>
+            <p>
+              <strong>The types of Personal Data we may collect and process include:</strong>
+            </p>
+            <ul>
+              <li>
+                <strong>Account &amp; Contact Information:</strong>
+                Your name, email address, postal or residential address, telephone number, date of birth, identity document numbers (e.g., national ID, passport), billing details, financial account information, and any other data required to meet regulatory obligations.
+              </li>
+              <li>
+                <strong>Location Information:</strong>
+                Approximate or precise device location when you interact with our mobile app or services (e.g., via GPS, Wi-Fi, or IP-based location).
+              </li>
+              <li>
+                <strong>Network &amp; Service Performance:</strong>
+                Usage data about how you access and use our platform, including connection logs, transaction volumes, and error reports, to help us monitor and improve system reliability and performance.
+              </li>
+              <li>
+                <strong>Financial Information:</strong>
+                Bank account or credit/debit card details, transaction history, and information used to assess creditworthiness where relevant (e.g., for lending products).
+              </li>
+              <li>
+                <strong>Usage &amp; Transaction Data:</strong>
+                Records of your transactions (payments sent or received, bill payments, merchant payments), browsing or navigation within our app or website, device identifiers, session durations, and settings or preferences.
+              </li>
+              <li>
+                <strong>Web &amp; App Analytics:</strong>
+                IP address, browser type and version, operating system, referring/exit pages, in-app events, cookies and similar technologies (including first-party cookies and those from selected analytics partners).
+              </li>
+              <li>
+                <strong>Supplier, Reseller &amp; Partner Information:</strong>
+                For those who provide goods or services to RukaPay: name, contact details, billing information, background or credit checks, performance metrics, and any other data required by law or policy.
+              </li>
+              <li>
+                <strong>Multimedia Data:</strong>
+                Photographs, audio or video recordings you share with us (e.g., for customer support or dispute resolution).
+              </li>
+              <li>
+                <strong>Social Media &amp; Marketing Data:</strong>
+                Information you provide when interacting with our social channels or campaigns (e.g., contest entries, comments, reactions, public profile data you permit us to access).
+              </li>
+              <li>
+                <strong>Biometric Information:</strong>
+                If you opt in to biometric authentication (e.g., fingerprint or facial recognition), we collect the minimal data needed to verify your identity.
+              </li>
+              <li>
+                <strong>Electronic Identifiers:</strong>
+                Device IDs, IP addresses, cookies, and other identifiers used to help secure our platform and detect fraud.
+              </li>
+              <li>
+                <strong>Demographic &amp; Profile Data:</strong>
+                Gender, age, education level, occupation, and other demographic details you choose to provide.
+              </li>
+              <li>
+                <strong>Views, Opinions &amp; Preferences:</strong>
+                Survey responses, feedback about our products or services, and preferences you set in your account. For suppliers or resellers, we may also collect references or performance evaluations from third parties.
+              </li>
+            </ul>
+            <p>
+              We retain and process each category of data only for as long as needed to fulfill the purposes outlined in this notice, comply with legal requirements, or protect our legitimate interests.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Where does RukaPay collect my Personal Data from? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              We generally collect Personal Data directly from you—for example, when you open a RukaPay account, make a payment or purchase, use our website or mobile app, or contact our customer support team.
+            </p>
+            <p>
+              In certain situations, we may also obtain Personal Data about you from third-party sources, including:
+            </p>
+            <ul>
+              <li>
+                <strong>Credit bureaus or vetting agencies:</strong>
+                For identity verification, credit checks, or fraud prevention.
+              </li>
+              <li>
+                <strong>Social media platforms:</strong>
+                To the extent you've permitted those platforms to share your public profile or activity with us.
+              </li>
+              <li>
+                <strong>Marketing partners:</strong>
+                When you engage with co-branded campaigns or opt in to third-party offers.
+              </li>
+              <li>
+                <strong>Affiliated companies:</strong>
+                Other entities within the RukaPay group may share information based on your use of their services or your consent.
+              </li>
+              <li>
+                <strong>Resellers and agents:</strong>
+                Information about customers, users, or suppliers who transact through our authorized distributors or partners.
+              </li>
+              <li>
+                <strong>Third-party references:</strong>
+                Supplier or reseller performance data provided by external referees or reference-check services.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            For what purposes does RukaPay use your Personal Data? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>RukaPay will use your Personal Data for the following purposes:</p>
+            <ul>
+              <li>
+                <strong>Identity Verification</strong><br>
+                To verify who you are when you register for RukaPay, initiate transactions, log into your account, or when you or we contact customer support.
+              </li>
+              <li>
+                <strong>Credit Assessment</strong><br>
+                To perform credit checks (including through licensed credit bureaus) when you apply for any credit-based services, loans, or deferred-payment products.
+              </li>
+              <li>
+                <strong>Account Setup &amp; Order Processing</strong><br>
+                To open and maintain your RukaPay account, process your requests for products and services (e.g., bill payments, merchant services), and keep you informed about the status of those requests.
+              </li>
+              <li>
+                <strong>Billing &amp; Collections</strong><br>
+                To generate invoices for your use of RukaPay services, process payments, and, where necessary, manage collections of any outstanding balances.
+              </li>
+              <li>
+                <strong>Platform Performance &amp; Improvement</strong><br>
+                To analyze usage trends and system performance (e.g., transaction volumes, peak usage periods, error rates) so we can maintain, optimize, and scale our platform.
+              </li>
+              <li>
+                <strong>Personalization &amp; Service Enhancement</strong><br>
+                To study your preferences and behavior—based on how you navigate our app or website, which features you use most, and your feedback—in order to tailor offers, develop new services, and improve existing ones.
+              </li>
+              <li>
+                <strong>Operational Security &amp; Fraud Prevention</strong><br>
+                To detect, investigate, and prevent unauthorized or fraudulent activity on your account and across the RukaPay platform, safeguarding your funds and our systems.
+              </li>
+              <li>
+                <strong>Marketing &amp; Communications</strong><br>
+                To send you promotional messages, service updates, and relevant offers via email, SMS, push notifications, or social media—only if you've consented or as otherwise permitted by law, and you can opt-out at any time.
+              </li>
+              <li>
+                <strong>Compliance &amp; Legal Obligations</strong><br>
+                To comply with applicable laws and regulations (e.g., KYC/"know your customer" rules), respond to court orders or law-enforcement requests, and fulfill any reporting duties imposed on RukaPay by regulators.
+              </li>
+              <li>
+                <strong>Customer Support</strong><br>
+                To respond to your inquiries, troubleshoot technical issues, handle disputes or complaints, and generally assist you in using RukaPay's products and services.
+              </li>
+            </ul>
+            <p>
+              RukaPay will not process your Personal Data for purposes incompatible with those listed above, unless:
+            </p>
+            <ul>
+              <li>permitted by applicable data-privacy laws;</li>
+              <li>you've given us clear consent;</li>
+              <li>required by a legal or regulatory obligation; or</li>
+              <li>necessary for statistical or historical research in aggregated or anonymized form.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Is RukaPay allowed to process my Personal Data? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              We are permitted to process your Personal Data only when we have a valid legal basis under applicable law or our internal policies. For each Processing activity, RukaPay will rely on one of the following bases as appropriate:
+            </p>
+            <ul>
+              <li>
+                <strong>Performance of a Contract</strong><br>
+                Processing is necessary to enter into or fulfill our contractual obligations with you (e.g., maintaining your RukaPay account, executing your payment instructions).
+              </li>
+              <li>
+                <strong>Legal Obligation</strong><br>
+                Processing is required for RukaPay to comply with a legal or regulatory duty (e.g., "know your customer" (KYC) requirements, anti–money laundering rules).
+              </li>
+              <li>
+                <strong>Legitimate Interests</strong><br>
+                Processing is in RukaPay's—or a third party's—legitimate interest (such as fraud prevention, system security, or service enhancement), provided those interests do not override your fundamental rights and freedoms.
+              </li>
+              <li>
+                <strong>Vital Interests</strong><br>
+                Processing is necessary to protect the life or physical safety of you or another person (e.g., in emergency situations involving your account).
+              </li>
+              <li>
+                <strong>Public Interest</strong><br>
+                Processing is necessary to carry out a task performed in the public interest or in the exercise of official authority vested in RukaPay (where applicable).
+              </li>
+              <li>
+                <strong>Consent</strong><br>
+                Where none of the above apply (or where required by law), we will seek your explicit consent before Processing certain categories of your Personal Data. You may withdraw consent at any time without affecting the lawfulness of any Processing carried out before withdrawal.
+              </li>
+            </ul>
+            <p>
+              When Processing Sensitive Personal Data, we will rely on one of the following, as applicable:
+            </p>
+            <ul>
+              <li>
+                <strong>Explicit Consent</strong><br>
+                You have clearly agreed to the specific use of your Sensitive Personal Data and may withdraw this consent at any time.
+              </li>
+              <li>
+                <strong>Vital Interests</strong><br>
+                Processing is necessary to protect your life or the life of another person, and you are unable—physically or legally—to give consent.
+              </li>
+              <li>
+                <strong>Public Disclosure by You</strong><br>
+                The Sensitive Personal Data has been intentionally made public by you.
+              </li>
+              <li>
+                <strong>Legal Claims and Judicial Proceedings</strong><br>
+                Processing is necessary for establishing, exercising, or defending legal claims, or in the context of judicial proceedings.
+              </li>
+              <li>
+                <strong>Research &amp; Statistics</strong><br>
+                Processing is required for scientific, historical, or statistical purposes, provided that it is proportionate, respects data-protection rights, and incorporates appropriate safeguards.
+              </li>
+            </ul>
+            <p>
+              <strong>Compliance with Local Law</strong><br>
+              Processing of any Personal Data—including data relating to criminal behavior—will always comply with the local regulatory requirements in the jurisdictions where RukaPay operates.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Is it mandatory to provide RukaPay the Personal Data asked for? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              You are not required to provide any Personal Data to RukaPay. However, if you choose not to share certain information we've requested, it may affect our ability to:
+            </p>
+            <ul>
+              <li>Enter into or perform a contract with you (e.g., opening or maintaining your RukaPay account)</li>
+              <li>Deliver our products or services (such as processing payments or bill settlements)</li>
+              <li>Support and manage your use of RukaPay's offerings (including customer service and technical assistance)</li>
+              <li>Enable full functionality of our website and mobile app features</li>
+              <li>On-board you as a supplier, reseller, contractor, or service provider</li>
+              <li>Grant you access to our offices or secure facilities (where applicable)</li>
+              <li>Comply with legal and regulatory obligations, including tax, accounting, and "know your customer" requirements</li>
+            </ul>
+            <p>
+              If you have questions about why we need certain data, or if you'd like to discuss alternative ways to provide it, please contact our Data Protection Officer at <a href="mailto:privacy@RukaPay.co.ug">privacy@RukaPay.co.ug</a>.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Does RukaPay Process my Personal Data automatically? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>RukaPay does not perform any automated decision-making (including profiling) that results in legal effects for you or similarly significant impacts. If this changes in the future, we will notify you and update this privacy notice accordingly.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            How long does RukaPay keep my Personal Data for? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              RukaPay will retain your Personal Data only for as long as necessary to fulfill the purposes for which it was collected, unless:
+            </p>
+            <ul>
+              <li>
+                <strong>Legal or Regulatory Requirements</strong><br>
+                Retention is required or permitted by applicable laws, regulations, or licensing obligations.
+              </li>
+              <li>
+                <strong>Your Consent</strong><br>
+                You have explicitly consented to a longer retention period.
+              </li>
+              <li>
+                <strong>Research &amp; Statistics</strong><br>
+                The data is needed for historical, statistical, or scientific research, provided we implement appropriate safeguards to prevent its use for other purposes.
+              </li>
+            </ul>
+            <p>
+              Once Personal Data is no longer required—or we're no longer authorized to keep it—we will, as soon as reasonably practicable:
+            </p>
+            <ul>
+              <li>De-identify the data to ensure it can't be linked back to you; or</li>
+              <li>Securely destroy or erase it using industry-standard methods.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Does RukaPay transfer my Personal Data to third parties? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              We may share your Personal Data with third parties when it's necessary to support our operations, fulfill your requests, or comply with legal requirements. Categories of recipients include:
+            </p>
+            <ul>
+              <li>
+                <strong>Service Providers</strong><br>
+                We engage vetted third-party vendors—such as IT and hosting providers, payment processors, legal or consulting firms, and customer-support platforms—to perform services on our behalf. Each operates under a binding agreement that restricts their use of your Personal Data to the tasks we've contracted them for and requires them to maintain industry-standard security measures.
+              </li>
+              <li>
+                <strong>Corporate Transactions</strong><br>
+                In the event RukaPay reorganizes, sells, merges, or transfers all or part of its business, we may share Personal Data with the acquiring entity or its advisors, but only to the extent necessary to complete the transaction.
+              </li>
+              <li>
+                <strong>Legal &amp; Regulatory Authorities</strong><br>
+                We may disclose Personal Data to courts, tribunals, law-enforcement, or regulatory bodies to comply with subpoenas, court orders, or applicable laws—and to defend RukaPay's legal rights.
+              </li>
+              <li>
+                <strong>Auditors</strong><br>
+                Independent auditors performing financial, security, or data-privacy audits may receive access to your data under strict confidentiality and limited-use agreements.
+              </li>
+              <li>
+                <strong>Insurers &amp; Brokers</strong><br>
+                To manage our corporate insurance programs, we sometimes share relevant Personal Data with insurance brokers, underwriters, reinsurers, and their professional advisors for underwriting, claims handling, and compliance purposes.
+              </li>
+              <li>
+                <strong>Marketing &amp; Advertising Partners</strong><br>
+                We may provide anonymized or aggregated data to third-party advertisers or marketing platforms that run campaigns via RukaPay channels. No personal identifiers are shared in these cases.
+              </li>
+            </ul>
+            <p>
+              In every case, we require recipients to apply appropriate technical and organizational controls to safeguard your information and to use it only in ways consistent with this Privacy Notice.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            How does RukaPay secure my Personal Data? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              RukaPay protects the integrity and confidentiality of your Personal Data by implementing appropriate and reasonable technical, physical, and organizational safeguards designed to prevent:
+            </p>
+            <ul>
+              <li>Accidental loss, damage, or destruction of your Personal Data;</li>
+              <li>Unauthorized or unlawful access to your Personal Data; and</li>
+              <li>Unauthorized or unlawful processing of your Personal Data.</li>
+            </ul>
+            <p>
+              To achieve this, RukaPay regularly:
+            </p>
+            <ul>
+              <li>
+                <strong>Identifies and assesses risks</strong> — we conduct periodic risk assessments of all foreseeable internal and external threats to Personal Data under our control.
+              </li>
+              <li>
+                <strong>Implements layered security controls</strong> — we deploy encryption, access controls, firewalls, intrusion detection systems, and secure development practices to harden our platforms and infrastructure.
+              </li>
+              <li>
+                <strong>Applies physical protections</strong> — our offices and data centers are secured with restricted access, surveillance, and environmental safeguards to prevent unauthorized entry or environmental damage.
+              </li>
+              <li>
+                <strong>Enforces organizational policies</strong> — we maintain strict data-handling policies, regular staff training, and incident-response procedures to ensure all team members understand and uphold our privacy and security standards.
+              </li>
+            </ul>
+            <p>
+              These measures are reviewed and updated continuously to adapt to new threats and to maintain compliance with applicable data-protection regulations.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            How does RukaPay handle Personal Data Breaches? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              While RukaPay implements reasonable measures to minimize the likelihood and impact of Personal Data breaches, no system can be entirely risk-free. If RukaPay becomes aware of—or reasonably suspects—a breach that compromises the integrity or confidentiality of Personal Data, we will follow our established Incident Response and Management procedures. These include containment, investigation, remediation, compliance reporting, and notification to affected individuals and regulators as required by law.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            What are my rights? <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>If RukaPay processes Personal Data about you, you have the following rights:</p>
+            <ul>
+              <li>
+                <strong>Access &amp; Correction</strong><br>
+                You may request access to the Personal Data we hold about you (often called a "Data Subject Access Request"). If we are legally required to provide your data, we will do so at no cost. We may ask you to verify your identity and provide details about your interactions with RukaPay to help us locate your information. If any of your Personal Data is inaccurate, you can ask us to correct it.
+              </li>
+              <li>
+                <strong>Object to Processing</strong><br>
+                Under certain circumstances—such as when we rely on "legitimate interests" to process your data—you may object to our use of your Personal Data. You may also object to receiving direct marketing communications at any time.
+              </li>
+              <li>
+                <strong>Withhold Consent</strong><br>
+                When we ask for your consent to process certain categories of Personal Data, you may withhold it without fear of negative consequences. If you believe you've faced intimidation or retaliation, please report this immediately to our whistleblower hotline at <a href="mailto:info@rukapay.co.ug">info@rukapay.co.ug</a> or call 0800 212 800.
+              </li>
+              <li>
+                <strong>Withdraw Consent</strong><br>
+                You can withdraw any consent you've given at any time. Once withdrawn, we will stop processing your Personal Data for that purpose—unless we have another legal basis to continue. We will notify you if we intend to retain or use your data on a different legal basis.
+              </li>
+              <li>
+                <strong>Deletion &amp; Restriction</strong><br>
+                You may request that we delete your Personal Data if we no longer need it or have no lawful basis to retain it. You may also ask us to restrict (temporarily halt) processing in certain situations.
+              </li>
+              <li>
+                <strong>Lodge Complaints with RukaPay</strong><br>
+                If you have concerns about how RukaPay processes your Personal Data or believe there's been a violation of our privacy policy or applicable law, you can submit a complaint to our Data Protection Officer:<br>
+                Email: <a href="mailto:info@rukapay.co.ug">info@rukapay.co.ug</a>
+              </li>
+              <li>
+                <strong>Lodge Complaints with the Regulator</strong><br>
+                You always have the right to lodge a complaint with Uganda's supervisory authority, the Personal Data Protection Office:<br>
+                Email: <a href="mailto:info@rukapay.co.ug">info@rukapay.co.ug</a><br>
+                Phone: 041 780 1008 / 041 780 1009<br>
+                Website: <a href="https://www.rukapay.co.ug" target="_blank" rel="noopener">www.rukapay.co.ug</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Changes to privacy policy <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              RukaPay may update this Privacy Notice from time to time to reflect changes in our privacy practices. When we do, we will revise the "Effective Date" at the top of this notice and notify you of any material changes through the communication channels you have agreed for receiving updates (e.g., email, in-app notification, or SMS).
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            Contact us <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              If you have any questions or concerns about this Privacy Notice—or if you'd like more information on how we protect your data—please contact our Data Protection Officer (DPO) at:
+            </p>
+            <ul>
+              <li>
+                <strong>Email:</strong> <a href="mailto:info@rukapay.co.ug">info@rukapay.co.ug</a>
+              </li>
+            </ul>
+            <p>
+              To report any perceived non-compliance with our privacy policies or any suspected data-privacy breach, you may use our anonymous whistleblower channel:
+            </p>
+            <ul>
+              <li>
+                <strong>Email:</strong> <a href="mailto:info@rukapay.co.ug">info@rukapay.co.ug</a>
+              </li>
+              <li>
+                <strong>Phone:</strong> <a href="tel:+256200244407">0200 244 407</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Terms and Conditions Section -->
+      <div class="accordion-container" id="terms-conditions">
+        <div class="accordion">
+          <div class="accordion-header">
+            1. THE AGREEMENT <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              These are the Terms and Conditions on which you may use the RukaPay Services (as defined herein) provided by RukaPay ("Conditions of Use"), the acceptance of which constitutes a binding contract between you and RukaPay. When you register as a subscriber by completing the Registration Form annexed hereto, you agree to the retention of your personal details (Know Your Customer information) provided on the Registration Form and to abide by these Conditions of Use. Please read these Conditions of Use carefully. If you do not agree with any part of them, you must not proceed to register for or use the RukaPay Services.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            2. DEFINITIONS <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>The following definitions apply to these Conditions of Use:</p>
+            <dl>
+              <dt>"Agent(s)"</dt>
+              <dd>Person(s) registered by RukaPay to provide RukaPay Services. Details of authorized Agents may be obtained from RukaPay Service Centers or via our website.</dd>
+
+              <dt>"Agreement"</dt>
+              <dd>These Conditions of Use together with the Registration Form annexed hereto.</dd>
+
+              <dt>"Application" or "Application Software"</dt>
+              <dd>A program or collection of programs designed to help customers perform specific tasks off the RukaPay system, as downloaded onto their mobile device.</dd>
+
+              <dt>"Authority(ies)"</dt>
+              <dd>Any government or regulatory body with jurisdiction over RukaPay's operations—e.g., the Bank of Uganda, Uganda Communications Commission, Uganda Revenue Authority, Financial Intelligence Authority, or other relevant authorities.</dd>
+
+              <dt>"Charges"</dt>
+              <dd>The fees, tariffs, and other charges payable under this Agreement for the use of RukaPay Services.</dd>
+
+              <dt>"Conditions of Use"</dt>
+              <dd>These Terms and Conditions, as may be updated or varied by RukaPay from time to time.</dd>
+
+              <dt>"Credit Balance"</dt>
+              <dd>The amount of electronic money (Mobile Money) or airtime standing to the credit of your RukaPay Account.</dd>
+
+              <dt>"Credit"</dt>
+              <dd>The movement of funds into your RukaPay Account.</dd>
+
+              <dt>"Credit Transaction"</dt>
+              <dd>Any transaction that results in your Account being credited with Mobile Money or airtime, as verified by RukaPay.</dd>
+
+              <dt>"Customer"</dt>
+              <dd>You—the subscriber—or any other person in whose name an Account for RukaPay Services is registered.</dd>
+
+              <dt>"Customer Care Centre"</dt>
+              <dd>RukaPay's customer support center, located at addresses advertised on our website or via mobile app.</dd>
+
+              <dt>"Debit"</dt>
+              <dd>The movement of funds or airtime out of your RukaPay Account.</dd>
+
+              <dt>"Debit Transaction"</dt>
+              <dd>Any transaction that results in a debit from your RukaPay Account, as verified by RukaPay.</dd>
+
+              <dt>"Designated Payee"</dt>
+              <dd>Any person (including yourself, another customer, an Agent, or Authorized Retailer) whom you designate—via SMS or through the RukaPay app—to receive funds or airtime from your Account.</dd>
+
+              <dt>"Funds"</dt>
+              <dd>Electronic money maintained in your RukaPay Account.</dd>
+
+              <dt>"Goods and Services"</dt>
+              <dd>Products or services purchased from Authorized Merchants using the RukaPay system.</dd>
+
+              <dt>"ID Number"</dt>
+              <dd>The number associated with the form of government- or regulator-approved identification you provided.</dd>
+
+              <dt>"Mobile Equipment"</dt>
+              <dd>Your mobile phone handset and SIM card (or other approved device) that, together, enable access to RukaPay Services and are approved for use in Uganda by the relevant Authority.</dd>
+
+              <dt>"Mobile Money"</dt>
+              <dd>The electronic money issued by RukaPay, representing an entitlement to an equivalent amount of cash held in trust by RukaPay on your behalf.</dd>
+
+              <dt>"Mobile Phone"</dt>
+              <dd>Your mobile phone handset.</dd>
+
+              <dt>"Merchant"</dt>
+              <dd>A Merchant who accepts Mobile Money as payment for Goods and Services.</dd>
+
+              <dt>"RukaPay Account" or "Account"</dt>
+              <dd>An account activated in your name on the RukaPay system upon completion of registration, reflecting the balance of Mobile Money or airtime credited to you.</dd>
+
+              <dt>"RukaPay Services"</dt>
+              <dd>All products and services provided by RukaPay, including issuance and redemption of Mobile Money, fund transfers between Customers, transaction recording, verification, and account updates.</dd>
+
+              <dt>"RukaPay System"</dt>
+              <dd>The proprietary mobile money transfer platform operated by RukaPay in Uganda.</dd>
+
+              <dt>"RukaPay Website"</dt>
+              <dd>The website at <a href="https://www.rukapay.co.ug" target="_blank"><www class="rukapay co ug"></www></a> (or any updated domain we may announce).</dd>
+
+              <dt>"RukaPay"</dt>
+              <dd>RukaPay Limited, licensed by the Bank of Uganda to operate a mobile money platform, and any related affiliate or trustee role.</dd>
+
+              <dt>"SIM" or "SIM Card"</dt>
+              <dd>The subscriber identity module that, when used with appropriate Mobile Equipment, enables you to use RukaPay Services.</dd>
+
+              <dt>"SMS"</dt>
+              <dd>Short Message Service—a text message transmitted between mobile devices.</dd>
+
+              <dt>"Start Key"</dt>
+              <dd>A one-time PIN sent to you during registration to activate your RukaPay Account.</dd>
+
+              <dt>"Tariffs"</dt>
+              <dd>The published fees for RukaPay Services, as updated from time to time.</dd>
+
+              <dt>"Tariff Guide"</dt>
+              <dd>A catalogue or schedule of Tariffs for RukaPay Services, maintained on our Website.</dd>
+
+              <dt>"Transactions"</dt>
+              <dd>Any activity performed through RukaPay Services—such as sending or receiving Mobile Money, purchasing airtime, data bundles, etc.</dd>
+
+              <dt>"Transfer Instructions"</dt>
+              <dd>Instructions sent via SMS or the RukaPay app to transfer funds from one Customer to another.</dd>
+
+              <dt>"Trustee"</dt>
+              <dd>RukaPay Limited in its capacity as trustee, holding all funds collected on behalf of Customers in the Trustee Account.</dd>
+
+              <dt>"Trustee Account"</dt>
+              <dd>The bank account into which all customer Mobile Money payments are deposited and held in trust for Customers.</dd>
+
+              <dt>"User Manual"</dt>
+              <dd>The document describing how to use the RukaPay System, available on our Website or within the app.</dd>
+
+              <dt>"we," "us," "our"</dt>
+              <dd>References to RukaPay in its various capacities under this Agreement.</dd>
+
+              <dt>"you," "your"</dt>
+              <dd>References to the Customer (subscriber) using RukaPay Services.</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            3. APPLICATION FOR A RukaPay ACCOUNT <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>3.1</strong> You may register for RukaPay Services at any RukaPay authorized outlet, agent, or onboarding partner within the Republic of Uganda.</p>
+            <p><strong>3.2</strong> To register as a Customer, you will be required to provide the following information for inclusion in the RukaPay Registration Form, which must be duly completed and signed by you:</p>
+            <ul>
+              <li><strong>3.2.1</strong> Presentation of the original version of your National Identity Card (bearing your National Identification Number) for Ugandan nationals, or the original Passport, Refugee Identity Card, Letter of Attestation for Refugees, or valid asylum seeker's certificate for non-Ugandans.</li>
+              <li><strong>3.2.2</strong> Your full name</li>
+              <li><strong>3.2.3</strong> Your physical address</li>
+              <li><strong>3.2.4</strong> Your date of birth</li>
+              <li><strong>3.2.5</strong> Your nationality</li>
+              <li><strong>3.2.6</strong> Your mobile number</li>
+              <li><strong>3.2.7</strong> Your fingerprint (if required for biometric verification)</li>
+              <li><strong>3.2.8</strong> Your visa and work permit (for non-Ugandans)</li>
+              <li><strong>3.2.9</strong> A recent passport-size photograph</li>
+            </ul>
+            <p><strong>3.3</strong> All information submitted must be complete, current, and accurate.</p>
+            <p><strong>3.4</strong> RukaPay reserves the right to decline your application at its sole discretion.</p>
+            <p><strong>3.5</strong> We may refuse to create a RukaPay Account for you if your proof of identity or submitted documents do not meet our verification standards.</p>
+            <p><strong>3.6</strong> Upon successful registration and activation of your RukaPay Account, and after setting your personal secret PIN, you will be able to access and use RukaPay services with immediate effect.</p>
+            <p><strong>3.7</strong> If any of the registration details provided change, you are required to notify us within ten (10) working days from the date of change.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            4. RukaPay SERVICES <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>4.1</strong> RukaPay Services are provided to you subject to these Conditions of Use:</p>
+            <ul>
+              <li>
+                <strong>4.1.1</strong> While we will make every reasonable effort to ensure uninterrupted access to RukaPay Services across supported platforms and networks, we do not guarantee continuous availability or flawless performance. RukaPay Services may occasionally be unavailable due to factors including, but not limited to, system upgrades, internet outages, acts of God, geographical limitations, or third-party service interruptions. We shall not be liable for any loss or inconvenience arising from such disruptions.
+              </li>
+              <li>
+                <strong>4.1.2</strong> In case of damage to, loss, or theft of your registered mobile device or access credentials, you must notify us immediately. Upon receipt of such notification, we will temporarily suspend your RukaPay Account to prevent unauthorized use. You may request reactivation or access restoration after proper verification. A reactivation or replacement fee may apply. You will be responsible for any transactions made prior to the receipt of your official notification. RukaPay will not be held liable for any claims relating to unauthorized transactions made before the suspension or in cases where the breach occurred due to negligence or delay in notification.
+              </li>
+              <li>
+                <strong>4.1.3</strong> Please be aware that while we strive to maintain high standards of data security, the confidentiality of your communications or transactions conducted via third-party internet or mobile networks cannot be fully guaranteed. There remains a risk of unlawful interception or unauthorized access beyond our control. RukaPay shall not be held liable for any resulting losses or damages.
+              </li>
+            </ul>
+            <p><strong>4.2</strong> You agree that RukaPay may disclose or receive your personal information or documents under the following circumstances:</p>
+            <ul>
+              <li>
+                <strong>4.2.1</strong> To and from competent law enforcement, regulatory, or government authorities, whether local or international, for the prevention, investigation, or prosecution of fraud or criminal activity;
+              </li>
+              <li>
+                <strong>4.2.2</strong> Where required to comply with legal, statutory, or regulatory obligations;
+              </li>
+              <li>
+                <strong>4.2.3</strong> To RukaPay's legal counsel, auditors, or a competent court of law in the event of legal proceedings or audits.
+              </li>
+            </ul>
+            <p><strong>4.3</strong> You must adhere to any operational or security-related instructions we may provide from time to time regarding your use of RukaPay Services.</p>
+            <p><strong>4.4</strong> Except for communications made to our official Customer Support contacts (which will be shared with you at registration), certain interactions or services may be subject to applicable transaction or processing fees as outlined in our latest tariff schedule.</p>
+            <p><strong>4.5</strong> Calls, emails, messages, or platform interactions may be recorded or monitored for purposes such as quality assurance, staff training, fraud prevention, and system integrity monitoring.</p>
+            <p><strong>4.6</strong> You are responsible for all service or transactional charges incurred while using RukaPay Services, in accordance with the prevailing fee structure publicly shared and updated from time to time.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            5. ACCEPTANCE AND COMMENCEMENT OF CONDITIONS OF USE <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>5.1</strong> You are deemed to have accepted these Conditions of Use, as may be amended from time to time, which shall take effect:</p>
+            <ul>
+              <li><strong>5.1.1</strong> Upon successful registration for a RukaPay Account; or</li>
+              <li><strong>5.1.2</strong> Upon the initial activation of your RukaPay Account through the use of your personal security credentials (such as PIN or verification code).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            6. SUSPENSION AND DISCONNECTION OF THE SERVICES/CLOSURE OF ACCOUNT <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>6.1</strong><br>
+            We may suspend, restrict, or terminate your access to RukaPay Services (in whole or in part) and/or close your RukaPay Account without prior notice and without any liability to you (though where possible, we will attempt to inform you) under the following circumstances:</p>
+            <ul>
+              <li><strong>6.1.1</strong> If we know or have reason to believe that your mobile device, RukaPay Account, or security credentials (e.g., PIN) are being or have been used in an unauthorized, unlawful, improper, or fraudulent manner, or to facilitate criminal activities;</li>
+              <li><strong>6.1.2</strong> If you fail to comply with these Conditions of Use or any other terms governing the use of RukaPay Services;</li>
+              <li><strong>6.1.3</strong> If you inform us that your mobile device is lost or stolen, or that your PIN has been compromised or shared with unauthorized individuals;</li>
+              <li><strong>6.1.4</strong> If you engage in any activity, or permit any activity, that we believe may compromise the security or functionality of RukaPay systems, services, or infrastructure;</li>
+              <li><strong>6.1.5</strong> Due to circumstances beyond our control;</li>
+              <li><strong>6.1.6</strong> If your account is closed in accordance with Clause 6.2.</li>
+            </ul>
+            <p><strong>6.2</strong><br>
+            To access RukaPay Services, your account must remain active. If there is no recorded transaction on your RukaPay Account for a continuous period of nine (9) months, your account will be considered dormant and may be suspended, subject to applicable laws and regulatory guidance, following the procedure below:</p>
+            <ul>
+              <li><strong>6.2.1</strong> You will be issued a one-month notice prior to your account being classified as dormant. The notice will inform you that unless a transaction occurs during this period, your account will be suspended.</li>
+              <li><strong>6.2.2</strong> If no transaction takes place during the notice period, your account will be blocked and transactions will no longer be permitted until reactivation.</li>
+              <li><strong>6.2.3</strong> If you fail to reactivate your account within six (6) months of being blocked, your account will be permanently closed.</li>
+              <li><strong>6.2.4</strong> Upon account closure, your account balance and identifying information will be transferred to the relevant Authority, as per regulatory requirements.</li>
+              <li><strong>6.2.5</strong> Any claims for a refund must be submitted to the relevant Authority within seven (7) years of account closure.</li>
+              <li><strong>6.2.6</strong> Any funds not claimed within seven (7) years will be transferred to the Consolidated Fund or as directed by the appropriate regulator.</li>
+              <li><strong>6.2.7</strong> "Reactivation of an Account" means, subject to verification of identity and proof of ownership:
+                <ul>
+                  <li><strong>6.2.7.1</strong> Where your original phone number (MSISDN) is still in your possession, the blocked RukaPay Account may be reactivated on the same number;</li>
+                  <li><strong>6.2.7.2</strong> If your original phone number has been reassigned to another user, your blocked RukaPay Account may be transferred and reactivated on a new or different mobile number owned by you.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>6.3</strong><br>
+            We will also close your RukaPay Account upon receiving a formal request from you to do so.</p>
+            <p><strong>6.4</strong><br>
+            If your PIN access is suspended, your account is deactivated, or your RukaPay Account is closed, any credit balance remaining in your account will be refunded to you—except where Clause 6.2 applies—upon presentation of valid identification at our designated Customer Service Points or authorized agents.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            7. TARIFFS <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>7.1</strong><br>
+            Tariffs, as published, are payable to RukaPay for each transaction made using your RukaPay Account. The official Tariff Guide is available at all RukaPay-authorized agent outlets, onboarding centers, or via our official website and customer support platforms.</p>
+            <p><strong>7.2</strong><br>
+            Transaction tariffs will be automatically deducted from your RukaPay Account at the time of transaction completion. Your updated account balance will be communicated to you via SMS or in-app notification, depending on your preferred mode of communication.</p>
+            <p><strong>7.3</strong><br>
+            All tariffs are inclusive of Value Added Tax (VAT) but may be subject to additional statutory levies or taxes as mandated by prevailing laws and regulations.</p>
+            <p><strong>7.4</strong><br>
+            All service charges or fees related to your use of RukaPay Services may be debited directly from your RukaPay Account without any further notice or confirmation required from you.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            8. TRANSACTIONS <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>8.1</strong><br>
+            All debit transactions from your RukaPay Account will be executed based on transfer instructions authorized using the PIN you selected during registration, or through any other secure method prescribed by RukaPay from time to time. In accordance with prevailing regulations, you may be required to provide proof of your National Identification Number or Passport Number before certain transactions can be completed. These details may be recorded by the agent for each applicable transaction.</p>
+            <p><strong>8.2</strong><br>
+            Your account will be credited when you deposit funds (cash-in) via a RukaPay agent, receive money from another RukaPay user, or through other supported payment channels. All such funds will be held by RukaPay to your order and reflected in your account balance.</p>
+            <p><strong>8.3</strong><br>
+            You may not carry out any transaction from your account if you do not have sufficient funds to cover both the transaction amount and the applicable service charges.</p>
+            <p><strong>8.4</strong><br>
+            The RukaPay system will verify and confirm all transactions performed on your account through SMS or in-app notification. Unless you can prove otherwise, the RukaPay system records shall be deemed correct and conclusive.</p>
+            <p><strong>8.5</strong><br>
+            Upon successful registration, you will be able to perform the following transactions:</p>
+            <ul>
+              <li><strong>8.5.1</strong> Perform a credit transaction by depositing cash through a RukaPay agent in exchange for an equivalent value of electronic money credited to your account.</li>
+              <li><strong>8.5.2</strong> Perform a debit transaction by:
+                <ul>
+                  <li><strong>8.5.2.1</strong> Withdrawing funds (cash-out) at a RukaPay agent by sending a transfer instruction via your account, upon which the agent will disburse the equivalent cash to you.</li>
+                  <li><strong>8.5.2.2</strong> Transferring funds to another RukaPay customer via transfer instruction specifying the amount and recipient details.</li>
+                  <li><strong>8.5.2.3</strong> Purchasing prepaid airtime or bundles via RukaPay using a recharge instruction.</li>
+                  <li><strong>8.5.2.4</strong> Paying for goods and/or services to authorized RukaPay merchants or retailers by sending a transfer instruction for the payment amount to the merchant's RukaPay account.</li>
+                </ul>
+              </li>
+              <li><strong>8.5.3</strong> Any transaction not completed within 7 days of the transfer instruction will be automatically cancelled, and an SMS notification will be sent to you confirming the cancellation.</li>
+              <li><strong>8.5.4</strong> The system will confirm each transaction by SMS or in-app notification, along with your updated account balance.</li>
+              <li><strong>8.5.5</strong> Any transaction authorized using your PIN will be deemed authorized by you. Unless you have notified RukaPay that your PIN has been compromised or your mobile device lost/stolen, RukaPay will treat use of your PIN as conclusive evidence of authorization. No additional written confirmation is required.</li>
+              <li><strong>8.5.6</strong> Once funds have been withdrawn or utilized, RukaPay cannot reverse or refund the transaction, even in case of disputes with other customers or merchants. You are solely responsible for resolving such disputes independently.</li>
+              <li><strong>8.5.7</strong> Your account may only be operated through authorized RukaPay agents or merchants within the Republic of Uganda.</li>
+              <li><strong>8.5.8</strong> Each transaction will be assigned a unique receipt number, which will appear in the SMS or in-app confirmation sent to you. This number may be used for reference or dispute resolution.</li>
+              <li><strong>8.5.9</strong> A completed transaction is final and irrevocable. RukaPay is under no obligation to reverse any transaction once executed.</li>
+              <li><strong>8.5.10</strong> Notwithstanding the above, RukaPay may, at its sole discretion, cancel or reverse a transaction if there are reasonable grounds such as manifest error or suspected fraud, provided that the funds have not yet been redeemed and the request for reversal is made within seven (7) days of the original transaction.</li>
+              <li><strong>8.5.11</strong> RukaPay will not be held liable for any losses arising from:
+                <ul>
+                  <li>Mistaken or erroneous transfers,</li>
+                  <li>Fraudulent transfers,</li>
+                  <li>Transactions performed under duress, coercion, or criminal force,</li>
+                  <li>if the funds have already been withdrawn or spent by the recipient.</li>
+                </ul>
+              </li>
+              <li><strong>8.5.12</strong> Your mobile number registered with RukaPay may enable access to third-party value-added services offered by other service providers. You will be informed of the terms of such services upon subscription. RukaPay shall not be held liable for any service disruptions, failures, or limitations related to those services.</li>
+              <li><strong>8.5.13</strong> RukaPay does not provide telecom services and is not responsible for call or network coverage. Your ability to make or receive calls, or use internet services, is subject to your mobile network provider's terms. RukaPay services may only be accessed through compatible networks within Uganda.</li>
+              <li><strong>8.5.14</strong> You may change your RukaPay account plan or transaction tier (e.g., personal to business) subject to verification and applicable fees or limits set by RukaPay and regulatory guidelines.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            9. SECURITY AND UNAUTHORISED USE <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>9.1</strong><br>
+            Only one (1) PIN may be linked to your RukaPay Account at any given time.</p>
+            <p><strong>9.2</strong><br>
+            Only you are permitted to use your registered mobile phone and PIN to access and operate your RukaPay Services.</p>
+            <p><strong>9.3</strong><br>
+            You are fully responsible for the security and proper use of your mobile device, RukaPay account, and PIN. You are also accountable for all transactions carried out on your account using your PIN, regardless of whether they were authorized by you.</p>
+            <p><strong>9.4</strong><br>
+            Your PIN will be used to confirm your identity when contacting RukaPay Customer Support. However, you must not disclose your PIN to anyone — including RukaPay agents, customer service staff, or third parties.</p>
+            <p><strong>9.5</strong><br>
+            RukaPay may implement additional security measures from time to time to safeguard your account and prevent unauthorized access or fraudulent transactions.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            10. YOUR RESPONSIBILITIES <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>10.1</strong> You will be responsible for all applicable Charges and Tariffs on any Transaction effected including calls made on the Network using the RukaPay Account whether those calls were made by you or someone else with or without your authority or knowledge.</p>
+            <p><strong>10.2</strong> You are solely responsible for any transmitted material and or communication, which is classified as defamatory, illegal or in breach of any copyright and shall indemnify and keep us indemnified against any claims and expenses made against us in respect thereof.</p>
+            
+            <p><strong>10.3</strong> You must not use the RukaPay Services to commit any offence(s) contrary to the Laws of Uganda.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            11. VARIATIONS <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>11.1</strong><br>
+            We reserve the right to amend these Conditions of Use or the applicable tariffs at any time, without prior notice to you. Such changes may be communicated through SMS, public announcements, updates on our official website, or by any other means we consider appropriate.<br>
+            You will be deemed to have been notified of such variations whether or not you have actually read or received the notification.
+            </p>
+            <p><strong>11.2</strong><br>
+            By continuing to use RukaPay Services, you are deemed to have accepted any such changes as outlined in Clause 11. If you do not agree with any variation, you must cease all transactions and stop using RukaPay Services. Continued usage will be interpreted as your acceptance of the modifications.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            12. TRUSTEE RESPONSIBILITY <span class="accordion-chevron">&#9654;</span>
+          </div>
+         <div class="accordion-content">
+            <p><strong>12.1</strong><br>
+            RukaPay, acting as Trustee, hereby declares that it holds all payments received in respect of funds deposited into your RukaPay Account ("Trust Amounts") in trust for you and for your benefit. You shall be beneficially entitled to all Trust Amounts reflected in your account balance.<br>
+            You agree that RukaPay may rely on its system records as conclusive evidence of the amount standing to your credit at any given time, and is not obligated to conduct any independent verification of your entitlement.<br>
+            You further acknowledge and accept that any payment or transaction relating to your Trust Amounts may be executed based on instructions authenticated by your PIN, even if such instructions were issued by a third party without your authorization.
+            </p>
+            <p><strong>12.2</strong><br>
+            You acknowledge and agree that RukaPay, as Trustee, is under no obligation to invest the Trust Amounts in any way other than by holding them in a designated Trust Account.<br>
+            To the extent that any interest accrues on the Trust Amounts, RukaPay shall be entitled to retain a portion of such interest to cover administrative, operational, and system maintenance costs.<br>
+            You shall be entitled to receive any net interest (if applicable), after deduction of RukaPay's costs and expenses, at the end of each calendar quarter.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            13. LIABILITY AND EXCLUSIONS <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>13.1</strong><br>
+            In the event that RukaPay is required to change or reassign your registered mobile number or RukaPay Account to comply with regulatory requirements or for any other reason, our liability will be limited to retaining your account and, where possible, transferring your account balance to the new mobile number. If transfer is not feasible, you will be paid out the credit balance standing in your account in accordance with applicable RukaPay policies at that time.
+            </p>
+            <p><strong>13.2</strong><br>
+            To the fullest extent permitted by law, RukaPay excludes all warranties, whether express or implied.
+            </p>
+            <p><strong>13.3</strong><br>
+            All agents providing RukaPay services are independent outlets authorized by RukaPay or approved partner aggregators. No agency relationship exists between RukaPay and these agents. Accordingly, RukaPay shall bear no responsibility or liability for any negligence, default, or misconduct by agents in delivering RukaPay services.
+            </p>
+            <p><strong>13.4</strong><br>
+            RukaPay shall not be liable for any loss you suffer unless directly caused by our negligence or willful misconduct. If such negligence or wrongdoing occurs, RukaPay's liability will be limited to the amount of loss that a reasonable customer in your position would have suffered, excluding any losses related to your specific or unusual circumstances, even if we were aware of them.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            14. MISCELLANEOUS <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>14.1</strong><br>
+            This Agreement (as from time to time may be amended) forms a legally binding agreement binding on you and your personal successors.
+            </p>
+            <p><strong>14.2</strong><br>
+            This Agreement shall not be assigned by you to any other person.
+            </p>
+            <p><strong>14.3</strong><br>
+            No failure or delay by either of us in exercising any right or remedy hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any right or remedy prevent any further or other exercise thereof or the exercise of any other right or remedy.
+            </p>
+            <p><strong>14.4</strong><br>
+            The rights and remedies herein provided are cumulative and not exclusive of any rights or remedies provided by law.
+            </p>
+            <p><strong>14.5</strong><br>
+            If any provision of these Conditions of Use shall be found by any duly appointed arbitrator, court or administrative body of competent jurisdiction to be invalid or unenforceable the invalidity or unenforceability of such provision shall not affect the other provisions herein and all provisions not so affected by such invalidity or unenforceability shall remain in full force and effect.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            15. STATEMENTS <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>15.1</strong> You may obtain a balance enquiry from your RukaPay Account via the RukaPay App or USSD code published from time to time and query any transactions effected using your PIN at the Customer Service Centre.</p>
+            <p><strong>15.2</strong> Printed statements of your Account will not be provided.</p>
+            <p><strong>15.3</strong> Subject to Clause 6.2 above, we will close your Account on receiving a request from you.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            16. FAILURE OR MALFUNCTION OF EQUIPMENT <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p>We are not responsible for any loss arising from any failure, malfunction, or delay in any cellphone Networks, cellphones, the Internet or terminals or any of its supporting or shared networks, resulting from circumstances beyond our reasonable control.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            17. NOTICES <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>17.1</strong><br>
+            RukaPay is entitled to send information to you via SMS or other communication channels to the mobile phone number or email address you provided during registration. These messages are for informational purposes only.
+            </p>
+            <p><strong>17.2</strong><br>
+            Any legal notices or formal correspondence should be sent to the following address:
+            <br><br>
+            TMT Building 2nd Floor<br>
+            Naguru-Bukoto Rd, Kampala<br>
+                            <a href="tel:+256200244407">0200 244 407</a><br>
+            <a href="mailto:info@rukapay.co.ug">info@rukapay.co.ug</a>
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            18. GENERAL <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>18.1</strong> You must pay all our expenses in recovering any amounts you owe us including legal fees, collection fees and tracing fees.</p>
+            <p><strong>18.2</strong> A certificate signed by any of our managers (whose appointment need not be proved) showing the amount you owe us is sufficient proof of the facts stated on the certificate, unless the contrary is proved.</p>
+            <p><strong>18.3</strong> We will not be responsible to you for any indirect, consequential or special damages arising from any act or omission by us or any third party for whom we are responsible and whether arising in contract or statute.</p>
+            <p><strong>18.4</strong> You must notify us immediately of any change of your details in your Registration Form.</p>
+            <p><strong>18.5</strong> You agree that your information, including your personal information, for purposes of service provision, compliance regulatory obligations and applicable laws.</p>
+            <p><strong>18.6</strong> All copyright, trademarks and other intellectual property rights used as part of RukaPay Services or contained in our documents are owned by RukaPay or its licensors. You agree that you acquire no rights thereto.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            19. JURISDICTION AND ARBITRATION <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>19.1</strong><br>
+            This Agreement shall be governed by and construed in accordance with the laws of the Republic of Uganda.
+            </p>
+            <p><strong>19.2</strong><br>
+            Any dispute arising out of or in connection with this Agreement shall be referred to arbitration before a single arbitrator. The arbitrator shall be appointed by mutual agreement of the parties or, failing such agreement within 60 days of notification of the dispute, upon application by either party, by the Judge in charge of the High Court (Commercial Division) of Uganda. Arbitration shall take place in Kampala, and be conducted in accordance with the Rules of Arbitration and the provisions of the Arbitration Act, Cap 4, or any successor legislation.
+            </p>
+            <p><strong>19.3</strong><br>
+            To the fullest extent permitted by law, the determination of the arbitrator shall be final, conclusive, and binding on both parties.
+            </p>
+            <p><strong>19.4</strong><br>
+            Nothing in this Agreement shall prevent either party from seeking relief or interim measures from a court of competent jurisdiction in Uganda or any relevant regulatory authority.
+            </p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            20. PRIVACY POLICY <span class="accordion-chevron">&#9654;</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>20.1</strong><br>
+            RukaPay recognizes the importance of protecting the privacy of all information provided by users of RukaPay Services. This statement affirms our commitment to respecting your privacy rights.
+            </p>
+            <p><strong>20.2</strong><br>
+            RukaPay collects personally identifiable information to comply with regulatory and statutory obligations, deliver services, administer accounts, and provide user support.
+            </p>
+            <p><strong>20.3</strong><br>
+            Except as stated herein, RukaPay does not share your personal information with unauthorized persons. Adequate safeguards are in place to prevent unauthorized access and ensure the confidentiality of your personal data.
+            </p>
+            <p><strong>20.4</strong><br>
+            By using RukaPay Services, you acknowledge and accept that some of your personal information may be shared with any person or entity you transact with, or send funds to, and may be accessible to third parties involved in providing RukaPay services, including authorized RukaPay partners.<br>
+            You authorize RukaPay to share your personal information, transaction data, and account usage details with third parties you have contracted or intend to contract with—and of which you have notified RukaPay—provided you may withdraw this consent at any time (except where disclosure is required by law enforcement or regulatory authorities).
+            </p>
+            <p><strong>20.5</strong><br>
+            You acknowledge that RukaPay may verify your identity information through publicly available or restricted government databases as required to meet regulatory compliance.
+            </p>
+            <p><strong>20.6</strong><br>
+            You accept that RukaPay has the right to monitor your account usage and may disclose personal information to law enforcement, investigative agencies, or competent regulatory authorities to assist in the prevention, detection, or prosecution of money laundering, fraud, or other criminal activities.
+            </p>
+            <p><strong>20.7</strong><br>
+            RukaPay employees handling personal information are obligated to maintain confidentiality and are prohibited from disclosing data to unauthorized third parties. Employees found violating RukaPay's privacy policies may face disciplinary actions.
+            </p>
+            <p><strong>20.8</strong><br>
+            Users who submit information through RukaPay systems may be granted access rights to review and correct their information. RukaPay maintains systems that enable such access and correction where applicable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    // Sidebar button logic
+    const sidebarBtns = document.querySelectorAll('.sidebar-btn');
+    const containers = document.querySelectorAll('.accordion-container');
+    sidebarBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Sidebar active state
+        sidebarBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        // Show/hide accordion containers
+        const target = this.getAttribute('data-target');
+        containers.forEach(c => {
+          if (c.id === target) {
+            c.classList.add('active');
+          } else {
+            c.classList.remove('active');
+            // Also close all accordions in hidden containers
+            c.querySelectorAll('.accordion').forEach(acc => acc.classList.remove('open'));
+          }
+        });
+      });
+    });
+    // Accordion logic: only one open at a time per container
+    document.querySelectorAll('.accordion-container').forEach(container => {
+      const accordions = container.querySelectorAll('.accordion');
+      container.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', function() {
+          const thisAccordion = this.parentElement;
+          if (!thisAccordion.classList.contains('open')) {
+            // Close all others
+            accordions.forEach(acc => acc.classList.remove('open'));
+            thisAccordion.classList.add('open');
+          } else {
+            thisAccordion.classList.remove('open');
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    // Mobile menu toggle functionality (Copied from index.html)
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const searchBtn = document.querySelector('.search-btn');
+        const menuIcon = mobileMenuToggle.querySelector('i');
+        
+        // Toggle mobile menu
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Change menu icon
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+        // Close menu when clicking on a link
+        const navLinksItems = document.querySelectorAll('.nav-link');
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    });
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>

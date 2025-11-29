@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchants - RukaPay</title>
+    <meta name="description" content="Merchant solutions for Ugandan businesses - Accept payments with RukaPay">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+    
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary-dark: #08163D;
+            --primary: #1F429A;
+            --accent: #FFFFFF;
+            --nav-height: 70px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: #fff;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            padding-top: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .btn, .btn-primary {
+            background: #1F429A !important;
+            color: #fff !important;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(31, 66, 154, 0.3);
+        }
+
+        .btn:hover, .btn-primary:hover {
+            background: #08163D !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(31, 66, 154, 0.4);
+        }
+
+        .btn-secondary {
+            background: #fff !important;
+            color: #1F429A !important;
+            border: 2px solid #1F429A !important;
+        }
+
+        .btn-secondary:hover {
+            background: #1F429A !important;
+            color: #fff !important;
+        }
+
+        /* ===== NAVBAR STYLES (from index.html) ===== */
+        header {
+            position: fixed;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #08163D;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 0 40px;
+            height: var(--nav-height);
+            pointer-events: auto;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 40px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            background: #08163D;
+        }
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        .nav-link:hover {
+            color: #1F429A !important;
+            background: rgba(255,255,255,0.06);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #1F429A !important;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .mobile-icons {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        .mobile-icons button, .mobile-menu-toggle {
+            color: #fff !important;
+        }
+        .mobile-icons button {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        .mobile-icons button:hover {
+            color: var(--primary);
+            background: rgba(31, 66, 154, 0.1);
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: calc(var(--nav-height) + 24px);
+                left: 50%;
+                transform: translate(-50%, -30px) scale(0.98);
+                right: auto;
+                background: #08163D;
+                color: #fff;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+                z-index: 100;
+                opacity: 0;
+                height: auto;
+                min-width: 85vw;
+                border-radius: 22px;
+                overflow: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+            }
+            .nav-links.active {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+                pointer-events: auto;
+            }
+            .nav-link {
+                color: #fff !important;
+                padding: 0.9rem 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                font-size: 18px;
+                background: transparent;
+                transition: background 0.2s;
+            }
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            .nav-link:hover,
+            .nav-link.active {
+                color: #ffe066 !important;
+                background: rgba(255,255,255,0.06);
+            }
+            .mobile-icons {
+                display: flex;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ========== SEARCH MODAL STYLES ========== */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 100px;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-modal.active {
+            display: flex;
+        }
+
+        .search-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .search-header h3 {
+            margin: 0;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+        }
+
+        .close-search {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-search:hover {
+            background: #f5f5f5;
+            color: var(--primary-dark);
+        }
+
+        .search-input-container {
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #eee;
+            gap: 10px;
+        }
+
+        #searchInput {
+            flex: 1;
+            border: 2px solid #eee;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #searchInput:focus {
+            border-color: var(--primary);
+        }
+
+        .search-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-submit:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .search-suggestions {
+            padding: 20px 25px;
+        }
+
+        .suggestion-category {
+            margin-bottom: 25px;
+        }
+
+        .suggestion-category h4 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .suggestion-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .suggestion-item {
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .suggestion-item:hover {
+            background: #f8f9fa;
+            color: var(--primary);
+        }
+
+        .suggestion-link {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #666;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .suggestion-link:hover {
+            background: #f8f9fa;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .search-modal {
+                padding-top: 80px;
+            }
+            
+            .search-modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+            
+            .search-header {
+                padding: 15px 20px;
+            }
+            
+            .search-input-container {
+                padding: 15px 20px;
+            }
+            
+            .search-suggestions {
+                padding: 15px 20px;
+            }
+        }
+
+        /* ===== PAGE CONTENT STYLES ===== */
+        .hero, .hero.enhanced-hero, .page-hero {
+            background: linear-gradient(135deg, #08163D, #1F429A) !important;
+        }
+
+        .page-hero {
+            padding-top: calc(var(--nav-height) + 40px);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #fff !important;
+        }
+
+        .page-hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .merchant-benefits {
+            padding: 80px 0;
+        }
+
+        .tabs-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(31, 66, 154, 0.08);
+            border: 1px solid rgba(31, 66, 154, 0.1);
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .tabs-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #08163D, #1F429A);
+            transform: scaleX(0);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tabs-container:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            flex: 0 1 auto;
+            min-width: 200px;
+            padding: 25px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(31, 66, 154, 0.1);
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(31, 66, 154, 0.08);
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(31, 66, 154, 0.05), transparent);
+            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-btn:hover::before {
+            left: 100%;
+        }
+
+        .tab-btn:hover {
+            color: #1F429A;
+            background: rgba(31, 66, 154, 0.02);
+        }
+
+        .tab-btn.active {
+            color: #1F429A;
+            border-bottom: 3px solid #1F429A;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            font-weight: 700;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #08163D, #1F429A);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .tab-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: none;
+            padding: 0;
+        }
+
+        .tab-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .tab-inner {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 400px;
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .tab-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #08163D;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .tab-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #08163D, #1F429A);
+            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-content.active .tab-text h3::after {
+            width: 80px;
+        }
+
+        .tab-text ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .tab-text ul li {
+            margin-bottom: 20px;
+            padding-left: 45px;
+            position: relative;
+            font-size: 1.1rem;
+            color: #4a5568;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .tab-content.active .tab-text ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .tab-text ul li:nth-child(1) { transition-delay: 0.1s; }
+        .tab-text ul li:nth-child(2) { transition-delay: 0.2s; }
+        .tab-text ul li:nth-child(3) { transition-delay: 0.3s; }
+        .tab-text ul li:nth-child(4) { transition-delay: 0.4s; }
+        .tab-text ul li:nth-child(5) { transition-delay: 0.5s; }
+
+        .tab-text ul li:hover {
+            color: #1F429A;
+            transform: translateX(5px);
+        }
+
+        .tab-text ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #1F429A;
+            font-size: 22px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-text ul li:hover i {
+            transform: scale(1.1) rotate(5deg);
+            color: #08163D;
+        }
+
+        .tab-visual {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, rgba(248, 250, 253, 0.8), rgba(241, 245, 249, 0.6));
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(31, 66, 154, 0.03) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-content.active .tab-visual::before {
+            transform: translateX(100%);
+        }
+
+        .tab-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 66, 154, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .tab-content.active .tab-image {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .onboarding-section {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .stepper {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-circle {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(31, 66, 154, 0.3);
+        }
+
+        .step-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .step-connector {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e0e7ff;
+            z-index: 0;
+        }
+
+        .agent-support {
+            background: linear-gradient(135deg, #0d1e4a, #1f429a);
+            color: white;
+            padding: 80px 0 40px 0;
+        }
+
+        .agent-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .agent-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .agent-content p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .agent-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: nowrap;
+        }
+
+        .agent-benefit {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .agent-benefit:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .agent-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: white;
+        }
+
+        .agent-benefit h4 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .agent-cta .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+
+        .agent-cta .btn:hover {
+            background: #f0f4ff;
+        }
+
+        /* ===== FOOTER STYLES ===== */
+        .footer {
+            background: #08163D;
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3, .footer-section h4 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after, .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon,
+        .social-icon:link,
+        .social-icon:visited,
+        .social-icon:hover,
+        .social-icon:active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary) !important;
+            color: #fff !important;
+            transition: var(--transition);
+            text-decoration: none !important;
+        }
+
+        .social-icon:hover {
+            background: #fff !important;
+            color: var(--primary) !important;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            padding: 15px 25px;
+            box-shadow: 0 8px 25px rgba(31, 66, 154, 0.3);
+            z-index: 900;
+            transition: var(--transition);
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(31, 66, 154, 0.4);
+        }
+
+        .cta-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1F429A 0%, #08163D 100%);
+            transform: scale(1.05);
+        }
+
+        /* App Download Dropdown Styles */
+        .app-download-dropdown {
+            position: absolute;
+            left: 50%;
+            bottom: 60px;
+            transform: translateX(-50%) scale(0.95);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 18px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2001;
+            min-width: 220px;
+            transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+            animation: dropdownIn 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        
+        .app-download-dropdown.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(-50%) scale(1);
+        }
+        
+        .store-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background: #f8f9fa;
+        }
+        
+        .store-option:hover {
+            background: #e9ecef;
+            transform: translateX(4px);
+            color: #1F429A;
+        }
+        
+        .store-option i {
+            font-size: 1.5rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .store-option span {
+            font-size: 0.95rem;
+        }
+        
+        @keyframes dropdownIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.9) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) scale(1) translateY(0);
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .tab-inner {
+                flex-direction: column;
+            }
+            
+            .tab-text, .tab-visual {
+                padding: 30px 20px;
+            }
+            
+            .stepper {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .step-connector {
+                display: none;
+            }
+            
+            .agent-benefits {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .agent-benefit {
+                min-width: 280px;
+                max-width: 350px;
+            }
+        }
+    </style>
+    <style>
+    /* ===== BULK PAYMENTS SECTION STYLES (Scoped) ===== */
+    .bulk-payments-section {
+        font-family: 'Poppins', sans-serif;
+        background: #f8f9fc;
+        color: #333;
+        margin-top: 0;
+    }
+    .bulk-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .bulk-hero {
+        background: linear-gradient(135deg, #08163D, #1F429A) !important;
+        color: white;
+        padding: 100px 0 60px 0;
+        text-align: center;
+    }
+    .bulk-title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        color: white;
+    }
+    .bulk-subtitle {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.9;
+    }
+    .bulk-section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .bulk-section-title h2 {
+        font-size: 2.5rem;
+        color: #08163D;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+    .bulk-section-title h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: #3A66DB;
+        border-radius: 2px;
+    }
+    .bulk-features {
+        padding: 5rem 0;
+        background-color: white;
+    }
+    .bulk-features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    .bulk-feature-card {
+        background: #f8f9fc;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+    .bulk-feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .bulk-feature-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        color: white;
+        font-size: 1.8rem;
+    }
+    .bulk-feature-card h3 {
+        color: #08163D;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+    .bulk-process {
+        padding: 5rem 0;
+        background-color: #f8f9fc;
+    }
+    .bulk-process-steps {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .bulk-process-steps::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50px;
+        height: 100%;
+        width: 4px;
+        background-color: #3A66DB;
+        z-index: 1;
+    }
+    .bulk-step {
+        display: flex;
+        margin-bottom: 3rem;
+        position: relative;
+        z-index: 2;
+    }
+    .bulk-step-number {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-right: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .bulk-step-content {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        flex: 1;
+    }
+    .bulk-step-content h3 {
+        color: #08163D;
+        margin-bottom: 0.5rem;
+    }
+    .bulk-step-content ul {
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+    }
+    .bulk-step-content li {
+        margin-bottom: 0.3rem;
+    }
+    .bulk-roles {
+        padding: 5rem 0;
+        background-color: white;
+    }
+    .bulk-roles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    .bulk-role-card {
+        background: #f8f9fc;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-top: 4px solid #1F429A;
+    }
+    .bulk-role-card h3 {
+        color: #08163D;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    .bulk-role-card h3 i {
+        margin-right: 10px;
+        color: #1F429A;
+    }
+    .bulk-platforms {
+        padding: 5rem 0;
+        background-color: #f8f9fc;
+        text-align: center;
+    }
+    .bulk-platform-icons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-top: 2rem;
+    }
+    .bulk-platform-icon {
+        width: 120px;
+        height: 120px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        padding: 1rem;
+        transition: transform 0.3s ease;
+    }
+    .bulk-platform-icon:hover {
+        transform: translateY(-10px);
+    }
+    .bulk-platform-icon i {
+        font-size: 2.5rem;
+        color: #1F429A;
+        margin-bottom: 0.5rem;
+    }
+    .bulk-cta-section {
+        padding: 6rem 0;
+        background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+        color: #fff;
+        text-align: center;
+       
+    }
+    .bulk-cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .bulk-cta-section p {
+        max-width: 700px;
+        margin: 0 auto 2.5rem;
+        opacity: 0.9;
+    }
+    .bulk-cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    .bulk-btn {
+        display: inline-block;
+        padding: 0.9rem 2.5rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    .bulk-btn-primary {
+        background-color: white;
+        color: #08163D;
+    }
+    .bulk-btn-primary:hover {
+        background-color: #f8f9fc;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .bulk-btn-outline {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+    .bulk-btn-outline:hover {
+        background-color: rgba(255,255,255,0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    /* Animations */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .bulk-title {
+            font-size: 2.8rem;
+        }
+        .bulk-section-title h2 {
+            font-size: 2rem;
+        }
+        .bulk-process-steps::before {
+            left: 40px;
+        }
+        .bulk-step-number {
+            width: 80px;
+            height: 80px;
+            font-size: 1.8rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .bulk-title {
+            font-size: 2.3rem;
+        }
+        .bulk-section-title h2 {
+            font-size: 1.7rem;
+        }
+        .bulk-step {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .bulk-step-number {
+            margin-bottom: 1rem;
+        }
+        .bulk-platform-icons {
+            gap: 1.5rem;
+        }
+        .bulk-platform-icon {
+            width: 100px;
+            height: 100px;
+        }
+        .bulk-cta-section h2 {
+            font-size: 2rem;
+        }
+        .bulk-cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    @media (max-width: 576px) {
+        .bulk-title {
+            font-size: 2rem;
+        }
+        .bulk-step-content {
+            padding: 1.2rem;
+        }
+        .bulk-platform-icon {
+            width: 85px;
+            height: 85px;
+        }
+        .bulk-platform-icon i {
+            font-size: 2rem;
+        }
+    }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/main logo.webp" alt="RukaPay Logo">
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link ">Home</a>
+                <a href="how-it-works.html" class="nav-link">How It Works</a>
+                <a href="merchants.html" class="nav-link active">Merchants</a>
+                <a href="tariffs.html" class="nav-link">Tariffs</a>
+                <a href="help-center.html" class="nav-link">Help Center</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="careers.html" class="nav-link">Careers</a>
+            </div>
+            <div class="mobile-icons">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Merchant Solutions</h1>
+            <p>Accept payments, grow your business, and access financial services designed for Ugandan merchants</p>
+        </div>
+    </section>
+
+    <!-- Benefits Tabs -->
+    <section class="merchant-benefits">
+        <div class="container">
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="payments">Payment Acceptance</button>
+                <button class="tab-btn" data-tab="lending">Business Lending</button>
+                <button class="tab-btn" data-tab="analytics">Analytics & Reports</button>
+                <button class="tab-btn" data-tab="support">24/7 Support</button>
+            </div>
+            <div class="tabs-container">
+                <div class="tab-content active" id="payments">
+                    <div class="tab-inner">
+                        <div class="tab-text">
+                            <h3>Accept All Payment Types</h3>
+                            <ul>
+                                <li><i class="fa-solid fa-qrcode"></i> QR Code payments</li>
+                                <li><i class="fa-solid fa-nfc-symbol"></i> NFC Tap-to-Pay</li>
+                                <li><i class="fa-solid fa-signal"></i> USSD transactions</li>
+                                <li><i class="fa-solid fa-gears"></i> Mobile money integration</li>
+                                <li><i class="fa-solid fa-money-check-dollar"></i> Bank transfers</li>
+                            </ul>
+                            <p>Lower transaction fees than traditional payment processors</p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="/assets/images/App to app.webp" alt="Payment Methods Demo" class="tab-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="lending">
+                    <div class="tab-inner">
+                        <div class="tab-text">
+                            <h3>Business Lending Solutions</h3>
+                            <ul>
+                                <li><i class="fa-solid fa-money-bill-trend-up"></i> Working capital loans</li>
+                                <li><i class="fa-solid fa-chart-simple"></i> Credit scoring based on transaction history</li>
+                                <li><i class="fa-solid fa-thumbs-up"></i> Fast approval process</li>
+                                <li><i class="fa-solid fa-credit-card"></i> Flexible repayment terms</li>
+                                <li><i class="fa-solid fa-business-time"></i> Scale your business with confidence</li>
+                            </ul>
+                            <p>Access to credit to grow your business operations</p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="/assets/images/Merchant lending (1).webp" alt="Lending Solutions" class="tab-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="analytics">
+                    <div class="tab-inner">
+                        <div class="tab-text">
+                            <h3>Business Analytics & Reports</h3>
+                            <ul>
+                                <li><i class="fa-solid fa-signal"></i> Real-time transaction monitoring</li>
+                                <li><i class="fa-solid fa-chart-simple"></i> Sales performance tracking</li>
+                                <li><i class="fa-solid fa-chart-line"></i> Revenue analytics</li>
+                                <li><i class="fa-solid fa-file-pen"></i> Detailed financial reports</li>
+                                <li><i class="fa-solid fa-mobile"></i> Mobile dashboard access</li>
+                            </ul>
+                            <p>Make informed business decisions with comprehensive data</p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="/assets/images/team-workers-presenting-infographics-sales-numbers-interactive-board.webp" alt="Analytics Dashboard" class="tab-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="support">
+                    <div class="tab-inner">
+                        <div class="tab-text">
+                            <h3>Dedicated Merchant Support</h3>
+                            <ul>
+                                <li><i class="fa-solid fa-phone"></i> 24/7 customer support hotline</li>
+                                <li><i class="fa-solid fa-user-tie"></i> Dedicated account managers</li>
+                                <li><i class="fa-solid fa-user-graduate"></i> Training and onboarding</li>
+                                <li><i class="fa-solid fa-screwdriver-wrench"></i> Technical support</li>
+                                <li><i class="fa-solid fa-globe"></i> Multi-language support</li>
+                            </ul>
+                            <p>Get the help you need, when you need it</p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="/assets/images/CUSTOMER SUPPORT.webp" alt="Support Team" class="tab-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Onboarding Stepper -->
+    <section class="onboarding-section">
+        <div class="container">
+            <h2 class="section-title">Get Started in 4 Simple Steps</h2>
+            <div class="stepper">
+                <div class="step-item">
+                    <div class="step-circle">1</div>
+                    <div class="step-content">
+                        <h4>Register Your Business</h4>
+                        <p>Provide business registration documents and owner identification</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-circle">2</div>
+                    <div class="step-content">
+                        <h4>Verification & KYC</h4>
+                        <p>Complete Know Your Customer process and business verification</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-circle">3</div>
+                    <div class="step-content">
+                        <h4>Setup Payment Methods</h4>
+                        <p>Configure QR codes, NFC terminals, and payment preferences</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-circle">4</div>
+                    <div class="step-content">
+                        <h4>Start Accepting Payments</h4>
+                        <p>Begin accepting payments and accessing merchant services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Support Section -->
+    <section class="agent-support">
+        <div class="container">
+            <div class="agent-content">
+                <h2>Agent Network Support</h2>
+                <p>Join our growing network of RukaPay agents across Uganda</p>
+                <div class="agent-howto" style="background:rgba(255,255,255,0.08);border-radius:12px;padding:24px 18px 18px 18px;margin-bottom:32px;text-align:left;max-width:600px;margin-left:auto;margin-right:auto;">
+                    <h3 style="color:#ffe066;font-size:1.2rem;margin-bottom:10px;">How to Become a RukaPay Agent</h3>
+                    <ol style="margin-left:18px;margin-bottom:10px;">
+                        <li>Contact us via <a href="contact.html" style="color:#ffe066;text-decoration:underline;">the application form</a> or visit a RukaPay office.</li>
+                        <li>Submit your business registration and identification documents.</li>
+                        <li>Complete agent onboarding and training.</li>
+                        <li>Provide initial float capital (see below).</li>
+                    </ol>
+                    <div style="background:rgba(31,66,154,0.13);border-radius:8px;padding:10px 14px;font-size:0.98rem;color:#fff;">
+                        <strong>Note:</strong> Agents are required to provide an initial float capital of <strong>UGX 2,000,000</strong>. This float is used to service cash-out customers and must be maintained to ensure smooth operations.
+                    </div>
+                </div>
+                <div class="agent-benefits">
+                    <div class="agent-benefit">
+                        <div class="agent-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <h4>Business Opportunity</h4>
+                        <p>Earn commissions on every transaction</p>
+                    </div>
+                    <div class="agent-benefit">
+                        <div class="agent-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                        <h4>Local Presence</h4>
+                        <p>Serve your community with digital services</p>
+                    </div>
+                    <div class="agent-benefit">
+                        <div class="agent-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <h4>Training & Support</h4>
+                        <p>Comprehensive training and ongoing support</p>
+                    </div>
+                </div>
+                <div class="agent-cta">
+                    <a href="contact.html" class="btn">Become an Agent</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bulk Payments Section (Integrated from bulk.html) -->
+    <section class="bulk-payments-section" id="bulk-payments">
+        <!-- Bulk Payments Hero -->
+        <div class="bulk-hero">
+            <div class="bulk-container">
+                <h1 class="bulk-title" data-animate="fade-up">Bulk Payments</h1>
+                <p class="bulk-subtitle" data-animate="fade-up">RukaPay's secure digital platform for bulk financial disbursements. Designed for operational efficiency, financial accountability, and secure processing with role-based access controls and automated systems.</p>
+            </div>
+        </div>
+        <!-- Features Section -->
+        <div class="bulk-features">
+            <div class="bulk-container">
+                <div class="bulk-section-title">
+                    <h2>Key Benefits</h2>
+                    <p>Why choose RukaPay for your bulk payment needs</p>
+                </div>
+                <div class="bulk-features-grid">
+                    <div class="bulk-feature-card animate-on-scroll">
+                        <div class="bulk-feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Enhanced Security</h3>
+                        <p>Role-based access controls and comprehensive audit logging ensure secure processing and financial accountability.</p>
+                    </div>
+                    <div class="bulk-feature-card animate-on-scroll">
+                        <div class="bulk-feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Operational Efficiency</h3>
+                        <p>Automated systems streamline the entire payroll process, reducing manual effort and processing time.</p>
+                    </div>
+                    <div class="bulk-feature-card animate-on-scroll">
+                        <div class="bulk-feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Financial Accuracy</h3>
+                        <p>Real-time calculations and multi-tier verification ensure precise payroll processing every time.</p>
+                    </div>
+                    <div class="bulk-feature-card animate-on-scroll">
+                        <div class="bulk-feature-icon"><i class="fas fa-file-invoice"></i></div>
+                        <h3>Regulatory Compliance</h3>
+                        <p>Designed to meet audit standards and corporate governance principles with transparent records.</p>
+                    </div>
+                    <div class="bulk-feature-card animate-on-scroll">
+                        <div class="bulk-feature-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>Automated Reconciliation</h3>
+                        <p>Automated disbursement reports simplify reconciliation and audit tracking.</p>
+                    </div>
+                    <div class="bulk-feature-card animate-on-scroll">
+                        <div class="bulk-feature-icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>Role Separation</h3>
+                        <p>Clear separation of duties enhances transparency and internal controls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Process Section -->
+        <div class="bulk-process">
+            <div class="bulk-container">
+                <div class="bulk-section-title">
+                    <h2>How Bulk Payments Work</h2>
+                    <p>The streamlined RukaPay payroll process</p>
+                </div>
+                <div class="bulk-process-steps">
+                    <div class="bulk-step animate-on-scroll">
+                        <div class="bulk-step-number">1</div>
+                        <div class="bulk-step-content">
+                            <h3>Employee Registration</h3>
+                            <p>The Finance Manager registers employees with essential details:</p>
+                            <ul>
+                                <li>Full name and identification number</li>
+                                <li>Department and job title</li>
+                                <li>Gross monthly salary</li>
+                                <li>Preferred payment method (bank or mobile money)</li>
+                                <li>Account or mobile wallet number</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bulk-step animate-on-scroll">
+                        <div class="bulk-step-number">2</div>
+                        <div class="bulk-step-content">
+                            <h3>Payroll Generation</h3>
+                            <p>For each payment cycle, the Finance Manager:</p>
+                            <ul>
+                                <li>Selects the applicable month</li>
+                                <li>Inputs deductions:
+                                    <ul>
+                                        <li>Loan Repayments</li>
+                                        <li>Salary Advances</li>
+                                        <li>Other Deductions (penalties, taxes, etc.)</li>
+                                    </ul>
+                                </li>
+                                <li>System calculates: <strong>Net Salary = Gross Salary - (Loan + Advance + Other Deductions)</strong></li>
+                                <li>Generates payroll with "Pending Review" status</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bulk-step animate-on-scroll">
+                        <div class="bulk-step-number">3</div>
+                        <div class="bulk-step-content">
+                            <h3>Review & Verification</h3>
+                            <p>The Chief Finance Officer (CFO):</p>
+                            <ul>
+                                <li>Reviews all payroll entries</li>
+                                <li>Verifies financial accuracy and policy compliance</li>
+                                <li>Coordinates corrections with Finance Manager if needed</li>
+                                <li>Marks payroll as "Checked"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bulk-step animate-on-scroll">
+                        <div class="bulk-step-number">4</div>
+                        <div class="bulk-step-content">
+                            <h3>Executive Approval</h3>
+                            <p>The Chief Executive Officer (CEO):</p>
+                            <ul>
+                                <li>Performs final approval of payroll</li>
+                                <li>Confirms compliance with strategic requirements</li>
+                                <li>Updates status to "Ready for Payment"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bulk-step animate-on-scroll">
+                        <div class="bulk-step-number">5</div>
+                        <div class="bulk-step-content">
+                            <h3>Disbursement</h3>
+                            <p>The Finance Manager:</p>
+                            <ul>
+                                <li>Initiates disbursement of approved payroll</li>
+                                <li>System automatically processes payments via:
+                                    <ul>
+                                        <li>Bank transfer</li>
+                                        <li>Mobile money (RukaPay, Airtel)</li>
+                                    </ul>
+                                </li>
+                                <li>Status updated to "Paid"</li>
+                                <li>Disbursement report generated</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Roles Section -->
+        <div class="bulk-roles">
+            <div class="bulk-container">
+                <div class="bulk-section-title">
+                    <h2>Roles & Responsibilities</h2>
+                    <p>Clear separation of duties for enhanced security</p>
+                </div>
+                <div class="bulk-roles-grid">
+                    <div class="bulk-role-card animate-on-scroll">
+                        <h3><i class="fas fa-user-tie"></i> Finance Manager</h3>
+                        <ul>
+                            <li>Employee registration</li>
+                            <li>Payroll generation</li>
+                            <li>Deduction input</li>
+                            <li>Execution of final disbursements</li>
+                        </ul>
+                    </div>
+                    <div class="bulk-role-card animate-on-scroll">
+                        <h3><i class="fas fa-search"></i> Chief Finance Officer (CFO)</h3>
+                        <ul>
+                            <li>Review and verification of payroll records</li>
+                            <li>Ensuring accuracy and completeness</li>
+                            <li>Policy compliance oversight</li>
+                        </ul>
+                    </div>
+                    <div class="bulk-role-card animate-on-scroll">
+                        <h3><i class="fas fa-check-circle"></i> Chief Executive Officer (CEO)</h3>
+                        <ul>
+                            <li>Final approval before disbursement</li>
+                            <li>Strategic compliance confirmation</li>
+                            <li>Authorization of fund release</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Platforms Section -->
+        <div class="bulk-platforms">
+            <div class="bulk-container">
+                <div class="bulk-section-title">
+                    <h2>Supported Platforms</h2>
+                    <p>Flexible disbursement options to meet your needs</p>
+                </div>
+                <div class="bulk-platform-icons">
+                    <div class="bulk-platform-icon animate-on-scroll">
+                        <i class="fas fa-university"></i>
+                        <span>Bank Transfer</span>
+                    </div>
+                    <div class="bulk-platform-icon animate-on-scroll">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile Money</span>
+                    </div>
+                    <div class="bulk-platform-icon animate-on-scroll">
+                        <i class="fab fa-RukaPay"></i>
+                        <span>RukaPay Mobile Money</span>
+                    </div>
+                    <div class="bulk-platform-icon animate-on-scroll">
+                        <i class="fas fa-signal"></i>
+                        <span>Airtel Money</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CTA Section -->
+        <div class="bulk-cta-section" id="bulk-cta">
+            <div class="bulk-container">
+                <h2>Streamline Your Payroll Process</h2>
+                <p>Join hundreds of businesses using RukaPay for secure, efficient, and accurate bulk payments.</p>
+                <div class="bulk-cta-buttons">
+                    <a href="contact.html" class="bulk-btn bulk-btn-primary">Start Using Bulk Payments</a>
+                    <a href="contact.html" class="bulk-btn bulk-btn-outline">Contact Us to Integrate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Bulk Payments Section -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RukaPay</h3>
+                    <p>Secure, reliable, advanced payment solutions for Ugandan businesses.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/rukapay.ug?mibextid=wwXIfr&rdid=NRSNTPzqwpnCBJp3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16G2dBLQWx%2F%3Fmibextid%3DwwXIfr#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/rukapay_ug" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frukapay.ug%2F%3Figsh%3DdWFhbm5nZ2YybWF4&is_from_rle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/rhino-payment-company?trk=public_profile_topcard-current-company" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@RukaPay-p4v" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p>Scan to Pay</p>
+                  <p>Tap to Pay</p>
+                  <p>USSD Payments</p>
+                  <p>Merchant Services</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                   <p>TMT Atrium Building 2nd Floor</p>
+                <p>Naguru-Bukoto, kira rd, Kampala</p>
+                <p>Po BOX 111498</p>
+                                                <p><i class="fas fa-phone"></i> <a href="tel:+256200244400" style="color: #fff !important; text-decoration: none;">0200 244 400</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@rukapay.co.ug" style="color: #fff !important; text-decoration: none;">info@rukapay.co.ug</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <p>Licensed Payment Service Provider / Payment System Operator</p>
+                    <p>
+                        <a href="privacy-policies.html" style="color: #fff !important; text-decoration: none;">Privacy Policy</a>
+                    </p>
+                    <p>
+                        <a href="privacy-policies.html#cookies-tracking" style="color: #fff !important; text-decoration: none;">Terms and Conditions</a>
+                    </p>
+                    
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rhino Payment Services Ltd (trading as RukaPay). All rights reserved.</p>
+                <p>Licensed Payment Service Provider / Payment System Operator by the Bank of Uganda</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <div class="search-header">
+                <h3>Search RukaPay</h3>
+                <button class="close-search" id="closeSearch">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-input-container">
+                <input type="text" id="searchInput" placeholder="Search for services, features, or help..." autocomplete="off">
+                <button class="search-submit" id="searchSubmit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-suggestions" id="searchSuggestions">
+                <div class="suggestion-category">
+                    <h4>Popular Searches</h4>
+                    <div class="suggestion-items">
+                        <button class="suggestion-item" data-search="how to pay">How to pay with RukaPay</button>
+                        <button class="suggestion-item" data-search="merchant services">Merchant Services</button>
+                        <button class="suggestion-item" data-search="bulk payments">Bulk Payments</button>
+                        <button class="suggestion-item" data-search="tariffs">Tariffs & Fees</button>
+                    </div>
+                </div>
+                <div class="suggestion-category">
+                    <h4>Quick Links</h4>
+                    <div class="suggestion-items">
+                        <a href="how-it-works.html" class="suggestion-link">How It Works</a>
+                        <a href="merchants.html" class="suggestion-link">Merchant Solutions</a>
+                        <a href="bulk.html" class="suggestion-link">Bulk Payments</a>
+                        <a href="help-center.html" class="suggestion-link">Help Center</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <div class="cta-content">
+            <button class="cta-button" id="downloadNowBtn">Download Now</button>
+            <div class="app-download-dropdown" id="appDropdownFloating">
+                <a href="https://apps.apple.com/ug/app/rukapay/id6748399426" class="store-option">
+                    <i class="fab fa-apple"></i>
+                    <span>App Store</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.rhinopaymentservices.rukapay" class="store-option">
+                    <i class="fab fa-google-play"></i>
+                    <span>Play Store</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const searchBtn = document.querySelector('.search-btn');
+            const menuIcon = mobileMenuToggle.querySelector('i');
+            
+            // Toggle mobile menu
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Change menu icon
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            // Search button functionality
+            searchBtn.addEventListener('click', function() {
+                document.getElementById('searchModal').classList.add('active');
+                document.getElementById('searchInput').focus();
+            });
+            
+            // Close search modal
+            const closeSearch = document.getElementById('closeSearch');
+            const searchModal = document.getElementById('searchModal');
+            
+            closeSearch.addEventListener('click', function() {
+                searchModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            searchModal.addEventListener('click', function(e) {
+                if (e.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            const searchSubmit = document.getElementById('searchSubmit');
+            const suggestionItems = document.querySelectorAll('.suggestion-item');
+            
+            // Handle search submission
+            function performSearch(query) {
+                if (query.trim()) {
+                    // Redirect to search results or handle search
+                    window.location.href = `help-center.html?search=${encodeURIComponent(query)}`;
+                }
+            }
+            
+            searchSubmit.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(searchInput.value);
+                }
+            });
+            
+            // Handle suggestion clicks
+            suggestionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const searchTerm = this.getAttribute('data-search');
+                    searchInput.value = searchTerm;
+                    performSearch(searchTerm);
+                });
+            });
+            
+            // App Download Dropdown Functionality
+            const downloadBtn = document.getElementById('downloadNowBtn');
+            const appDropdown = document.getElementById('appDropdownFloating');
+            
+            if (downloadBtn && appDropdown) {
+                downloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    appDropdown.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!downloadBtn.contains(e.target) && !appDropdown.contains(e.target)) {
+                        appDropdown.classList.remove('show');
+                    }
+                });
+                
+                // Close dropdown when selecting an option
+                const storeOptions = appDropdown.querySelectorAll('.store-option');
+                storeOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        appDropdown.classList.remove('show');
+                    });
+                });
+            }
+            
+            // Close menu when clicking on a link
+            const navLinksItems = document.querySelectorAll('.nav-link');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    // Show the selected tab content
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+    <script>
+    // ===== BULK PAYMENTS SECTION JS (Scoped) =====
+    (function() {
+        // Animation on scroll functionality for bulk section
+        var animateElements = document.querySelectorAll('.bulk-payments-section .animate-on-scroll');
+        if (animateElements.length > 0) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            animateElements.forEach(function(element) {
+                observer.observe(element);
+            });
+        }
+        // Smooth scrolling for anchor links inside bulk section
+        var bulkAnchors = document.querySelectorAll('.bulk-payments-section a[href^="#"]');
+        bulkAnchors.forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    })();
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>

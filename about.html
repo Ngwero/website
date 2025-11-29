@@ -1,0 +1,2519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - RukaPay</title>
+    <meta name="description" content="Learn how RukaPay works - Scan to Pay, Tap to Pay, and USSD services explained.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        /* ===== NAVBAR STYLES (EXACTLY MATCH index.html) ===== */
+        :root {
+            --primary-dark: #08163D;
+            --primary: #1F429A;
+            --accent: #FFFFFF;
+            --nav-height: 70px;
+            --transition: all 0.3s ease;
+        }
+        header {
+            position: fixed;
+            top: 12px;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #08163D;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 0 40px;
+            height: var(--nav-height);
+            pointer-events: auto;
+            border: 2px solid #08163D;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo a {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 40px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            background: #08163D;
+        }
+        .nav-link {
+            color: #fff !important;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        .nav-link:hover {
+            color: #1F429A !important;
+            background: rgba(255,255,255,0.06);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary) !important;
+            transition: var(--transition);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #1F429A !important;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .mobile-icons {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        .mobile-icons button {
+            background: transparent;
+            border: none;
+            color: #fff !important;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        .mobile-icons button:hover {
+            color: var(--primary) !important;
+            background: rgba(31, 66, 154, 0.1);
+        }
+        .mobile-icons button, .mobile-menu-toggle {
+            color: #fff !important;
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: calc(var(--nav-height) + 24px);
+                left: 50%;
+                transform: translate(-50%, -30px) scale(0.98);
+                right: auto;
+                background: #08163D;
+                color: #fff;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+                z-index: 100;
+                opacity: 0;
+                height: auto;
+                min-width: 85vw;
+                border-radius: 22px;
+                overflow: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+                display: flex;
+            }
+            .nav-links.active {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+                pointer-events: auto;
+            }
+            .nav-link {
+                color: #fff !important;
+                padding: 0.9rem 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                font-size: 18px;
+                background: transparent;
+                transition: background 0.2s;
+            }
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            .nav-link:hover,
+            .nav-link.active {
+                color: var(--primary) !important;
+                background: rgba(255,255,255,0.06);
+            }
+            .mobile-icons {
+                display: flex !important;
+            }
+            .mobile-menu-toggle {
+                display: block !important;
+            }
+        }
+        /* Remove conflicting rules that hide .mobile-icons or .mobile-menu-toggle */
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+        }
+        /* Remove old conflicting navbar styles */
+        .header nav, .header .nav-icons, .header .hamburger, .header .mobile-menu { display: none !important; }
+        
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            padding-top: 0 !important;
+            background: #fff;
+            min-height: 100vh;
+            color: var(--primary-dark);
+            line-height: 1.6;
+        }
+        
+        /* HERO SECTION: Touch the top, not hidden by navbar */
+        .hero, .hero.enhanced-hero, .page-hero {
+            background: linear-gradient(135deg, #08163D, #1F429A) !important;
+            color: #fff !important;
+            padding: 200px 20px 40px 20px;
+            text-align: center;
+            margin: 0;
+            position: relative;
+        }
+        .page-hero .container {
+            padding-top: calc(var(--nav-height) + 40px);
+        }
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        /* DYNAMIC LAYOUT: Responsive grid/flex for all sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .profile-grid, .features-grid, .compliance-features, .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+        .profile-card, .feature-item, .compliance-item, .contact-item {
+            background: #fff !important;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.10);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 0;
+            color: #08163D !important;
+        }
+        .profile-card:hover, .feature-item:hover, .compliance-item:hover, .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 0 4px #1F429A33;
+        }
+        .overview-content, .footprint-content, .partnerships-content, .compliance-content, .contact-info {
+            margin: 40px 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footprint-content, .partnerships-content {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        .footprint-text, .footprint-visual {
+            flex: 1 1 320px;
+            min-width: 260px;
+            max-width: 600px;
+        }
+        .footprint-visual img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .footprint-content, .partnerships-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        /* Section titles and spacing */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            margin-top: 0;
+            color: #08163D !important;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 8px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .profile-card, .feature-item, .compliance-item, .contact-item {
+                padding: 16px;
+            }
+        }
+        
+        /* Company Profile */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .profile-icon {
+            background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 16px rgba(31,66,154,0.12);
+        }
+        .profile-card h3 {
+            color: #08163D !important;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* ===== FLOATING CTA STYLES ===== */
+        .floating-cta {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 1001;
+        }
+
+        .cta-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1F429A 0%, #08163D 100%);
+            transform: scale(1.05);
+        }
+
+        /* App Download Dropdown Styles */
+        .app-download-dropdown {
+            position: absolute;
+            left: 50%;
+            bottom: 60px;
+            transform: translateX(-50%) scale(0.95);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 18px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2001;
+            min-width: 220px;
+            transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+            animation: dropdownIn 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        
+        .app-download-dropdown.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(-50%) scale(1);
+        }
+        
+        .store-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background: #f8f9fa;
+        }
+        
+        .store-option:hover {
+            background: #e9ecef;
+            transform: translateX(4px);
+            color: #1F429A;
+        }
+        
+        .store-option i {
+            font-size: 1.5rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .store-option span {
+            font-size: 0.95rem;
+        }
+        
+        @keyframes dropdownIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.9) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) scale(1) translateY(0);
+            }
+        }
+        
+        .profile-card ul {
+            padding-left: 20px;
+        }
+        
+        .profile-card li {
+            margin-bottom: 8px;
+        }
+        
+        /* Company Overview */
+        .overview-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .overview-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+        @media (max-width: 900px) {
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-icon {
+            min-width: 36px;
+            color: #1F429A !important;
+        }
+        
+        .feature-item h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .feature-item p {
+            margin: 0;
+            color: #5f6c80;
+        }
+        
+        /* Geographic Footprint */
+        .footprint-section {
+            background: #f8f9fc;
+            padding: 40px 0;
+        }
+        
+        .footprint-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
+        
+        /* Fancy cards for Our Footprint section */
+        .footprint-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+            width: 100%;
+        }
+        .footprint-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(31,66,154,0.10);
+            padding: 32px 24px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+            border-top: 6px solid var(--primary);
+            position: relative;
+        }
+        .footprint-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(31,66,154,0.18);
+        }
+        .footprint-card .footprint-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+        .footprint-card h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .footprint-card p {
+            color: #444;
+            font-size: 1.08rem;
+            margin-bottom: 0;
+        }
+        @media (max-width: 600px) {
+            .footprint-cards {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .footprint-card {
+                padding: 20px 10px 16px 10px;
+            }
+        }
+        
+        /* Partnerships */
+        .partnerships-section {
+            background: #f8f9fc;
+            padding: 40px 0;
+        }
+        
+        .partnerships-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
+        
+        .partnership-category {
+            text-align: center;
+        }
+        
+        .partnership-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .partner-logo {
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        /* Compliance & Regulation */
+        .compliance-section {
+            background: #f8f9fc;
+            padding: 40px 0;
+        }
+        
+        .compliance-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
+        
+        .compliance-content {
+            text-align: center;
+        }
+        
+        .compliance-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .compliance-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .compliance-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .compliance-icon {
+            min-width: 36px;
+            color: #1F429A !important;
+        }
+        
+        .compliance-item h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .compliance-item p {
+            margin: 0;
+            color: #5f6c80;
+        }
+        
+        /* Contact Information */
+        .contact-info-section {
+            background: #f8f9fc;
+            padding: 40px 0;
+        }
+        
+        .contact-info {
+            text-align: center;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
+        
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-icon {
+            min-width: 36px;
+            color: #1F429A !important;
+        }
+        
+        .contact-item h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item p {
+            margin: 0;
+            color: #5f6c80;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #08163D;
+            color: white;
+            padding: 60px 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #1F429A !important;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            color: #fff !important;
+        }
+        
+        .social-icon:hover {
+            background: #fff !important;
+            color: #1F429A !important;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Compliance Section Hover Effects */
+        .compliance-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #1F429A;
+            box-shadow: 0 20px 60px rgba(31, 66, 154, 0.2);
+        }
+
+        .compliance-item:hover .card-icon {
+            background: linear-gradient(135deg, #1F429A, #23346a);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+            border-color: #1F429A;
+        }
+
+        .compliance-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(31, 66, 154, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .compliance-item:hover::before {
+            left: 100%;
+        }
+        
+        /* Media queries */
+        @media (max-width: 1100px) {
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-links {
+                /* Remove display: none; so menu can be shown by .active class */
+                position: fixed;
+                top: calc(var(--nav-height) + 24px);
+                left: 50%;
+                transform: translate(-50%, -30px) scale(0.98);
+                right: auto;
+                background: #08163D;
+                color: #fff;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+                z-index: 100;
+                opacity: 0;
+                height: auto;
+                min-width: 85vw;
+                border-radius: 22px;
+                overflow: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+                display: flex;
+            }
+            .nav-links.active {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+                pointer-events: auto;
+            }
+            .mobile-icons {
+                display: flex !important;
+            }
+            .mobile-menu-toggle {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-logo img {
+                height: 40px;
+            }
+            
+            .page-hero {
+                padding: 60px 10px 30px 10px;
+            }
+            .page-hero .container {
+                padding-top: calc(var(--nav-height) + 20px);
+            }
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                padding: 0 15px;
+            }
+            
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-card, .feature-item {
+                padding: 20px;
+            }
+        }
+        
+        /* ===== COMPLIANCE & SECURITY SECTION ===== */
+        .compliance-security {
+            background: linear-gradient(rgba(8, 22, 61, 0.85), rgba(31, 66, 154, 0.85)), url('assets/images/SEC.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 100px 0;
+            border-radius: 0px;
+            margin: 0px 0px;
+        }
+
+        .compliance-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .compliance-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .compliance-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+
+        .compliance-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .compliance-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compliance-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(31, 66, 154, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .compliance-card:hover::before {
+            left: 100%;
+        }
+
+        .compliance-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #1F429A;
+            box-shadow: 0 20px 60px rgba(31, 66, 154, 0.2);
+        }
+
+        .compliance-card .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .compliance-card:hover .card-icon {
+            background: linear-gradient(135deg, #1F429A, #23346a);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+            border-color: #1F429A;
+        }
+
+        .compliance-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .compliance-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Responsive design for compliance section */
+        @media (max-width: 1024px) {
+            .compliance-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .compliance-title {
+                font-size: 2.2rem;
+            }
+
+            .compliance-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .compliance-cards {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .compliance-card {
+                padding: 30px 20px;
+            }
+
+            .compliance-card .card-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 28px;
+            }
+        }
+
+        /* Remove all other color variants */
+
+        /* ===== SEARCH MODAL STYLES ===== */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 22, 61, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .search-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(8, 22, 61, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .search-modal.active .search-modal-content {
+            transform: scale(1);
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f8fafc;
+        }
+
+        .search-header h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .search-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-close:hover {
+            background: #e5e7eb;
+            color: var(--primary-dark);
+        }
+
+        .search-body {
+            padding: 25px;
+        }
+
+        .search-input-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+
+        #searchInput:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(31, 66, 154, 0.1);
+        }
+
+        .search-submit {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .search-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .search-suggestions {
+            margin-bottom: 20px;
+        }
+
+        .suggestion-category {
+            margin-bottom: 25px;
+        }
+
+        .suggestion-category h4 {
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .suggestion-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .suggestion-tag {
+            background: #f3f4f6;
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .suggestion-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(31, 66, 154, 0.2);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quick-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 66, 154, 0.15);
+        }
+
+        .quick-link i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .search-results {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .results-header h4 {
+            color: var(--primary-dark);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .results-count {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        .results-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .result-item {
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .result-item:hover {
+            background: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(31, 66, 154, 0.1);
+        }
+
+        .result-item h5 {
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .result-item p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Mobile Responsive Search Modal */
+        @media (max-width: 768px) {
+            .search-modal-content {
+                width: 95%;
+                max-height: 85vh;
+                border-radius: 16px;
+            }
+
+            .search-header {
+                padding: 16px 20px;
+            }
+
+            .search-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .search-body {
+                padding: 20px;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .suggestion-tags {
+                gap: 6px;
+            }
+
+            .suggestion-tag {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .social-icon,
+        .social-icon:link,
+        .social-icon:visited,
+        .social-icon:hover,
+        .social-icon:active {
+            text-decoration: none !important;
+        }
+
+        .who-we-are-grid {
+            background: #fff;
+            padding: 60px 0 60px 0;
+            margin-top: 80px;
+        }
+        .who-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .who-card {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            min-height: 320px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.13);
+            display: flex;
+            align-items: flex-end;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .who-card-lg {
+            grid-row: 1 / span 2;
+            grid-column: 1 / 2;
+            min-height: 420px;
+            padding: 0;
+        }
+        .who-card-sm {
+            min-height: 180px;
+            padding: 0;
+        }
+        .who-card-sm:first-of-type {
+            grid-row: 1 / 2;
+            grid-column: 2 / 3;
+        }
+        .who-card-sm:last-of-type {
+            grid-row: 2 / 3;
+            grid-column: 2 / 3;
+        }
+        .who-card-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(120deg, rgba(8,22,61,0.90) 70%, rgba(31,66,154,0.75) 100%);
+            z-index: 1;
+        }
+        .who-card-content {
+            position: relative;
+            z-index: 2;
+            padding: 38px 36px 32px 36px;
+            color: #fff;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .who-card-label {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #ffe066;
+            margin-bottom: 10px;
+        }
+        .who-card-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.1;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        }
+        .who-card-desc {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #f3f3f3;
+            margin-bottom: 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        .who-card-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .who-card-list li {
+            font-size: 1.15rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        .who-card-list i {
+            font-size: 1.2rem;
+            color: #ffe066;
+            min-width: 22px;
+            text-align: center;
+        }
+        @media (max-width: 900px) {
+            .who-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                gap: 24px;
+            }
+            .who-card-lg {
+                grid-row: 1 / 2;
+                grid-column: 1 / 2;
+                min-height: 220px;
+            }
+            .who-card-sm {
+                grid-row: auto;
+                grid-column: 1 / 2;
+                min-height: 160px;
+            }
+        }
+        @media (max-width: 600px) {
+            .who-grid {
+                padding: 0 4px;
+                gap: 18px;
+                display: flex;
+                flex-direction: column;
+            }
+            .who-card {
+                min-height: 120px;
+                width: 100%;
+                border-radius: 20px;
+                margin-bottom: 0;
+                box-shadow: 0 4px 18px rgba(31,66,154,0.10);
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            .who-card-content {
+                padding: 20px 12px 16px 12px;
+                align-items: flex-start;
+                text-align: left;
+                width: 100%;
+                justify-content: flex-start;
+                height: 100%;
+            }
+            .who-card-title {
+                font-size: 1.15rem;
+                text-align: left;
+            }
+            .who-card-label {
+                font-size: 0.9rem;
+                text-align: left;
+            }
+            .who-card-list li {
+                font-size: 1rem;
+                text-align: left;
+            }
+        }
+
+        .prequalified-bidders-section {
+            background: transparent;
+            padding: 60px 0 60px 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .prequalified-card {
+            background: linear-gradient(135deg, #f8f9fc 80%, #e9f0ff 100%);
+            box-shadow: 0 8px 40px rgba(31,66,154,0.13), 0 1.5px 8px rgba(31,66,154,0.08);
+            border-radius: 32px;
+            padding: 56px 48px 48px 48px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .prequalified-card .section-title {
+            color: #1F429A !important;
+            font-weight: 900;
+            font-size: 2.6rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 12px rgba(31,66,154,0.07);
+        }
+        .prequalified-desc {
+            font-size: 1.18rem;
+            color: #08163D;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+        .prequalified-note {
+            font-size: 1.05rem;
+            color: #1F429A;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1F429A 0%, #08163D 100%);
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 1.18rem;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 6px 24px rgba(31,66,154,0.16);
+            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+        .download-btn:hover {
+            background: linear-gradient(135deg, #08163D 0%, #1F429A 100%);
+            color: #ffffff !important;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 36px rgba(31,66,154,0.22);
+        }
+        @media (max-width: 900px) {
+            .prequalified-card {
+                padding: 36px 16px 32px 16px;
+                max-width: 98vw;
+            }
+            .prequalified-card .section-title {
+                font-size: 2rem;
+            }
+            .download-btn {
+                font-size: 1rem;
+                padding: 14px 0;
+                width: 100%;
+            }
+        }
+    
+        /* === Mission polish === */
+        .mission{position:relative; padding:40px 0; background: linear-gradient(180deg,#ffffff 0%, #f8f9fc 100%);}
+        .mission .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid #e6ebf4;background:#fff;font-size:12px;font-weight:700;color:#1F429A}
+        .mission .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+        .mission .card{background:#fff;border-radius:18px;padding:22px;border:1px solid #eef1f6;box-shadow:0 8px 24px rgba(31,66,154,.08)}
+        .mission .icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#08163D,#1F429A);display:grid;place-items:center;color:#fff;font-size:20px;box-shadow:0 8px 24px rgba(31,66,154,.2);margin-bottom:10px}
+        .mission .list{list-style:none;margin:10px 0 0;padding:0;color:#5f6c80}
+        .mission .list li{display:flex;gap:10px;align-items:flex-start;margin:.35rem 0}
+        .mission .list i{color:#1F429A;margin-top:3px}
+        .mission .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+        .mission .metric{background:#fff;border:1px solid #eef1f6;border-radius:14px;padding:12px;text-align:center}
+        .mission .metric b{display:block;font-size:1.25rem;color:#08163D}
+        @media(max-width:700px){.mission .metrics{grid-template-columns:1fr 1fr}}
+        @media(max-width:480px){.mission .metrics{grid-template-columns:1fr}}
+
+    
+/* === Core Values: Parallax background === */
+.values-parallax{position:relative; padding:80px 0; 
+ background: #08163D;
+  background-attachment:fixed; isolation:isolate;}
+.values-parallax .values-overlay{position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(8,22,61,.60), rgba(8,22,61,.35)); z-index:0;}
+.values-parallax .container{position:relative; z-index:1; color:#ffffff;}
+.values-parallax .section-title, .values-parallax .kicker{color:#ffffff !important;}
+.values-parallax .grid.values-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:14px;}
+.values-parallax .card.glass{
+  background:rgba(255,255,255,.94); color:#00008B; border-radius:12px; border:1px solid #eef1f6;
+  box-shadow:0 10px 30px rgba(8,22,61,.25); padding:22px;}
+.values-parallax .card.glass h3{margin:.2rem 0 8px}
+.values-parallax .card.glass .muted{color:#00008B}
+.values-parallax .list-check{list-style:none; padding:0; margin:8px 0 0; color:#00008B}
+.values-parallax .list-check li{display:flex; gap:10px; align-items:flex-start; margin:.35rem 0}
+.values-parallax .list-check i{color:#1F429A; margin-top:3px}
+@media (max-width:0px){
+  .values-parallax{padding:56px 0}
+
+}
+
+
+  
+/* === Aesthetic Payment Channels === */
+.channels-aesthetic{position:relative;padding:70px 0;background:#f8f9fc}
+.channels-aesthetic .section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:22px}
+.channels-aesthetic .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#5f6c80;font-weight:800}
+.channels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.channel-card{position:relative;background:#fff;border:1px solid #e9eef7;border-radius:20px;padding:22px;box-shadow:0 10px 28px rgba(31,66,154,.10)}
+.channel-card .chip{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.8rem;padding:6px 10px;border-radius:999px;background:#eef3ff;color:#1F429A;margin-bottom:10px}
+.channel-card h3{margin:.2rem 0 8px;color:#08163D}
+.channel-card ul{margin:0;padding-left:18px;color:#5f6c80}
+.channel-icon{position:absolute;right:16px;top:16px;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#08163D,#1F429A);color:#fff;box-shadow:0 8px 20px rgba(31,66,154,.25)}
+.channels-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.channels-mini-stats .mini{background:#fff;border:1px solid #e9eef7;border-radius:14px;padding:12px;text-align:center;color:#08163D;box-shadow:0 6px 18px rgba(31,66,154,.08)}
+.channels-mini-stats .mini b{display:block;font-size:1.25rem}
+@media(max-width:560px){.channels-mini-stats{grid-template-columns:1fr 1fr}}
+
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header homepage-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="assets/images/main logo.webp" alt="RukaPay Logo"></a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="how-it-works.html" class="nav-link">How It Works</a>
+                <a href="merchants.html" class="nav-link">Merchants</a>
+                <a href="tariffs.html" class="nav-link">Tariffs</a>
+                <a href="help-center.html" class="nav-link">Help Center</a>
+                <a href="about.html" class="nav-link active">About Us</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="careers.html" class="nav-link">Careers</a>
+                
+            </div>
+            <div class="mobile-icons">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+     <section class="hero">
+    <div class="container">
+      <span class="eyebrow kicker">About RukaPay</span>
+      <h1>Secure, simple payments for everyone in Uganda.</h1>
+      <p>Rhino Payment Services Ltd (trading as RukaPay) is a Bank of Uganda‑licensed PSP/PSO on a mission to make money movement easier for people, SACCOs, and businesses—online, in‑store, and everywhere in between.</p>
+    </div>
+  </section>
+
+    <!-- Company Profile -->
+   
+  <!-- Mission (refined) -->
+  <section class="mission">
+    <div class="container">
+      <div class="section-head" style="display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:22px">
+        <div>
+          <span class="kicker">Why we exist</span>
+          <h2 class="section-title" style="text-align:left;margin:4px 0 0 0;">Our Mission</h2>
+        </div>
+        <span class="pill"><i class="fa-solid fa-bolt"></i> Simple • Secure • Everywhere</span>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
+          <h3 style="margin:.2rem 0 .4rem;color:#08163D">Make payments effortless</h3>
+          <p class="muted" style="color:#5f6c80">We reduce friction across collections, transfers and payouts—so Ugandans can move money confidently, online and offline.</p>
+          <ul class="list">
+            <li><i class="fa-solid fa-check"></i> One QR for MTN &amp; Airtel collections</li>
+            <li><i class="fa-solid fa-check"></i> App, USSD <span aria-label="USSD code">*289#</span> and NFC options</li>
+            <li><i class="fa-solid fa-check"></i> Next‑day settlements to bank or mobile money</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true"><i class="fa-solid fa-lock"></i></div>
+          <h3 style="margin:.2rem 0 .4rem;color:#08163D">Trust by design</h3>
+          <p class="muted" style="color:#5f6c80">Security, compliance and reliability are built into every product decision—not added later.</p>
+          <ul class="list">
+            <li><i class="fa-solid fa-check"></i> Licensed PSP/PSO (Bank of Uganda)</li>
+            <li><i class="fa-solid fa-check"></i> Bank‑grade encryption &amp; monitoring</li>
+            <li><i class="fa-solid fa-check"></i> Fraud controls and audit trails</li>
+          </ul>
+        </article>
+      </div>
+
+      
+      <div class="metrics">
+        <div class="metric">
+          
+          <span class="muted">Payment Channels<br>(QR • NFC • USSD)</span>
+        </div>
+        <div class="metric">
+          
+          <span class="muted">Unified Bulk Payments</span>
+        </div>
+        <div class="metric">
+          <b>24/7</b>
+          <span class="muted">Support Availability</span>
+        </div>
+      </div>
+
+        
+      
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- Who We Are (polished) -->
+  <section class="who-we-are-grid">
+    <div class="container">
+      <div class="section-head" style="text-align:center;margin-bottom:20px">
+        <h2 class="section-title">Who We Are</h2>
+        
+      </div>
+      <div class="profile-grid">
+        <article class="profile-card">
+          <div class="profile-icon"><i class="fa-solid fa-users"></i></div>
+          <h3>RukaPay</h3>
+          <p style="margin:0;color:#5f6c80">
+            Is transforming Uganda’s digital payments landscape through innovation, security, and financial inclusion.
+            We collaborate with industry bodies like FITSPA and technology partners to raise the standard of fintech in Uganda.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<!-- from here -->
+
+<!-- Payment Channels & Services – Split Layout Upgrade -->
+<section class="split-section">
+  <div class="split-container">
+    
+    <!-- Left: Image -->
+    <div class="split-image"
+         style="background-image: url('assets/images/SEC.webp');">
+    </div>
+
+    <!-- Right: Content -->
+    <div class="split-content">
+      <span class="split-kicker">How Uganda Pays</span>
+      <h2 class="split-title">Payment Channels & Services</h2>
+      <p class="split-desc">
+        RukaPay enables fast, secure payments for individuals, SACCOs, and businesses
+        through unified channels built for modern financial needs.
+      </p>
+
+      <ul class="split-list">
+        <li><i class="fa-solid fa-qrcode"></i>  Scan to Pay (QR) — MTN & Airtel</li>
+        <li><i class="fa-solid fa-wave-square"></i> Tap to Pay (NFC)</li>
+        <li><i class="fa-solid fa-mobile-screen-button"></i> USSD (*289#)</li>
+        <li><i class="fa-solid fa-wallet"></i> Wallet-to-Wallet transfers</li>
+        <li><i class="fa-solid fa-hand-holding-dollar"></i> Merchant Collections</li>
+        <li><i class="fa-solid fa-money-bill-transfer"></i> Bulk Payouts & Transfers</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Split Section */
+.split-section {
+  padding: 0px 0;
+  background: #ffffff;
+}
+
+.split-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: stretch;
+  max-width: 2000px;
+  margin: 0 auto;
+  border-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(31,66,154,0.13);
+}
+
+/* Left Image Panel */
+.split-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 380px;
+}
+
+/* Right Content Panel */
+.split-content {
+  background: linear-gradient(135deg, #08163D, #1F429A);
+  color: #fff;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.split-kicker {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.split-title {
+  font-size: 2.4rem;
+  margin: 12px 0 18px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.split-desc {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  color: #e8e8e8;
+}
+
+.split-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+   color: #ffffff;
+}
+
+.split-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1.07rem;
+  gap: 12px;
+}
+
+.split-list i {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .split-container {
+    grid-template-columns: 1fr;
+  }
+  .split-image {
+    min-height: 260px;
+  }
+}
+</style>
+<!-- to here -->
+
+    <!-- Company Overview -->
+    <!-- Updated Core Values Section (Only this block is changed) -->
+<section class="values-parallax" style="position:relative;padding:90px 0;background:#08163D;background-attachment:fixed;isolation:isolate;">
+  <div class="values-overlay" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,22,61,.75),rgba(31,66,154,.55));z-index:0;"></div>
+
+  <div class="container" style="position:relative;z-index:2;color:#ffffff;max-width:1200px;margin:auto;">
+    <div class="section-head" style="text-align:center;margin-bottom:48px;">
+      <span class="kicker" style="font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#aac8ff;">What Guides Us</span>
+      <h2 class="section-title" style="font-size:2.8rem;font-weight:800;margin-top:10px;color:#ffffff;">Our Core Values</h2>
+    </div>
+
+    <div class="values-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;">
+
+      <article class="value-card" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(14px);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.25);transition:all .35s ease;">
+        <div class="icon" style="font-size:36px;margin-bottom:12px;color:#ffdd57;"></div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:10px;">Integrity</h3>
+        <p style="color:#dce6ff;font-size:1rem;line-height:1.6;">We uphold honesty, transparency, and accountability in everything we deliver to our users and partners.</p>
+      </article>
+
+      <article class="value-card" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(14px);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.25);transition:all .35s ease;">
+        <div class="icon" style="font-size:36px;margin-bottom:12px;color:#57e3ff;"></div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:10px;">Innovation</h3>
+        <p style="color:#dce6ff;font-size:1rem;line-height:1.6;">We push boundaries to create seamless, modern and secure digital payment experiences for Uganda.</p>
+      </article>
+
+      <article class="value-card" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(14px);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.25);transition:all .35s ease;">
+        <div class="icon" style="font-size:36px;margin-bottom:12px;color:#ff8f57;"></div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:10px;">Customer Obsession</h3>
+        <p style="color:#dce6ff;font-size:1rem;line-height:1.6;">We put our users first by designing for reliability, simplicity, and everyday convenience.</p>
+      </article>
+
+      <article class="value-card" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(14px);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.25);transition:all .35s ease;">
+        <div class="icon" style="font-size:36px;margin-bottom:12px;color:#7dff7d;"></div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:10px;">Security & Trust</h3>
+        <p style="color:#dce6ff;font-size:1rem;line-height:1.6;">We build with compliance, data protection and user safety at the foundation of every product decision.</p>
+      </article>
+
+      <article class="value-card" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(14px);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.25);transition:all .35s ease;">
+        <div class="icon" style="font-size:36px;margin-bottom:12px;color:#b57cff;"></div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:10px;">Collaboration</h3>
+        <p style="color:#dce6ff;font-size:1rem;line-height:1.6;">We work alongside partners, regulators, SACCOs and businesses to grow Uganda's financial ecosystem.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+  <!-- <section>
+    <div class="container">
+      
+      
+<section class="values-parallax">
+  <div class="values-overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin-bottom:32px">
+      <span class="kicker">What guides us</span>
+      <h2 class="section-title" style = "color:#0000cd;"> Our Core Values</h2>
+    </div>
+
+    <div class="grid values-cards">
+      <article class="card glass">
+        <h3>Data Integrity &amp; Product Excellence</h3>
+        <p class="muted"><strong>[day.ta. in.te.gri.ti • pro.dact. ekse.le.nse]</strong> — noun (English)</p>
+         <p>We believe reliability should never be an accident.<br>From our infrastructure to our innovation process.<p><strong>Rukapay is designed to deliver data accuracy,smarter insights,service uptime, and stability.</strong></p> </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+-->
+
+</section>
+
+ 
+
+
+    <!-- Geographic Footprint -->
+    <section class="footprint-section">
+        <div class="container">
+            <h2 class="section-title">Our Footprint</h2>
+            <div class="footprint-cards">
+                <div class="footprint-card">
+                    <div class="footprint-icon"><i class="fas fa-city"></i></div>
+                    <h4>Phase 1 (2025): Kampala Launch</h4>
+                    <p>Establishing our foundation in Uganda's capital with comprehensive services</p>
+                </div>
+                <div class="footprint-card">
+                    <div class="footprint-icon"><i class="fas fa-route"></i></div>
+                    <h4>Phase 2 (2026): Regional Expansion</h4>
+                    <p>Extending to key urban centers across Uganda</p>
+                </div>
+                <div class="footprint-card">
+                    <div class="footprint-icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Phase 3 (2027): National Rollout</h4>
+                    <p>Bringing digital payments to communities nationwide</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Partnerships -->
+    <section class="partnerships-section">
+        <div class="container">
+            <h2 class="section-title">Strategic Partnerships</h2>
+            <div class="partnerships-content">
+                <div class="partnership-category">
+                    <h3>Banking Partners</h3>
+                    <p>Collaboration with 24 banks through Agency Banking Co. for comprehensive financial services</p>
+                    <div class="partner-logos" style="display:flex; flex-wrap:wrap; gap:15px; margin-top:20px;">
+                        <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/logos (3).webp" alt="Bank Partner 1" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                        <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/fia.webp" alt="Bank Partner 2" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                         <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/FITSPA_logo.webp" alt="Bank Partner 2" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                        <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/logosug.webp" alt="Bank Partner 2" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                          <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/UCC.webp" alt="Bank Partner 2" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                          <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/Pegasus.webp" alt="Bank Partner 2" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="partnership-category" style="margin-top:40px;">
+                    <h3>Mobile Network Operators</h3>
+                    <p>Integrated with major telecom providers for seamless mobile money interoperability</p>
+                    <div class="partner-logos" style="display:flex; flex-wrap:wrap; gap:15px; margin-top:20px;">
+                        <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/logos (2).webp" alt="RukaPay Uganda" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                        <div class="partner-logo" style="padding:15px; border-radius:8px; min-width:100px; text-align:center;">
+                            <img src="assets/images/11.webp" alt="Airtel Uganda" style="max-width:100%; height:auto; max-height:40px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prequalified Bidders Section -->
+    <section class="prequalified-bidders-section">
+        <div class="container">
+            <div class="prequalified-card">
+                <h2 class="section-title">Prequalified Bidders</h2>
+                <p class="prequalified-desc">
+                    Our company maintains a list of prequalified bidders who meet our procurement standards and project delivery expectations.
+                </p>
+                <p class="prequalified-note">
+                    If you are interested in becoming a bidder, you can download the qualification criteria document and submit it to our offices.
+                </p>
+                <a href="Prequalification Criteria.pdf" class="download-btn" download>Download Qualification Criteria</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance & Security Section -->
+    <section class="compliance-security">
+        <div class="container">
+            <div class="compliance-header">
+                <h2 class="compliance-title">Compliance & Security</h2>
+                <p class="compliance-subtitle">Built with trust, powered by protection.</p>
+            </div>
+            <div class="compliance-cards">
+                <div class="compliance-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Regulatory Compliant</h3>
+                    <p>Fully aligned with financial regulations across East Africa and licensed by Bank of Uganda.</p>
+                </div>
+                <div class="compliance-card">
+                    <div class="card-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Data Encryption</h3>
+                    <p>All user data is protected using bank-grade encryption and secure protocols.</p>
+                </div>
+                <div class="compliance-card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Fraud Protection</h3>
+                    <p>Real-time monitoring and advanced AI to stop fraud before it starts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <div class="contact-details" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:30px; margin-top:30px;">
+                    <div class="contact-item" style="display:flex; align-items:flex-start; gap:15px; padding:20px; background:white; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.05);">
+                        <span class="contact-icon">
+                            <i class="fas fa-building" style="font-size:24px; color:#3498db;"></i>
+                        </span>
+                        <div>
+                            <h4>Headquarters</h4>
+                            <p>TMT Building 2nd Floor<br>Bukoto-Ntinda Road, Kampala</p>
+                        </div>
+                    </div>
+                    <div class="contact-item" style="display:flex; align-items:flex-start; gap:15px; padding:20px; background:white; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.05);">
+                        <span class="contact-icon">
+                            <i class="fas fa-phone" style="font-size:24px; color:#3498db;"></i>
+                        </span>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+256200244407" style="color: inherit; text-decoration: none;">0200 244 407</a><br>24/7 Customer Support</p>
+                        </div>
+                    </div>
+                    <div class="contact-item" style="display:flex; align-items:flex-start; gap:15px; padding:20px; background:white; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.05);">
+                        <span class="contact-icon">
+                            <i class="fas fa-envelope" style="font-size:24px; color:#3498db;"></i>
+                        </span>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@rukapay.co.ug" style="color: inherit; text-decoration: none;">info@rukapay.co.ug</a><br><a href="mailto:support@rukapay.co.ug" style="color: inherit; text-decoration: none;">support@rukapay.co.ug</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item" style="display:flex; align-items:flex-start; gap:15px; padding:20px; background:white; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.05);">
+                        <span class="contact-icon">
+                            <i class="fas fa-globe" style="font-size:24px; color:#3498db;"></i>
+                        </span>
+                        <div>
+                            <h4>Website</h4>
+                            <p>www.rukapay.co.ug<br>Always available online</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <div class="search-header">
+                <h3>Search RukaPay</h3>
+                <button class="search-close" id="searchClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-body">
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" placeholder="Search for services, features, or help..." autocomplete="off">
+                    <button class="search-submit" id="searchSubmit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-suggestions" id="searchSuggestions">
+                    <div class="suggestion-category">
+                        <h4>Popular Searches</h4>
+                        <div class="suggestion-tags">
+                            <span class="suggestion-tag" data-search="mobile money">Mobile Money</span>
+                            <span class="suggestion-tag" data-search="QR payments">QR Payments</span>
+                            <span class="suggestion-tag" data-search="merchant services">Merchant Services</span>
+                            <span class="suggestion-tag" data-search="USSD">USSD *289#</span>
+                        </div>
+                    </div>
+                    <div class="suggestion-category">
+                        <h4>Quick Links</h4>
+                        <div class="quick-links">
+                            <a href="how-it-works.html" class="quick-link">
+                                <i class="fas fa-play-circle"></i>
+                                How It Works
+                            </a>
+                            <a href="tariffs.html" class="quick-link">
+                                <i class="fas fa-tags"></i>
+                                Pricing & Tariffs
+                            </a>
+                            <a href="merchants.html" class="quick-link">
+                                <i class="fas fa-store"></i>
+                                Merchant Services
+                            </a>
+                            <a href="help-center.html" class="quick-link">
+                                <i class="fas fa-question-circle"></i>
+                                Help Center
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-results" id="searchResults" style="display: none;">
+                    <div class="results-header">
+                        <h4>Search Results</h4>
+                        <span class="results-count" id="resultsCount"></span>
+                    </div>
+                    <div class="results-list" id="resultsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RukaPay</h3>
+                <p>Secure, reliable, advanced payment solutions for Ugandan businesses.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/rukapay.ug?mibextid=wwXIfr&rdid=NRSNTPzqwpnCBJp3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16G2dBLQWx%2F%3Fmibextid%3DwwXIfr#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/rukapay_ug" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frukapay.ug%2F%3Figsh%3DdWFhbm5nZ2YybWF4&is_from_rle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/rhino-payment-company?trk=public_profile_topcard-current-company" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@RukaPay-p4v" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                  <h4>Services</h4>
+                  <p>Scan to Pay</p>
+                  <p>Tap to Pay</p>
+                  <p>USSD Payments</p>
+                  <p>Merchant Services</p>
+              </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>TMT Atrium Building 2nd Floor</p>
+                <p>Naguru-Bukoto, kira rd, Kampala</p>
+                <p>Po BOX 111498</p>
+                                                <p><i class="fas fa-phone"></i> <a href="tel:+256200244400" style="color: #fff !important; text-decoration: none;">0200 244 400</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@rukapay.co.ug" style="color: #fff !important; text-decoration: none;">info@rukapay.co.ug</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <p>Licensed Payment Service Provider / Payment System Operator</p>
+                <p>
+                    <a href="privacy-policies.html" style="color: #fff !important; text-decoration: none;">Privacy Policy</a>
+                </p>
+                <p>
+                    <a href="privacy-policies.html#cookies-tracking" style="color: #fff !important; text-decoration: none;">Terms and Conditions</a>
+                </p>
+                <p>
+                    <a href="faq-delete-account.html" style="color: #fff; text-decoration: none;">How to delete a RukaPay account</a>
+                </p>
+            </div>
+        </div>
+        
+                    <div class="footer-bottom">
+                <p>&copy; 2025 Rhino Payment Services Ltd (trading as RukaPay). All rights reserved.</p>
+                <p>Licensed Payment Service Provider / Payment System Operator by the Bank of Uganda</p>
+            </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <div class="cta-content">
+            <button class="cta-button" id="downloadNowBtn">Download Now</button>
+            <div class="app-download-dropdown" id="appDropdownFloating">
+                <a href="https://apps.apple.com/ug/app/rukapay/id6748399426" class="store-option">
+                    <i class="fab fa-apple"></i>
+                    <span>App Store</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.rhinopaymentservices.rukapay" class="store-option">
+                    <i class="fab fa-google-play"></i>
+                    <span>Play Store</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // Mobile menu toggle functionality (copied from index.html for consistency)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const searchBtn = document.querySelector('.search-btn');
+            const menuIcon = mobileMenuToggle.querySelector('i');
+            // Toggle mobile menu
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                // Change menu icon
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            // Search functionality
+            const searchModal = document.getElementById('searchModal');
+            const searchClose = document.getElementById('searchClose');
+            const searchInput = document.getElementById('searchInput');
+            const searchSubmit = document.getElementById('searchSubmit');
+            const searchSuggestions = document.getElementById('searchSuggestions');
+            const searchResults = document.getElementById('searchResults');
+            const resultsList = document.getElementById('resultsList');
+            const resultsCount = document.getElementById('resultsCount');
+            const suggestionTags = document.querySelectorAll('.suggestion-tag');
+
+            // Open search modal
+            searchBtn.addEventListener('click', function() {
+                searchModal.classList.add('active');
+                setTimeout(() => {
+                    searchInput.focus();
+                }, 300);
+            });
+
+            // Close search modal
+            searchClose.addEventListener('click', function() {
+                searchModal.classList.remove('active');
+                searchInput.value = '';
+                showSuggestions();
+            });
+
+            // Close modal when clicking outside
+            searchModal.addEventListener('click', function(e) {
+                if (e.target === searchModal) {
+                    searchModal.classList.remove('active');
+                    searchInput.value = '';
+                    showSuggestions();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+                    searchModal.classList.remove('active');
+                    searchInput.value = '';
+                    showSuggestions();
+                }
+            });
+
+            // Search on Enter key
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Search on submit button click
+            searchSubmit.addEventListener('click', performSearch);
+
+            // Suggestion tags click
+            suggestionTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    searchInput.value = this.getAttribute('data-search');
+                    performSearch();
+                });
+            });
+
+            // Search input change
+            searchInput.addEventListener('input', function() {
+                if (this.value.trim() === '') {
+                    showSuggestions();
+                } else {
+                    // Real-time search suggestions could be implemented here
+                }
+            });
+
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (query === '') return;
+
+                // Search data - in a real app, this would come from a backend
+                const searchData = [
+                    { title: 'Mobile Money Services', description: 'Send and receive money using mobile money integration', url: 'how-it-works.html' },
+                    { title: 'QR Code Payments', description: 'Scan QR codes to make instant payments at merchant locations', url: 'how-it-works.html' },
+                    { title: 'USSD Services', description: 'Access RukaPay services using *289# on any mobile phone', url: 'how-it-works.html' },
+                    { title: 'Merchant Services', description: 'Accept payments and grow your business with RukaPay', url: 'merchants.html' },
+                    { title: 'Transaction Fees', description: 'View our competitive pricing and transaction fees', url: 'tariffs.html' },
+                    { title: 'Security Features', description: 'Learn about our bank-grade security and encryption', url: 'about.html' },
+                    { title: 'Customer Support', description: 'Get help with your RukaPay account and transactions', url: 'help-center.html' },
+                    { title: 'Business Solutions', description: 'Tools and services designed for Ugandan businesses', url: 'merchants.html' },
+                    { title: 'Digital Wallet', description: 'Store money securely in your RukaPay digital wallet', url: 'how-it-works.html' },
+                    { title: 'Payment Methods', description: 'Multiple ways to pay including scan, tap, and USSD', url: 'how-it-works.html' }
+                ];
+
+                // Filter results based on query
+                const results = searchData.filter(item => 
+                    item.title.toLowerCase().includes(query.toLowerCase()) ||
+                    item.description.toLowerCase().includes(query.toLowerCase())
+                );
+
+                displayResults(results);
+            }
+
+            function displayResults(results) {
+                searchSuggestions.style.display = 'none';
+                searchResults.style.display = 'block';
+                
+                resultsCount.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
+                
+                resultsList.innerHTML = '';
+                
+                if (results.length === 0) {
+                    resultsList.innerHTML = `
+                        <div class="result-item">
+                            <h5>No results found</h5>
+                            <p>Try searching with different keywords or browse our quick links below.</p>
+                        </div>
+                    `;
+                } else {
+                    results.forEach(result => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'result-item';
+                        resultItem.innerHTML = `
+                            <h5>${result.title}</h5>
+                            <p>${result.description}</p>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            window.location.href = result.url;
+                        });
+                        resultsList.appendChild(resultItem);
+                    });
+                }
+            }
+
+            function showSuggestions() {
+                searchSuggestions.style.display = 'block';
+                searchResults.style.display = 'none';
+            }
+            
+            // App Download Dropdown Functionality
+            const downloadBtn = document.getElementById('downloadNowBtn');
+            const appDropdown = document.getElementById('appDropdownFloating');
+            
+            if (downloadBtn && appDropdown) {
+                downloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    appDropdown.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!downloadBtn.contains(e.target) && !appDropdown.contains(e.target)) {
+                        appDropdown.classList.remove('show');
+                    }
+                });
+                
+                // Close dropdown when selecting an option
+                const storeOptions = appDropdown.querySelectorAll('.store-option');
+                storeOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        appDropdown.classList.remove('show');
+                    });
+                });
+            }
+            
+            // Close menu when clicking on a link
+            const navLinksItems = document.querySelectorAll('.nav-link');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+            // Keep navbar color solid on scroll
+            const navContainer = document.querySelector('.nav-container');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 0) {
+                    navContainer.classList.add('scrolled');
+                } else {
+                    navContainer.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>

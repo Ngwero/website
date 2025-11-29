@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - RukaPay</title>
+    <meta name="description" content="Find answers to your RukaPay questions and get support">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            padding-top: 0 !important;
+            background: #fff;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        html {
+            background: transparent !important;
+        }
+        
+        /* ===== NAVBAR STYLES (copied from index.html) ===== */
+        :root {
+            --primary-dark: #08163D;
+            --primary: #1F429A;
+            --accent: #FFFFFF;
+            --nav-height: 70px;
+            --transition: all 0.3s ease;
+        }
+        header {
+            position: fixed;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #08163D;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 0 40px;
+            height: var(--nav-height);
+            pointer-events: auto;
+            border: 2px solid #08163D;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 40px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            background: #08163D;
+        }
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        .nav-link:hover {
+            color: #1F429A !important;
+            background: rgba(255,255,255,0.06);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #1F429A !important;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .mobile-icons {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        .mobile-icons button, .mobile-menu-toggle {
+            color: #fff !important;
+        }
+        .mobile-icons button {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        .mobile-icons button:hover {
+            color: var(--primary);
+            background: rgba(31, 66, 154, 0.1);
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: calc(var(--nav-height) + 24px);
+                left: 50%;
+                transform: translate(-50%, -30px) scale(0.98);
+                right: auto;
+                background: #08163D;
+                color: #fff;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+                z-index: 100;
+                opacity: 0;
+                height: auto;
+                min-width: 85vw;
+                max-width: 500px;
+                border-radius: 22px;
+                overflow: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+            }
+            .nav-links.active {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+                pointer-events: auto;
+            }
+            .nav-link {
+                color: #fff !important;
+                padding: 0.9rem 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                font-size: 18px;
+                background: transparent;
+                transition: background 0.2s;
+            }
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            .nav-link:hover,
+            .nav-link.active {
+                color: #ffe066 !important;
+                background: rgba(255,255,255,0.06);
+            }
+            .mobile-icons {
+                display: flex;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        /* Keep navbar color solid on scroll */
+        .nav-container, .nav-container.scrolled {
+            background: var(--primary-dark) !important;
+        }
+        /* Remove old conflicting navbar styles */
+        .header nav, .header .nav-icons, .header .hamburger, .header .mobile-menu { display: none !important; }
+        
+        /* Search and icons */
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-btn {
+            background: #f8f9fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 30px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: #eef2f7;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-btn i {
+            margin-right: 5px;
+            color: #5f6c80;
+        }
+        
+        .search-btn span {
+            color: #5f6c80;
+            font-size: 14px;
+        }
+        
+        /* Mobile menu toggle */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: #3498db;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: white;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before,
+        .hamburger span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: white;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before {
+            top: -6px;
+        }
+        
+        .hamburger span::after {
+            top: 6px;
+        }
+        
+        .hamburger.active span {
+            background: transparent;
+        }
+        
+        .hamburger.active span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        
+        .hamburger.active span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 5%;
+            z-index: 999;
+            transform: translateY(-20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu a:hover {
+            color: #3498db;
+            padding-left: 10px;
+        }
+        
+        .mobile-menu a.active {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        /* Content styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Hero Section */
+        .hero, .hero.enhanced-hero, .page-hero {
+            background: linear-gradient(135deg, #08163D, #1F429A) !important;
+            color: #fff !important;
+            padding: 0;
+            margin: 0;
+            min-height: 520px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+            padding-top: calc(var(--nav-height) + 40px);
+            text-align: center;
+        }
+        .page-hero::before {
+            display: none !important;
+        }
+        .page-hero .container {
+            padding-top: calc(var(--nav-height) + 40px);
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Search Bar */
+        .help-search {
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        /* ===== SEARCH MODAL STYLES ===== */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 22, 61, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .search-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(8, 22, 61, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .search-modal.active .search-modal-content {
+            transform: scale(1);
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f8fafc;
+        }
+
+        .search-header h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .search-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-close:hover {
+            background: #e5e7eb;
+            color: var(--primary-dark);
+        }
+
+        .search-body {
+            padding: 25px;
+        }
+
+        .search-input-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+
+        #searchInput:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(31, 66, 154, 0.1);
+        }
+
+        .search-submit {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .search-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .search-suggestions {
+            margin-bottom: 20px;
+        }
+
+        .suggestion-category {
+            margin-bottom: 25px;
+        }
+
+        .suggestion-category h4 {
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .suggestion-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .suggestion-tag {
+            background: #f3f4f6;
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .suggestion-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(31, 66, 154, 0.2);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quick-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 66, 154, 0.15);
+        }
+
+        .quick-link i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .search-results {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .results-header h4 {
+            color: var(--primary-dark);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .results-count {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        .results-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .result-item {
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .result-item:hover {
+            background: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(31, 66, 154, 0.1);
+        }
+
+        .result-item h5 {
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .result-item p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Mobile Responsive Search Modal */
+        @media (max-width: 768px) {
+            .search-modal-content {
+                width: 95%;
+                max-height: 85vh;
+                border-radius: 16px;
+            }
+
+            .search-header {
+                padding: 16px 20px;
+            }
+
+            .search-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .search-body {
+                padding: 20px;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .suggestion-tags {
+                gap: 6px;
+            }
+
+            .suggestion-tag {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        .search-box {
+            display: flex;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .search-box button {
+            padding: 0 30px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #3498db;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff !important;
+            font-size: 2.2rem;
+        }
+        
+        /* Add a specific rule for the contact form section title */
+        .contact-form-section .section-title {
+            color: #1F429A !important;
+        }
+        
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: #fff !important;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1.5px solid #1F429A;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 0 0 4px #1F429A33;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-question h3 {
+            color: #08163D !important;
+            font-size: 1.2rem;
+        }
+        
+        .faq-toggle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1F429A !important;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .faq-answer p {
+            padding: 0 0 20px;
+            color: #08163D !important;
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        /* Contact Form */
+        .contact-form-section {
+            background: #f0f5ff;
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+        
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff !important;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1.5px solid #1F429A;
+            color: #08163D !important;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #08163D !important;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-primary {
+            background: #1F429A !important;
+            color: #fff !important;
+            border: none;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-block;
+            width: auto;
+        }
+        
+        .btn-primary:hover {
+            background: #08163D !important;
+            box-shadow: 0 0 0 4px #08163D33;
+        }
+        
+        /* Form submission states */
+        .btn-primary.loading {
+            background: #6c757d !important;
+            cursor: not-allowed;
+            position: relative;
+        }
+        
+        .btn-primary.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #08163D;
+            color: white;
+            padding: 60px 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #1F429A !important;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            color: #fff !important;
+        }
+        
+        .social-icon:hover {
+            background: #fff !important;
+            color: #1F429A !important;
+            transform: translateY(-3px);
+        }
+        
+        .social-icon,
+        .social-icon:link,
+        .social-icon:visited,
+        .social-icon:hover,
+        .social-icon:active {
+            text-decoration: none !important;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 20px;
+        }
+        
+        /* ========== CHAT WIDGET ========== */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background: #1f429a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .chat-button:hover {
+            background: #152d70;
+            transform: scale(1.1);
+        }
+        .chat-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            display: none;
+        }
+        .chat-window.active {
+            display: block;
+        }
+        .chat-header {
+            background: #1f429a;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-header h4 {
+            font-size: 1.1rem;
+        }
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .chat-body {
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .chat-body p {
+            background: #f1f3f5;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message.user {
+            align-items: flex-end;
+        }
+        .message.bot {
+            align-items: flex-start;
+        }
+        .message.user p {
+            background: #1f429a;
+            color: white;
+            border-radius: 18px 18px 4px 18px;
+        }
+        .message.bot p {
+            background: #f1f3f5;
+            color: #333;
+            border-radius: 18px 18px 18px 4px;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .chat-input button {
+            background: #1f429a;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+        
+        /* Typing indicator */
+        .typing-indicator p {
+            background: #f1f3f5 !important;
+            color: #6c757d !important;
+            font-style: italic;
+            padding: 8px 15px !important;
+            border-radius: 18px 18px 18px 4px !important;
+            margin: 0 !important;
+            font-size: 0.9rem;
+        }
+        
+        /* Enhanced chat styling */
+        .message.bot p {
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+        
+        .message.bot p a {
+            color: #1f429a;
+            text-decoration: underline;
+        }
+        
+        .message.bot p a:hover {
+            color: #08163d;
+        }
+
+        /* Media queries */
+        @media (max-width: 1100px) {
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-logo img {
+                height: 40px;
+            }
+            
+            .page-hero {
+                padding: 0 20px 30px 20px;
+            }
+            .page-hero .container {
+                padding-top: calc(var(--nav-height) + 20px);
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                padding: 0 15px;
+            }
+            
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .search-box input {
+                padding: 14px 20px;
+            }
+            
+            .search-box button {
+                padding: 0 20px;
+            }
+        }
+        .tab-btn {
+          background: #f8fafc;
+          color: #1F429A;
+        } /* <-- Add this */
+
+        .faq-tabs {
+          background: #f8fafc;
+          border-radius: 2rem;
+          box-shadow: 0 2px 12px rgba(31,66,154,0.07);
+          padding: 0.5rem 1rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 2.5rem;
+          margin-top: 3rem;
+          border: 1.5px solid #e3e8f0;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .tab-btn {
+          background: transparent;
+          color: #1F429A;
+          border: none;
+          outline: none;
+          font-size: 1rem;
+          font-weight: 500;
+          padding: 0.6rem 1.6rem;
+          border-radius: 999px;
+          transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+          cursor: pointer;
+          box-shadow: none;
+          position: relative;
+          z-index: 1;
+        }
+
+        .tab-btn:hover,
+        .tab-btn:focus {
+          background: #e9f0ff;
+          color: #1F429A;
+          box-shadow: 0 2px 8px rgba(31,66,154,0.08);
+        }
+
+        .tab-btn.active {
+          background: #1F429A;
+          color: #fff;
+          font-weight: 600;
+          box-shadow: 0 4px 16px rgba(31,66,154,0.13);
+        }
+
+        @media (max-width: 600px) {
+          .faq-tabs {
+            gap: 0.5rem;
+            padding: 0.5rem;
+            max-width: 98vw;
+          }
+          .tab-btn {
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+          }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="assets/images/main logo.webp" alt="RukaPay Logo"></a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="how-it-works.html" class="nav-link">How It Works</a>
+                <a href="merchants.html" class="nav-link">Merchants</a>
+                <a href="tariffs.html" class="nav-link">Tariffs</a>
+                <a href="help-center.html" class="nav-link active">Help Center</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="careers.html" class="nav-link">Careers</a>
+                
+            </div>
+            <div class="mobile-icons">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Help Center</h1>
+            <p>Find answers to your questions and get the support you need</p>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="help-search">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" placeholder="Search for help articles...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Tab Menu -->
+    <div class="faq-tabs flex flex-wrap gap-4 justify-center items-center w-full mb-10 mt-12" style="text-align:center;">
+      <button class="tab-btn active" data-tab="subscribers">For Subscribers</button>
+      <button class="tab-btn" data-tab="merchants">For Merchants</button>
+      <button class="tab-btn" data-tab="agents">For Agents</button>
+      <button class="tab-btn" data-tab="delete-account">Delete Account</button>
+    </div>
+
+    <!-- FAQ Accordions (each in its own container) -->
+    <div id="faq-subscribers" class="faq-tab-content">
+      <section id="subscribers" class="faq-section">
+        <h3 class="section-title" style="font-size:1.4rem;color:#1F429A;margin-top:0;margin-bottom:24px;text-align:left;">FOR SUBSCRIBERS (CUSTOMERS)</h3>
+        <div class="faq-accordion">
+          <div class="faq-item"><div class="faq-question"><h3>What is RukaPay and how do I use it?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>RukaPay is a convenient mobile platform that lets you pay for goods and services, and transfer money, instantly. You can pay using QR codes, our simple USSD service (*289#), or the RukaPay mobile app.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Do I need an account to use RukaPay?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes, an account is required to unlock all the benefits RukaPay has to offer, including access to your transaction history.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How secure is RukaPay?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes,  Extremely secure. We use bank-grade encryption, multi-layer authentication, and real-time transaction alerts to guarantee your safety and privacy with every payment</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Are there any charges when I make payments?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Payments made directly to merchants are free of charge. Our in-app and USSD money transfer services have a minimal transaction fee.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How do I know if my payment was successful?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>You'll receive an SMS immediately after a successful payment.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>What should I do if a transaction fails or I'm charged wrongly?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Please contact RukaPay support right away with your transaction ID and the time it occurred. We aim to resolve most issues within 24 hours.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Can I use RukaPay without internet access?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. Yes! You can easily access our services using the *USSD code *289# on any mobile phone, no internet required.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>What should I do if my account top-up doesn't show?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>First, log out and log back in to your account, and check your account statement to see if the top-up has posted. If it still hasn't reflected, please gather the Transaction ID and time of the transaction and contact our Customer Support team.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Is there a way to track my past payments?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. If you have an account, you can view your transaction history on the RukaPay App.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>I didn't receive my One-Time Password (OTP). What should I do?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Please wait at least one minute. Then, check your Spam/Junk folder, and finally, ensure the phone number your entering is correct</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>I forgot my PIN. How do I recover it?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Simply use the "Forgot PIN" link on the login screen of the app. Follow the secure, automated recovery steps which will involve answering your Security Questions.</p></div></div>
+        </div>
+      </section>
+    </div>
+    <div id="faq-merchants" class="faq-tab-content" style="display:none;">
+      <section id="merchants" class="faq-section">
+        <h3 class="section-title" style="font-size:1.4rem;color:#1F429A;margin-top:0;margin-bottom:24px;text-align:left;">FOR MERCHANTS</h3>
+        <div class="faq-accordion">
+          <div class="faq-item"><div class="faq-question"><h3>What is RukaPay and how can it help my business?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>RukaPay is a digital payment platform that allows you to accept payments securely through QR codes, USSD, POS, or mobile apps. It helps you manage transactions, get reports, and expand your payment options for customers.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How do I register my business on RukaPay?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>To register, visit the RukaPay Offices at TMT building 2nd Floor, Naguru-Bukoto, Kira Rd, Kampala. Alternatively, a RukaPay field agent can visit your location to help with the onboarding process.
+          </p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>What documents do I need to register as a merchant?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>You'll need a valid business registration certificate,a nationalID, and an active bank   or mobile money account.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How do I receive payments from customers?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Customers can easily pay you by scanning your QR code, dialing your USSD code, or through your POS terminal (if applicable). You'll receive an instant, confirmed notification for every successful payment.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How do I access my transaction history?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>You can view your transaction history via the RukaPay merchant dashboard or app.You'll also receive daily summaries by email or SMS.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Are there any transaction fees?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes, minimal transaction fees apply depending on the payment method used. You can view the full tariff breakdown in your merchant portal.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How do I get a RukaPay QR code or POS device?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Once you're approved, RukaPay provides a free digital QR code. For POS devices, you can request one via your dashboard or agent (a deposit may apply).</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Can I get support if I have issues with payments?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes our merchant support teams available 24/7.You can reach us via the in-appchat, email, or by calling  0200244410</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How do I reconcile my daily transactions?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Use the dashboard's reconciliation feature or download daily/weekly statements to compare with your internal records.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Can I add multiple branches to my account?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Absolutely. You can manage multiple branches from your single main account</p></div></div>
+        </div>
+      </section>
+    </div>
+    <div id="faq-agents" class="faq-tab-content" style="display:none;">
+      <section id="agents" class="faq-section">
+        <h3 class="section-title" style="font-size:1.4rem;color:#1F429A;margin-top:0;margin-bottom:24px;text-align:left;">FOR AGENTS</h3>
+        <div class="faq-accordion">
+          <div class="faq-item"><div class="faq-question"><h3>Who is a RukaPay agent?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>A RukaPay Agent is our local representative, serving as a crucial link between RukaPay and the community. You help users and merchants with registration, cash deposits, withdrawals, and minor issue resolution.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How can I become a RukaPay agent?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>To apply, visit our offices at TMT Building 2nd Floor, Naguru-Bukoto, Kira Rd, Kampala. Please bring your ID, a passport photo, and proof of address. Approval usually takes 48-72 hours.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>What services can I offer as an agent?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>You can provide a range of essential services, including: Customer registration, Cash-in and cash-out (deposits/withdrawals), Merchant onboarding, Float management, and Customer support.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Do I need capital to start?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes, you need initial float minimum UGX 300,000 to process withdrawals and   deposits.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How much commission do I earn?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Agents earn a percentage-based commission on every single transaction processed. You can find the detailed commission structure within your dedicated agent portal.
+          </p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>What support does RukaPay provide agents?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>We provide branded materials, training, a digital dashboard, and a dedicated agent support line.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>How do I manage my float?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>You can transfer float via mobile money or bank deposit. Your dashboard lets you monitor balances in real time.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>What should I do in case of fraud or suspicious activity?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Immediately report any suspicious transactions through the agent hotline. Protecting you, your customers, and your float is our highest priority.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>Can I have more than one agent outlet?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. You can expand to more locations. Each will be registered under your master account.</p></div></div>
+          <div class="faq-item"><div class="faq-question"><h3>What happens if I lose my phone or access to my account?</h3><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Contact our support team immediately so we can suspend your account and help you regain secure access without delay.</p></div></div>
+        </div>
+      </section>
+    </div>
+    <div id="faq-delete-account" class="faq-tab-content" style="display:none;">
+      <section id="delete-account" class="faq-section">
+        <div class="faq-accordion" style="max-width:800px;margin:0 auto;">
+          <div class="faq-item">
+            <div class="faq-question"><h3>How to Delete Your RukaPay Account</h3><span class="faq-toggle">+</span></div>
+            <div class="faq-answer">
+              <div class="bg-red-100 border border-red-300 rounded-lg p-4 mb-6">
+                <strong>Warning:</strong> Deleting your account is irreversible. All your data will be permanently removed.
+              </div>
+              <ol class="list-decimal list-inside space-y-4 mb-4">
+                <li>
+                  <strong>Log In:</strong> Open the RukaPay app and log in with your credentials.
+                </li>
+                <li>
+                  <strong>Go to Settings:</strong> Tap the settings icon (⚙️) in the top-left, then select <strong>Settings</strong>.
+                </li>
+                <li>
+                  <strong>Account & Security:</strong> Within Settings, tap <strong>Account & Security</strong>.
+                </li>
+                <li>
+                  <strong>Delete Account:</strong> Scroll down and tap <strong>Delete Account</strong>. A confirmation screen appears.
+                </li>
+                <li>
+                  <strong>Confirm Deletion:</strong> Enter your pin and tap <strong>Confirm Delete</strong>. Your account and all data will be permanently removed.
+                </li>
+              </ol>
+              <p class="mt-8 text-center">
+                Need help? <a href="help-center.html#contact-support" class="text-blue-600 underline">Contact our support team</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <div class="container">
+            <h2 class="section-title">Still Need Help?</h2>
+            <form class="contact-form" id="helpContactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Issue Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="account">Account Issues</option>
+                        <option value="transaction">Transaction Problems</option>
+                        <option value="merchant">Merchant Services</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Describe Your Issue</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">Submit Request</button>
+                <div id="formMessage" class="form-message" style="display: none;"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <div class="search-header">
+                <h3>Search RukaPay</h3>
+                <button class="search-close" id="searchClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-body">
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" placeholder="Search for services, features, or help..." autocomplete="off">
+                    <button class="search-submit" id="searchSubmit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-suggestions" id="searchSuggestions">
+                    <div class="suggestion-category">
+                        <h4>Popular Searches</h4>
+                        <div class="suggestion-tags">
+                            <span class="suggestion-tag" data-search="mobile money">Mobile Money</span>
+                            <span class="suggestion-tag" data-search="QR payments">QR Payments</span>
+                            <span class="suggestion-tag" data-search="merchant services">Merchant Services</span>
+                            <span class="suggestion-tag" data-search="USSD">USSD *289#</span>
+                        </div>
+                    </div>
+                    <div class="suggestion-category">
+                        <h4>Quick Links</h4>
+                        <div class="quick-links">
+                            <a href="how-it-works.html" class="quick-link">
+                                <i class="fas fa-play-circle"></i>
+                                How It Works
+                            </a>
+                            <a href="tariffs.html" class="quick-link">
+                                <i class="fas fa-tags"></i>
+                                Pricing & Tariffs
+                            </a>
+                            <a href="merchants.html" class="quick-link">
+                                <i class="fas fa-store"></i>
+                                Merchant Services
+                            </a>
+                            <a href="help-center.html" class="quick-link">
+                                <i class="fas fa-question-circle"></i>
+                                Help Center
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-results" id="searchResults" style="display: none;">
+                    <div class="results-header">
+                        <h4>Search Results</h4>
+                        <span class="results-count" id="resultsCount"></span>
+                    </div>
+                    <div class="results-list" id="resultsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RukaPay</h3>
+                <p>Secure, reliable, advanced payment solutions for Ugandan businesses.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/rukapay.ug?mibextid=wwXIfr&rdid=NRSNTPzqwpnCBJp3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16G2dBLQWx%2F%3Fmibextid%3DwwXIfr#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/rukapay_ug" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frukapay.ug%2F%3Figsh%3DdWFhbm5nZ2YybWF4&is_from_rle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/rhino-payment-company?trk=public_profile_topcard-current-company" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@RukaPay-p4v" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <p>Scan to Pay</p>
+                  <p>Tap to Pay</p>
+                  <p>USSD Payments</p>
+                  <p>Merchant Services</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+               <p>TMT Atrium Building 2nd Floor</p>
+                <p>Naguru-Bukoto, kira rd, Kampala</p>
+                <p>Po BOX 111498</p>
+                                            <p><i class="fas fa-phone"></i> <a href="tel:+256200244400" style="color: #fff !important; text-decoration: none;">0200 244 400</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@rukapay.co.ug" style="color: #fff !important; text-decoration: none;">info@rukapay.co.ug</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <p>Licensed Payment Service Provider / Payment System Operator</p>
+                <p>
+                    <a href="privacy-policies.html" style="color: #fff !important; text-decoration: none;">Privacy Policy</a>
+                </p>
+                <p>
+                    <a href="privacy-policies.html#terms-and-conditions" style="color: #fff !important; text-decoration: none;">Terms and Conditions</a>
+                </p>
+                
+            </div>
+        </div>
+        
+                    <div class="footer-bottom">
+                <p>&copy; 2025 Rhino Payment Services Ltd (trading as RukaPay). All rights reserved.</p>
+                <p>Licensed Payment Service Provider / Payment System Operator by the Bank of Uganda</p>
+            </div>
+    </footer>
+
+    <!-- Chat Widget Placeholder -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-button">
+            <span>💬</span>
+        </div>
+        <div class="chat-window">
+            <div class="chat-header">
+                <h4>RukaPay Support</h4>
+                <button class="chat-close">×</button>
+            </div>
+            <div class="chat-body">
+                <p>Hello! How can we help you today?</p>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const searchBtn = document.querySelector('.search-btn');
+            const menuIcon = mobileMenuToggle.querySelector('i');
+            
+            // Toggle mobile menu
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Change menu icon
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            // Search functionality
+            const searchModal = document.getElementById('searchModal');
+            const searchClose = document.getElementById('searchClose');
+            const searchInput = document.getElementById('searchInput');
+            const searchSubmit = document.getElementById('searchSubmit');
+            const searchSuggestions = document.getElementById('searchSuggestions');
+            const searchResults = document.getElementById('searchResults');
+            const resultsList = document.getElementById('resultsList');
+            const resultsCount = document.getElementById('resultsCount');
+            const suggestionTags = document.querySelectorAll('.suggestion-tag');
+
+            // Open search modal
+            searchBtn.addEventListener('click', function() {
+                searchModal.classList.add('active');
+                setTimeout(() => {
+                    searchInput.focus();
+                }, 300);
+            });
+
+            // Close search modal
+            searchClose.addEventListener('click', function() {
+                searchModal.classList.remove('active');
+                searchInput.value = '';
+                showSuggestions();
+            });
+
+            // Close modal when clicking outside
+            searchModal.addEventListener('click', function(e) {
+                if (e.target === searchModal) {
+                    searchModal.classList.remove('active');
+                    searchInput.value = '';
+                    showSuggestions();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+                    searchModal.classList.remove('active');
+                    searchInput.value = '';
+                    showSuggestions();
+                }
+            });
+
+            // Search on Enter key
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Search on submit button click
+            searchSubmit.addEventListener('click', performSearch);
+
+            // Suggestion tags click
+            suggestionTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    searchInput.value = this.getAttribute('data-search');
+                    performSearch();
+                });
+            });
+
+            // Search input change
+            searchInput.addEventListener('input', function() {
+                if (this.value.trim() === '') {
+                    showSuggestions();
+                } else {
+                    // Real-time search suggestions could be implemented here
+                }
+            });
+
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (query === '') return;
+
+                // Search data - in a real app, this would come from a backend
+                const searchData = [
+                    { title: 'Mobile Money Services', description: 'Send and receive money using mobile money integration', url: 'how-it-works.html' },
+                    { title: 'QR Code Payments', description: 'Scan QR codes to make instant payments at merchant locations', url: 'how-it-works.html' },
+                    { title: 'USSD Services', description: 'Access RukaPay services using *289# on any mobile phone', url: 'how-it-works.html' },
+                    { title: 'Merchant Services', description: 'Accept payments and grow your business with RukaPay', url: 'merchants.html' },
+                    { title: 'Transaction Fees', description: 'View our competitive pricing and transaction fees', url: 'tariffs.html' },
+                    { title: 'Security Features', description: 'Learn about our bank-grade security and encryption', url: 'about.html' },
+                    { title: 'Customer Support', description: 'Get help with your RukaPay account and transactions', url: 'help-center.html' },
+                    { title: 'Business Solutions', description: 'Tools and services designed for Ugandan businesses', url: 'merchants.html' },
+                    { title: 'Digital Wallet', description: 'Store money securely in your RukaPay digital wallet', url: 'how-it-works.html' },
+                    { title: 'Payment Methods', description: 'Multiple ways to pay including scan, tap, and USSD', url: 'how-it-works.html' }
+                ];
+
+                // Filter results based on query
+                const results = searchData.filter(item => 
+                    item.title.toLowerCase().includes(query.toLowerCase()) ||
+                    item.description.toLowerCase().includes(query.toLowerCase())
+                );
+
+                displayResults(results);
+            }
+
+            function displayResults(results) {
+                searchSuggestions.style.display = 'none';
+                searchResults.style.display = 'block';
+                
+                resultsCount.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
+                
+                resultsList.innerHTML = '';
+                
+                if (results.length === 0) {
+                    resultsList.innerHTML = `
+                        <div class="result-item">
+                            <h5>No results found</h5>
+                            <p>Try searching with different keywords or browse our quick links below.</p>
+                        </div>
+                    `;
+                } else {
+                    results.forEach(result => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'result-item';
+                        resultItem.innerHTML = `
+                            <h5>${result.title}</h5>
+                            <p>${result.description}</p>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            window.location.href = result.url;
+                        });
+                        resultsList.appendChild(resultItem);
+                    });
+                }
+            }
+
+            function showSuggestions() {
+                searchSuggestions.style.display = 'block';
+                searchResults.style.display = 'none';
+            }
+            // Close menu when clicking on a link
+            const navLinksItems = document.querySelectorAll('.nav-link');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        });
+        
+        // FAQ accordion functionality
+        // Only one FAQ open at a time per accordion
+        document.querySelectorAll('.faq-accordion').forEach(accordion => {
+            const items = accordion.querySelectorAll('.faq-item');
+            items.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close all other items in this accordion
+                    items.forEach(i => {
+                        if (i !== item) i.classList.remove('active');
+                    });
+                    // Toggle this item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+        
+        // EmailJS initialization (commented out until credentials are provided)
+        // (function() {
+        //     emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // Replace with your actual EmailJS public key
+        // })();
+        
+        // Form submission with fallback to email client
+        const contactForm = document.getElementById('helpContactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.textContent = 'Preparing...';
+            formMessage.style.display = 'none';
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                category: document.getElementById('category').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Create email content
+            const subject = `Help Center Request - ${formData.category}`;
+            const emailBody = `Hello RukaPay Support Team,
+
+I am submitting a help center request with the following details:
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Category: ${formData.category}
+
+Message:
+${formData.message}
+
+---
+This request was submitted through the RukaPay Help Center contact form.`;
+
+            // Try EmailJS first (if configured)
+            if (typeof emailjs !== 'undefined' && emailjs.init) {
+                try {
+                    // EmailJS template parameters
+                    const templateParams = {
+                        to_email: 'info@rukapay.co.ug',
+                        from_name: formData.name,
+                        from_email: formData.email,
+                        phone_number: formData.phone,
+                        issue_category: formData.category,
+                        message: formData.message,
+                        subject: subject
+                    };
+                    
+                    // Send email using EmailJS
+                    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                        .then(function(response) {
+                            // Success
+                            formMessage.textContent = 'Thank you! Your support request has been sent successfully. We will get back to you within 24 hours.';
+                            formMessage.className = 'form-message success';
+                            formMessage.style.display = 'block';
+                            contactForm.reset();
+                            
+                            // Reset button
+                            submitBtn.classList.remove('loading');
+                            submitBtn.textContent = 'Submit Request';
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(() => {
+                                formMessage.style.display = 'none';
+                            }, 5000);
+                        }, function(error) {
+                            // EmailJS failed, use fallback
+                            useEmailFallback(subject, emailBody, formData);
+                        });
+                } catch (error) {
+                    // EmailJS not configured, use fallback
+                    useEmailFallback(subject, emailBody, formData);
+                }
+            } else {
+                // EmailJS not available, use fallback
+                useEmailFallback(subject, emailBody, formData);
+            }
+        });
+        
+        function useEmailFallback(subject, emailBody, formData) {
+            // Create mailto link
+            const mailtoLink = `mailto:info@rukapay.co.ug?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Show success message with instructions
+            formMessage.innerHTML = `
+                <strong>Email Client Opening...</strong><br>
+                Your email client will open with a pre-filled message to our support team.<br>
+                Please click "Send" in your email client to complete your request.
+            `;
+            formMessage.className = 'form-message success';
+            formMessage.style.display = 'block';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset button
+            submitBtn.classList.remove('loading');
+            submitBtn.textContent = 'Submit Request';
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Hide message after 10 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 10000);
+        }
+
+        // Chat functionality
+        const chatWidget = document.getElementById('chatWidget');
+        const chatButton = chatWidget.querySelector('.chat-button');
+        const chatWindow = chatWidget.querySelector('.chat-window');
+        const chatClose = chatWidget.querySelector('.chat-close');
+        const chatInput = chatWidget.querySelector('.chat-input input');
+        const chatSendBtn = chatWidget.querySelector('.chat-input button');
+        const chatBody = chatWidget.querySelector('.chat-body');
+
+        // Open chat window
+        chatButton.addEventListener('click', function() {
+            chatWindow.classList.add('active');
+            chatInput.focus();
+            
+            // Add welcome message if chat is empty
+            if (chatBody.children.length === 1) {
+                setTimeout(() => {
+                    addMessage(`Hello! 👋 Welcome to RukaPay Help Center!
+
+I'm your AI assistant, here to help you with any RukaPay questions. I can help with:
+
+ Account Management
+• Creating accounts
+• PIN reset
+• Transaction limits
+
+ Payments & Transactions
+• Send money
+• Transaction fees
+• Processing times
+
+Security & Safety
+• Security features
+• Fraud protection
+• Account safety
+
+Merchant Services
+• Becoming a merchant
+• Accepting payments
+• Business solutions
+
+*USSD Services
+• *289# usage
+• Basic phone support
+• Offline access
+
+Technical Support
+• App issues
+• Error troubleshooting
+• Contact information
+
+What can I help you with today? Just type your question!`, 'bot');
+                }, 500);
+            }
+        });
+
+        // Close chat window
+        chatClose.addEventListener('click', function() {
+            chatWindow.classList.remove('active');
+        });
+
+        // Send message on button click
+        chatSendBtn.addEventListener('click', sendMessage);
+
+        // Send message on Enter key
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Expanded FAQ Knowledge Base for Chatbot (from all visible FAQ sections)
+        const faqKnowledgeBase = [
+          // Subscribers (Customers)
+          {
+            keywords: ['what is rukapay', 'how do i use rukapay', 'how to use rukapay', 'rukapay app', 'pay for goods', 'pay for services'],
+            response: "RukaPay is a mobile platform that lets you pay for goods and services using QR codes, USSD, or the RukaPay app. It's simple, secure, and works on any phone!"
+          },
+          {
+            keywords: ['need an account', 'do i need an account', 'account required', 'use rukapay without account'],
+            response: "For most services, you don't need an account—just scan the merchant's QR code or dial the USSD code and follow the prompts. But if you sign up, you'll get access to your payment history and loyalty rewards!"
+          },
+          {
+            keywords: ['is it safe', 'is rukapay safe', 'security', 'secure', 'is rukapay secure'],
+            response: "Absolutely! RukaPay uses bank-grade encryption, multi-layer authentication, and real-time transaction alerts to keep you safe."
+          },
+          {
+            keywords: ['charges', 'fees', 'cost', 'payment charges', 'are there any charges'],
+            response: "Most payments are free for consumers, but some services (like sending funds to another person or withdrawing) may have a small fee."
+          },
+          {
+            keywords: ['payment successful', 'how do i know payment', 'confirmation', 'did my payment go through'],
+            response: "You'll get an SMS and/or app notification right after a successful payment. If you don't, let us know!"
+          },
+          {
+            keywords: ['transaction fails', 'charged wrongly', 'payment failed', 'wrongly charged'],
+            response: "If a transaction fails or you were charged incorrectly, please contact RukaPay support with your transaction ID. We'll help resolve it within 24–48 hours."
+          },
+          {
+            keywords: ['without internet', 'no internet', 'offline', 'use rukapay without internet', 'ussd'],
+            response: "Yes! You can use our USSD service by dialing the RukaPay code on any mobile phone—no internet needed."
+          },
+          {
+            keywords: ['send money to wrong person', 'wrong merchant', 'sent to wrong', 'mistake payment'],
+            response: "Contact support right away with your transaction ID. We'll investigate and help with reversals where possible."
+          },
+          {
+            keywords: ['track payments', 'past payments', 'payment history', 'see my payments'],
+            response: "If you have an account, you can view your transaction history on the RukaPay app or website."
+          },
+          {
+            keywords: ['rewards', 'cashback', 'loyalty', 'earn points'],
+            response: "Yes! Our loyalty program gives you points for frequent use, which you can redeem for airtime, discounts, or cashbacks."
+          },
+          // Merchants
+          {
+            keywords: ['rukapay for business', 'rukapay merchant', 'help my business', 'accept payments', 'merchant dashboard'],
+            response: "RukaPay lets you accept payments securely via QR codes, USSD, POS, or mobile apps. You can manage transactions, get reports, and offer more payment options to your customers."
+          },
+          {
+            keywords: ['register my business', 'register as merchant', 'merchant registration', 'onboarding'],
+            response: "You can register your business by visiting the RukaPay website or app and submitting your details. Or, a RukaPay field agent can help you onboard."
+          },
+          {
+            keywords: ['merchant documents', 'documents to register', 'what do i need to register as merchant'],
+            response: "You'll need a valid business registration certificate, a national ID, and an active bank or mobile money account."
+          },
+          {
+            keywords: ['receive payments', 'how do i get paid', 'customer payments'],
+            response: "Customers can pay you by scanning your QR code, dialing your USSD code, or using our POS terminal. You'll get instant confirmation for every payment."
+          },
+          {
+            keywords: ['transaction history', 'merchant history', 'view transactions'],
+            response: "You can view your transaction history via the merchant dashboard or app. You'll also get daily summaries by email or SMS."
+          },
+          {
+            keywords: ['merchant fees', 'transaction fees', 'merchant charges'],
+            response: "Minimal transaction fees apply, depending on the payment method. You can see the full tariff breakdown in your merchant portal."
+          },
+          {
+            keywords: ['get qr code', 'get pos device', 'merchant qr', 'merchant pos'],
+            response: "Once you're approved, RukaPay gives you a free digital QR code. For POS devices, you can request one via your dashboard or agent (a deposit may apply)."
+          },
+          {
+            keywords: ['merchant support', 'help with payments', 'merchant help'],
+            response: "Our merchant support team is available 24/7. You can reach us via in-app chat, email, or by calling our toll-free line."
+          },
+          {
+            keywords: ['reconcile transactions', 'reconciliation', 'daily reconciliation'],
+            response: "Use the dashboard's reconciliation feature or download daily/weekly statements to compare with your records."
+          },
+          {
+            keywords: ['multiple branches', 'add branches', 'manage locations'],
+            response: "Yes, you can manage multiple business locations from one account and monitor performance across branches."
+          },
+          // Agents
+          {
+            keywords: ['who is agent', 'rukapay agent', 'what is agent'],
+            response: "A RukaPay agent helps users and merchants register, withdraw cash, deposit funds, and resolve minor issues. They're our representatives in local communities."
+          },
+          {
+            keywords: ['become agent', 'how to become agent', 'agent registration', 'agent onboarding'],
+            response: "Apply through the RukaPay website or visit our offices with your ID, a passport photo, and proof of address. Approval usually takes 48–72 hours."
+          },
+          {
+            keywords: ['agent services', 'what can agent do', 'agent offers'],
+            response: "As an agent, you can help with customer registration, cash-in and cash-out, merchant onboarding, float management, and customer support."
+          },
+          {
+            keywords: ['agent capital', 'float', 'do i need capital', 'agent float'],
+            response: "Yes, you need initial float (minimum UGX 100,000) to process withdrawals and deposits."
+          },
+          {
+            keywords: ['agent commission', 'how much commission', 'agent earnings'],
+            response: "Agents earn a percentage on each transaction processed. You can see the detailed commission structure in your agent portal."
+          },
+          {
+            keywords: ['agent support', 'support for agents', 'agent help'],
+            response: "We provide branded materials, training, a digital dashboard, and a dedicated agent support line."
+          },
+          {
+            keywords: ['manage float', 'float management', 'transfer float'],
+            response: "You can transfer float via mobile money or bank deposit. Your dashboard lets you monitor balances in real time."
+          },
+          {
+            keywords: ['fraud', 'suspicious activity', 'report fraud', 'agent fraud'],
+            response: "Immediately report any suspicious transactions through the agent hotline. Your safety and compliance are our top priorities."
+          },
+          {
+            keywords: ['more than one agent outlet', 'multiple outlets', 'expand agent'],
+            response: "Yes, you can expand to more locations. Each will be registered under your master account."
+          },
+          {
+            keywords: ['lose phone', 'lost phone', 'lost access', 'regain access'],
+            response: "Contact support to suspend your account and help you regain access securely."
+          }
+        ];
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatInput.value = '';
+                
+                // Show typing indicator
+                showTypingIndicator();
+                
+                // Process message and get intelligent response
+                setTimeout(() => {
+                    const response = getIntelligentResponse(message.toLowerCase());
+                    hideTypingIndicator();
+                    addMessage(response, 'bot');
+                }, 1500);
+            }
+        }
+
+        function getIntelligentResponse(message) {
+          // Lowercase and basic normalization
+          const normalized = message.toLowerCase();
+          // Try to find a matching FAQ
+          for (const faq of faqKnowledgeBase) {
+            for (const keyword of faq.keywords) {
+              if (normalized.includes(keyword)) {
+                // Friendly, human-like touch
+                return `<span style='color:#1F429A;'>${faq.response}</span>`;
+              }
+            }
+          }
+          // If no match, provide a friendly fallback
+          const generalResponses = [
+            "I'm here to help! Could you tell me a bit more about your question? You can ask about payments, merchants, agents, or anything RukaPay.",
+            "Hmm, I didn't catch that exactly, but I'm happy to help! Try asking about how to use RukaPay, fees, support, or anything else on your mind.",
+            "Great question! If you need info on accounts, payments, merchants, or agents, just ask. Or check the FAQ above for quick answers."
+          ];
+          return generalResponses[Math.floor(Math.random() * generalResponses.length)];
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot typing-indicator';
+            typingDiv.innerHTML = '<p>RukaPay is typing...</p>';
+            chatBody.appendChild(typingDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = chatBody.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Sidebar dropdown and smooth scroll
+        document.addEventListener('DOMContentLoaded', function() {
+          const dropdownBtn = document.getElementById('sidebarDropdownBtn');
+          const submenu = document.getElementById('sidebarSubmenu');
+          if (dropdownBtn && submenu) {
+            dropdownBtn.addEventListener('click', function() {
+              const expanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+              dropdownBtn.setAttribute('aria-expanded', !expanded);
+              submenu.style.display = expanded ? 'none' : 'block';
+            });
+            submenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', function(e) {
+                e.preventDefault();
+                submenu.style.display = 'none';
+                dropdownBtn.setAttribute('aria-expanded', 'false');
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              });
+            });
+          }
+          document.querySelectorAll('.sidebar__link').forEach(link => {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              const target = document.querySelector(this.getAttribute('href'));
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            });
+          });
+        });
+
+        // Add tab switching logic for FAQ tabs
+        document.addEventListener('DOMContentLoaded', function() {
+          const tabBtns = document.querySelectorAll('.tab-btn');
+          const tabContents = document.querySelectorAll('.faq-tab-content');
+          tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+              // Remove active from all
+              tabBtns.forEach(b => b.classList.remove('active'));
+              tabContents.forEach(c => c.style.display = 'none');
+              // Activate this
+              btn.classList.add('active');
+              document.getElementById('faq-' + btn.getAttribute('data-tab')).style.display = '';
+            });
+          });
+        });
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>

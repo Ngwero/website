@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at RukaPay - Join Our Team</title>
+    <meta name="description" content="Join RukaPay's growing team. Explore career opportunities in fintech, payments, and digital innovation in Uganda.">
+    
+    <!-- Brand Colors & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN (v6.x) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+    
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary-dark: #08163D;
+            --primary: #1F429A;
+            --accent: #FFFFFF;
+            --nav-height: 70px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: #fff;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            padding-top: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(31, 66, 154, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(31, 66, 154, 0.4);
+        }
+
+        /* ===== NAVBAR STYLES ===== */
+        header {
+            position: fixed;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #08163D;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 0 40px;
+            height: var(--nav-height);
+            pointer-events: auto;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 40px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            background: #08163D;
+        }
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        .nav-link:hover {
+            color: #1F429A !important;
+            background: rgba(255,255,255,0.06);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #1F429A !important;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .mobile-icons {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        .mobile-icons button, .mobile-menu-toggle {
+            color: #fff !important;
+        }
+        .mobile-icons button {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        .mobile-icons button:hover {
+            color: var(--primary);
+            background: rgba(31, 66, 154, 0.1);
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: calc(var(--nav-height) + 24px);
+                left: 50%;
+                transform: translate(-50%, -30px) scale(0.98);
+                right: auto;
+                background: #08163D;
+                color: #fff;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+                z-index: 100;
+                opacity: 0;
+                height: auto;
+                min-width: 85vw;
+                border-radius: 22px;
+                overflow: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+            }
+            .nav-links.active {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+                pointer-events: auto;
+            }
+            .nav-link {
+                color: #fff !important;
+                padding: 0.9rem 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                font-size: 18px;
+                background: transparent;
+                transition: background 0.2s;
+            }
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            .nav-link:hover,
+            .nav-link.active {
+                color: #ffe066 !important;
+                background: rgba(255,255,255,0.06);
+            }
+            .mobile-icons {
+                display: flex;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            background: linear-gradient(rgba(8, 22, 61, 0.85), rgba(31, 66, 154, 0.85)), url('assets/images/CUSTOMER%20SUPPORT.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 230px 0 190px;
+            text-align: center;
+            color: white;
+            border-radius: 0 0 48px 48px;
+          
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== CAREERS CONTENT ===== */
+        .careers-content {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            color: #08163D !important;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* ===== JOB CARDS STYLES ===== */
+        .job-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: start;
+        }
+
+        .job-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .job-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-image {
+            width: 100%;
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 30px rgba(8, 22, 61, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* Fullscreen Modal Styles */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .image-modal.show {
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-content.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .job-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(8, 22, 61, 0.1) 0%, rgba(31, 66, 154, 0.2) 100%);
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .job-item:hover .job-image {
+            box-shadow: 0 12px 40px rgba(8, 22, 61, 0.15);
+        }
+
+        .job-item:hover .job-image::after {
+            opacity: 0.1;
+        }
+
+        .apply-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, #23346a 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(31, 66, 154, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: linear-gradient(135deg, #23346a 0%, var(--primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 66, 154, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+
+
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            margin: 40px 0;
+            grid-column: 1 / -1;
+        }
+
+        .coming-soon h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark) !important;
+            color: #fff !important;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3, .footer-section h4 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after, .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon,
+        .social-icon:link,
+        .social-icon:visited,
+        .social-icon:hover,
+        .social-icon:active {
+            text-decoration: none !important;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary) !important;
+            color: #fff !important;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: #fff !important;
+            color: var(--primary) !important;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .job-cards-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+                align-items: start;
+            }
+
+            .job-image {
+                height: 500px;
+                border-radius: 16px;
+            }
+
+            .apply-btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .job-cards-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .job-image {
+                height: 450px;
+                border-radius: 12px;
+            }
+
+                         .apply-btn {
+                 padding: 8px 20px;
+                 font-size: 0.85rem;
+             }
+
+             .close-modal {
+                 top: 10px;
+                 right: 15px;
+                 font-size: 30px;
+                 width: 50px;
+                 height: 50px;
+             }
+
+             .modal-content {
+                 max-width: 95vw;
+                 max-height: 95vh;
+             }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/main logo.webp" alt="RukaPay Logo">
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="how-it-works.html" class="nav-link">How It Works</a>
+                <a href="merchants.html" class="nav-link">Merchants</a>
+                <a href="tariffs.html" class="nav-link">Tariffs</a>
+                <a href="help-center.html" class="nav-link">Help Center</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="careers.html" class="nav-link active">Careers</a>
+            </div>
+            <div class="mobile-icons">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title" style="color: #fff;">Join Our Team</h1>
+            <p class="hero-subtitle">Be part of Uganda's digital payment revolution. Help us build the future of financial services.</p>
+        </div>
+    </section>
+
+    <!-- Careers Content -->
+    <section class="careers-content">
+        <div class="container">
+            <h2 class="section-title">Open Positions</h2>
+            
+            <!-- Job Items Container -->
+            <div class="job-cards-container" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+               
+                <!-- Job Item 1: Chief Business Development Officer -->
+               <!-- <div class="job-item">
+                    <div class="job-image" style="background-image: url('assets/images/CFO.webp');"></div>
+                    <a href="CFO.pdf" target="_blank" class="apply-btn">Apply</a>
+                </div>  -->
+                <div class="job-item">
+                    <div class="job-image" style="background-image: url('assets/images/auditorone.webp');"></div>
+                    <a href="Internal.pdf" target="_blank" class="apply-btn">Apply</a>
+                </div>
+
+                <!-- Job Item 2: Digital Trainee -->
+                <!--<<div class="job-item">
+                    <div class="job-image" style="background-image: url('assets/images/hiring-7.webp');"></div>
+                    <a href="Trainee.pdf" target="_blank" class="apply-btn">Apply</a>
+                </div>
+            
+               div class="job-item">
+                    <div class="job-image" style="background-image: url('assets/images/Motion.webp');"></div>
+                    <a href="Motion.pdf" target="_blank" class="apply-btn">Apply</a>
+                </div>
+              --!>
+
+                <!-- Coming Soon Section -->
+                <div class="coming-soon">
+                    <h3>More Opportunities Coming Soon</h3>
+                    <p>We're constantly growing and looking for talented individuals to join our team. Check back regularly for new openings or send us your resume for future consideration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer enhanced-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RukaPay</h3>
+                    <p>Secure, reliable, advanced payment solutions for Ugandan businesses.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/rukapay.ug?mibextid=wwXIfr&rdid=NRSNTPzqwpnCBJp3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16G2dBLQWx%2F%3Fmibextid%3DwwXIfr#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/rukapay_ug" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frukapay.ug%2F%3Figsh%3DdWFhbm5nZ2YybWF4&is_from_rle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/rhino-payment-company?trk=public_profile_topcard-current-company" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@RukaPay-p4v" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p>Scan to Pay</p>
+                  <p>Tap to Pay</p>
+                  <p>USSD Payments</p>
+                  <p>Merchant Services</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>TMT Atrium Building 2nd Floor</p>
+                <p>Naguru-Bukoto, kira rd, Kampala</p>
+                <p>Po BOX 111498</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+256200244400" style="color: #fff !important; text-decoration: none;">0200 244 400</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@rukapay.co.ug" style="color: #fff !important; text-decoration: none;">info@rukapay.co.ug</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <p>Licensed Payment Service Provider / Payment System Operator</p>
+                    <p>
+                        <a href="privacy-policies.html" style="color: #fff !important; text-decoration: none;">Privacy Policy</a>
+                    </p>
+                    <p>
+                        <a href="privacy-policies.html#terms-and-conditions" style="color: #fff !important; text-decoration: none;">Terms and Conditions</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rhino Payment Services Ltd (trading as RukaPay). All rights reserved.</p>
+                <p>Licensed Payment Service Provider / Payment System Operator by the Bank of Uganda</p>
+            </div>
+        </div>
+         </footer>
+
+     <!-- Image Modal -->
+     <div id="imageModal" class="image-modal">
+         <span class="close-modal" onclick="closeModal()">&times;</span>
+         <div class="modal-content">
+             <img id="modalImage" class="modal-image" src="" alt="Job Poster">
+         </div>
+     </div>
+
+     <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const menuIcon = mobileMenuToggle.querySelector('i');
+            
+            // Toggle mobile menu
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Change menu icon
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+                         // Close menu when clicking on a link
+             const navLinksItems = document.querySelectorAll('.nav-link');
+             navLinksItems.forEach(link => {
+                 link.addEventListener('click', () => {
+                     navLinks.classList.remove('active');
+                     menuIcon.classList.remove('fa-times');
+                     menuIcon.classList.add('fa-bars');
+                 });
+             });
+
+             // Image modal functionality
+             const jobImages = document.querySelectorAll('.job-image');
+             const modal = document.getElementById('imageModal');
+             const modalImage = document.getElementById('modalImage');
+
+                           jobImages.forEach(image => {
+                  image.addEventListener('click', function() {
+                      const backgroundImage = this.style.backgroundImage;
+                      const imageUrl = backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+                      modalImage.src = imageUrl;
+                      modal.style.display = 'block';
+                      document.body.style.overflow = 'hidden';
+                      
+                      // Add smooth transition classes after a brief delay
+                      setTimeout(() => {
+                          modal.classList.add('show');
+                          modal.querySelector('.modal-content').classList.add('show');
+                      }, 10);
+                  });
+              });
+
+             // Close modal when clicking outside
+             modal.addEventListener('click', function(e) {
+                 if (e.target === modal) {
+                     closeModal();
+                 }
+             });
+
+             // Close modal with Escape key
+             document.addEventListener('keydown', function(e) {
+                 if (e.key === 'Escape' && modal.style.display === 'block') {
+                     closeModal();
+                 }
+             });
+         });
+
+         function closeModal() {
+             const modal = document.getElementById('imageModal');
+             const modalContent = modal.querySelector('.modal-content');
+             
+             // Remove show classes for smooth closing animation
+             modal.classList.remove('show');
+             modalContent.classList.remove('show');
+             
+             // Hide modal after transition completes
+             setTimeout(() => {
+                 modal.style.display = 'none';
+                 document.body.style.overflow = 'auto';
+             }, 400);
+         }
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>

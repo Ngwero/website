@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction Tariffs (UGX)</title>
+  <!-- Brand Colors & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN (v6.x) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+  <style>
+    :root {
+      --primary-dark: #08163D;
+      --primary: #1F429A;
+      --accent: #FFFFFF;
+      --nav-height: 70px;
+      --transition: all 0.3s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: #f4f6f8;
+      color: var(--primary-dark);
+      line-height: 1.6;
+      padding-top: 110px;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto 60px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(31, 66, 154, 0.10);
+    }
+    h1 {
+      text-align: center;
+      color: #08163D;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    #search {
+      width: 100%;
+      padding: 12px 16px;
+      margin: 24px 0 28px 0;
+      border: 2px solid #1F429A;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      outline: none;
+      transition: border 0.2s;
+      box-shadow: 0 2px 8px rgba(31,66,154,0.06);
+    }
+    #search:focus {
+      border-color: #08163D;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(31,66,154,0.07);
+    }
+    thead {
+      background-color: #08163D;
+      color: white;
+    }
+    th, td {
+      padding: 14px 10px;
+      text-align: center;
+      border-bottom: 1px solid #e5e8ef;
+      font-size: 1.05rem;
+    }
+    th {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    tbody tr {
+      transition: background 0.2s;
+    }
+    tbody tr:hover {
+      background-color: #f0f8ff;
+      box-shadow: 0 2px 8px rgba(31,66,154,0.04);
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 8px 2vw;
+      }
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        display: none;
+      }
+      td {
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+        border-bottom: 1px solid #e5e8ef;
+      }
+      td::before {
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #1F429A;
+      }
+      td[data-label]:before {
+        content: attr(data-label);
+      }
+    }
+    /* Header/Navbar styles (copied from index.html) */
+    header {
+      position: fixed;
+      top: 32px;
+      left: 0;
+      width: 100%;
+      background: transparent;
+      box-shadow: none;
+      z-index: 1000;
+      padding: 0;
+      transition: var(--transition);
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90vw;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #08163D;
+      border-radius: 28px;
+      box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+      padding: 0 40px;
+      height: var(--nav-height);
+      pointer-events: auto;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 40px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      background: #08163D;
+    }
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 5px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+    .nav-link:hover {
+      color: #1F429A !important;
+      background: rgba(255,255,255,0.06);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: #1F429A !important;
+      font-weight: 600;
+    }
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .mobile-icons {
+      display: none;
+      align-items: center;
+      gap: 15px;
+    }
+    .mobile-icons button, .mobile-menu-toggle {
+      color: #fff !important;
+    }
+    .mobile-icons button {
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+    .mobile-icons button:hover {
+      color: var(--primary);
+      background: rgba(31, 66, 154, 0.1);
+    }
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: calc(var(--nav-height) + 24px);
+        left: 50%;
+        transform: translate(-50%, -30px) scale(0.98);
+        right: auto;
+        background: #08163D;
+        color: #fff;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 1.2rem 2rem;
+        box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+        z-index: 100;
+        opacity: 0;
+        height: auto;
+        min-width: 85vw;
+        border-radius: 22px;
+        overflow: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+          transform 0.45s cubic-bezier(0.4,0,0.2,1),
+          box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+      }
+      .nav-links.active {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+        box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+        pointer-events: auto;
+      }
+      .nav-link {
+        color: #fff !important;
+        padding: 0.9rem 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+        font-size: 18px;
+        background: transparent;
+        transition: background 0.2s;
+      }
+      .nav-link:last-child {
+        border-bottom: none;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: #ffe066 !important;
+        background: rgba(255,255,255,0.06);
+      }
+      .mobile-icons {
+        display: flex;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+    }
+    /* Footer styles (copied from index.html) */
+    .footer {
+      background: #08163D;
+      color: #fff;
+      padding: 60px 0 0 0;
+      margin-top: 60px;
+    }
+    .footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background: none;
+      box-shadow: none;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .footer-section {
+      flex: 1 1 180px;
+      min-width: 180px;
+      margin-bottom: 20px;
+    }
+    .footer-section h3, .footer-section h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #ffe066;
+      letter-spacing: 0.02em;
+    }
+    .footer-section h3::after, .footer-section h4::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 3px;
+      background: #ffe066;
+      margin: 8px 0 0 0;
+      border-radius: 2px;
+    }
+    .footer-section p {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #fff;
+      opacity: 0.92;
+    }
+    .footer-section a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-section a:hover {
+      color: #ffe066;
+    }
+    .social-icons {
+      margin-top: 10px;
+      display: flex;
+      gap: 16px;
+    }
+    .social-icon {
+      color: #fff;
+      font-size: 1.3rem;
+      transition: color 0.2s;
+    }
+    .social-icon:hover {
+      color: #ffe066;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding: 18px 0 10px 0;
+      text-align: center;
+      font-size: 0.98rem;
+      color: #fff;
+      opacity: 0.85;
+    }
+    @media (max-width: 900px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 18px;
+      }
+    }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header class="header">
+      <div class="nav-container">
+          <div class="nav-logo">
+              <img src="assets/images/main logo.webp" alt="RukaPay Logo">
+          </div>
+          <div class="nav-links" id="navLinks">
+              <a href="index.html" class="nav-link">Home</a>
+              <a href="how-it-works.html" class="nav-link">How It Works</a>
+              <a href="merchants.html" class="nav-link">Merchants</a>
+              <a href="tariffs.html" class="nav-link active">Tariffs</a>
+              <a href="help-center.html" class="nav-link">Help Center</a>
+              <a href="about.html" class="nav-link">About Us</a>
+              <a href="blog.html" class="nav-link">Blog</a>
+              <a href="contact.html" class="nav-link">Contact Us</a>
+          </div>
+          <div class="mobile-icons">
+              <button class="search-btn">
+                  <i class="fas fa-search"></i>
+              </button>
+              <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </div>
+      </div>
+  </header>
+
+  <div class="container">
+    <h1>Transaction Tariffs (UGX)</h1>
+    <input type="text" id="search" placeholder="Search by Group or Amount…" />
+    <table id="tariffTable">
+      <thead>
+        <tr>
+          <th>Group</th>
+          <th>Min Amount</th>
+          <th>Max Amount</th>
+          <th>Peer 2 Peer</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <!-- rows populated by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer enhanced-footer">
+      <div class="container">
+          <div class="footer-content">
+              <div class="footer-section">
+                  <h3>RukaPay</h3>
+                  <p>Secure, reliable, advanced payment solutions for Ugandan businesses.</p>
+                  <div class="social-icons">
+                      <a href="https://www.facebook.com/rukapay.ug?mibextid=wwXIfr&rdid=NRSNTPzqwpnCBJp3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16G2dBLQWx%2F%3Fmibextid%3DwwXIfr#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="https://x.com/rukapay_ug" class="social-icon" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-twitter"></i>
+                      </a>
+                      <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frukapay.ug%2F%3Figsh%3DdWFhbm5nZ2YybWF4&is_from_rle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="https://www.linkedin.com/company/rhino-payment-company?trk=public_profile_topcard-current-company" class="social-icon" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-linkedin-in"></i>
+                      </a>
+                      <a href="https://www.youtube.com/@RukaPay-p4v" class="social-icon" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-youtube"></i>
+                      </a>
+                  </div>
+              </div>
+              <div class="footer-section">
+                  <h4>Services</h4>
+                  <p>Scan to Pay</p>
+                  <p>Tap to Pay</p>
+                  <p>USSD Payments</p>
+                  <p>Merchant Services</p>
+              </div>
+              <div class="footer-section">
+                  <h4>Contact Info</h4>
+                  <p>TMT Atrium Building 2nd Floor</p>
+                  <p>Naguru-Bukoto, kira rd, Kampala</p>
+                  <p>Po BOX 111498</p>
+                                          <p><i class="fas fa-phone"></i> <a href="tel:+256200244400" style="color: #fff !important; text-decoration: none;">0200 244 400</a></p>
+                  <p><i class="fas fa-envelope"></i> <a href="mailto:info@rukapay.co.ug" style="color: #fff !important; text-decoration: none;">info@rukapay.co.ug</a></p>
+              </div>
+              <div class="footer-section">
+                  <h4>Legal</h4>
+                  <p>Licensed Payment Service Provider / Payment System Operator</p>
+                  <p>
+                      <a href="privacy-policies.html" style="color: #fff !important; text-decoration: none;">Privacy Policy</a>
+                  </p>
+                  <p>
+                      <a href="privacy-policies.html#terms-and-conditions" style="color: #fff !important; text-decoration: none;">Terms and Conditions</a>
+                  </p>
+                  
+              </div>
+
+          </div>
+          
+          <div class="footer-bottom">
+              <p>&copy; 2025 Rhino Payment Services Ltd (trading as RukaPay). All rights reserved.</p>
+              <p>Licensed Payment Service Provider / Payment System Operator by the Bank of Uganda</p>
+          </div>
+      </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          const menuIcon = mobileMenuToggle.querySelector('i');
+          if (navLinks.classList.contains('active')) {
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+          } else {
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+          }
+        });
+      }
+    });
+    // Tariff table logic
+    const tariffs = [
+      { group: "G1",  min: 500,      max: 2500,     peer: 50,    },
+      { group: "G2",  min: 2501,    max: 5000,     peer: 50,     },
+      { group: "G3",  min: 5001,    max: 15000,    peer: 250,    },
+      { group: "G4",  min: 15001,   max: 30000,    peer: 250,    },
+      { group: "G5",  min: 30001,   max: 45000,    peer: 250,   },
+      { group: "G6",  min: 45001,   max: 60000,    peer: 250,  },
+      { group: "G7",  min: 50001,   max: 125000,   peer: 500,   },
+      { group: "G8",  min: 125001,  max: 250000,   peer: 500,   },
+      { group: "G9",  min: 250001,  max: 500000,   peer: 500,   },
+      { group: "G10", min: 500001,  max: 1000000,  peer: 750,  },
+      { group: "G11", min: 1000001, max: 2000000,  peer: 1000,  },
+      { group: "G12", min: 2000001, max: 4000000,  peer: 1000, },
+      { group: "G13", min: 4000001, max: 5000000,  peer: 1000,  }
+    ];
+    const tbody = document.querySelector("#tariffTable tbody");
+    function populateTable(data) {
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td data-label="Group">${row.group}</td>
+          <td data-label="Min Amount">${row.min.toLocaleString()}</td>
+          <td data-label="Max Amount">${row.max.toLocaleString()}</td>
+          <td data-label="Peer 2 Peer">${row.peer.toLocaleString()}</td>
+          
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    populateTable(tariffs);
+    document.getElementById("search").addEventListener("input", function() {
+      const term = this.value.trim().toLowerCase();
+      const filtered = tariffs.filter(t =>
+        t.group.toLowerCase().includes(term) ||
+        t.min.toString().includes(term) ||
+        t.max.toString().includes(term)
+      );
+      populateTable(filtered);
+    });
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>
+

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details - RukaPay Careers</title>
+    <meta name="description" content="Detailed job descriptions and application information for RukaPay career opportunities.">
+    
+    <!-- Brand Colors & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN (v6.x) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/tab icon.webp">
+    
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary-dark: #08163D;
+            --primary: #1F429A;
+            --accent: #FFFFFF;
+            --nav-height: 70px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: #fff;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            padding-top: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(31, 66, 154, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(31, 66, 154, 0.4);
+        }
+
+        /* ===== NAVBAR STYLES ===== */
+        header {
+            position: fixed;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            padding: 0;
+            transition: var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #08163D;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(31,66,154,0.18);
+            padding: 0 40px;
+            height: var(--nav-height);
+            pointer-events: auto;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 40px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            background: #08163D;
+        }
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        .nav-link:hover {
+            color: #1F429A !important;
+            background: rgba(255,255,255,0.06);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #1F429A !important;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .mobile-icons {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        .mobile-icons button, .mobile-menu-toggle {
+            color: #fff !important;
+        }
+        .mobile-icons button {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        .mobile-icons button:hover {
+            color: var(--primary);
+            background: rgba(31, 66, 154, 0.1);
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: calc(var(--nav-height) + 24px);
+                left: 50%;
+                transform: translate(-50%, -30px) scale(0.98);
+                right: auto;
+                background: #08163D;
+                color: #fff;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 12px 40px rgba(31, 66, 154, 0.18);
+                z-index: 100;
+                opacity: 0;
+                height: auto;
+                min-width: 85vw;
+                border-radius: 22px;
+                overflow: hidden;
+                pointer-events: none;
+                transition:
+                    opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.45s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+            }
+            .nav-links.active {
+                opacity: 1;
+                transform: translate(-50%, 0) scale(1);
+                box-shadow: 0 18px 48px rgba(31, 66, 154, 0.22);
+                pointer-events: auto;
+            }
+            .nav-link {
+                color: #fff !important;
+                padding: 0.9rem 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.12);
+                font-size: 18px;
+                background: transparent;
+                transition: background 0.2s;
+            }
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            .nav-link:hover,
+            .nav-link.active {
+                color: #ffe066 !important;
+                background: rgba(255,255,255,0.06);
+            }
+            .mobile-icons {
+                display: flex;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ===== JOB DETAILS STYLES ===== */
+        .job-details-hero {
+            background: linear-gradient(rgba(8, 22, 61, 0.85), rgba(31, 66, 154, 0.85)), url('assets/images/team-workers-presenting-infographics-sales-numbers-interactive-board.webp');
+            background-size: cover;
+            background-position: center;
+            padding: 200px 0 100px;
+            text-align: center;
+            color: white;
+            border-radius: 0 0 48px 48px;
+        }
+
+        .job-details-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .job-details-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .job-meta-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 24px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .job-details-content {
+            padding: 80px 0;
+        }
+
+        .job-details-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .job-main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(8, 22, 61, 0.08);
+        }
+
+        .job-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(8, 22, 61, 0.08);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .job-section {
+            margin-bottom: 40px;
+        }
+
+        .job-section h3 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .job-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .job-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-section li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .job-section li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .apply-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .apply-section h3 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 15px;
+            border: 1px solid rgba(31, 66, 154, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--primary-dark);
+        }
+
+        .contact-method:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(31, 66, 154, 0.15);
+            color: var(--primary);
+        }
+
+        .contact-method i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            width: 25px;
+        }
+
+        .apply-button {
+            background: linear-gradient(135deg, var(--primary) 0%, #23346a 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            box-shadow: 0 6px 20px rgba(31, 66, 154, 0.3);
+        }
+
+        .apply-button:hover {
+            background: linear-gradient(135deg, #23346a 0%, var(--primary) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(31, 66, 154, 0.4);
+        }
+
+        .back-button {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark) !important;
+            color: #fff !important;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3, .footer-section h4 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after, .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon,
+        .social-icon:link,
+        .social-icon:visited,
+        .social-icon:hover,
+        .social-icon:active {
+            text-decoration: none !important;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary) !important;
+            color: #fff !important;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: #fff !important;
+            color: var(--primary) !important;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .job-details-title {
+                font-size: 2.2rem;
+            }
+            
+            .job-details-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .job-main-content,
+            .job-sidebar {
+                padding: 25px 20px;
+            }
+
+            .job-details-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .apply-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .job-details-title {
+                font-size: 1.8rem;
+            }
+
+            .job-main-content,
+            .job-sidebar {
+                padding: 20px 15px;
+            }
+
+            .job-meta-item {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9VYXXQHEV">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J9VYXXQHEV');
+    </script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/main logo.webp" alt="RukaPay Logo">
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="how-it-works.html" class="nav-link">How It Works</a>
+                <a href="merchants.html" class="nav-link">Merchants</a>
+                <a href="tariffs.html" class="nav-link">Tariffs</a>
+                <a href="help-center.html" class="nav-link">Help Center</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="careers.html" class="nav-link active">Careers</a>
+            </div>
+            <div class="mobile-icons">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Job Details Hero -->
+    <section class="job-details-hero">
+        <div class="container">
+            <a href="careers.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Careers
+            </a>
+            <h1 class="job-details-title">CHIEF BUSINESS DEVELOPMENT OFFICER</h1>
+            <div class="job-details-meta">
+                <div class="job-meta-item">
+                    <i class="fas fa-clock"></i> Full Time
+                </div>
+                <div class="job-meta-item">
+                    <i class="fas fa-map-marker-alt"></i> Kampala, Uganda
+                </div>
+                <div class="job-meta-item">
+                    <i class="fas fa-calendar"></i> Deadline: Friday, 22nd August 2025
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Details Content -->
+    <section class="job-details-content">
+        <div class="container">
+            <div class="job-details-grid">
+                <!-- Main Content -->
+                <div class="job-main-content">
+                    <div class="job-section">
+                        <h3>Job Description</h3>
+                        <p>We are seeking a dynamic and experienced Chief Business Development Officer to lead our business development initiatives and drive growth for RukaPay. This role will be responsible for developing and executing strategic partnerships, expanding our market presence, and driving revenue growth in Uganda's rapidly evolving fintech landscape.</p>
+                    </div>
+
+                    <div class="job-section">
+                        <h3>Key Responsibilities</h3>
+                        <ul>
+                            <li>Develop and execute comprehensive business development strategies to drive growth and market expansion</li>
+                            <li>Identify and cultivate strategic partnerships with banks, telecom companies, and other key stakeholders</li>
+                            <li>Lead negotiations for major business deals and partnership agreements</li>
+                            <li>Build and maintain relationships with key industry players and regulatory bodies</li>
+                            <li>Analyze market trends and competitive landscape to identify new opportunities</li>
+                            <li>Collaborate with cross-functional teams to ensure successful implementation of business initiatives</li>
+                            <li>Represent RukaPay at industry events, conferences, and stakeholder meetings</li>
+                            <li>Develop and manage the business development budget and performance metrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-section">
+                        <h3>Qualifications</h3>
+                        <ul>
+                            <li>Bachelor's degree in Business, Finance, IT or related field (MBA preferred)</li>
+                            <li>Minimum of 5 years' experience in senior leadership roles within fintech, banking, or telecom</li>
+                            <li>Proven track record of successfully scaling business operations and partnerships</li>
+                            <li>Strong understanding of the Ugandan financial services market and regulatory environment</li>
+                            <li>Excellent strategic thinking and analytical skills</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-section">
+                        <h3>Required Skills</h3>
+                        <ul>
+                            <li>Exceptional negotiation and stakeholder engagement skills</li>
+                            <li>Strong strategic planning and commercial acumen</li>
+                            <li>Proven leadership capabilities with experience managing teams</li>
+                            <li>Excellent communication and presentation skills</li>
+                            <li>Ability to work in a fast-paced, dynamic environment</li>
+                            <li>Strong network within the Ugandan business community</li>
+                            <li>Proficiency in financial modeling and business case development</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-section">
+                        <h3>What We Offer</h3>
+                        <ul>
+                            <li>Competitive salary and benefits package</li>
+                            <li>Opportunity to shape the future of digital payments in Uganda</li>
+                            <li>Dynamic and innovative work environment</li>
+                            <li>Professional development and growth opportunities</li>
+                            <li>Work with cutting-edge technology and industry experts</li>
+                            <li>Make a meaningful impact on financial inclusion in Uganda</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="job-sidebar">
+                    <h3>Quick Apply</h3>
+                    <p>Ready to join our team? Submit your application through any of the channels below.</p>
+                    
+                    <div class="contact-methods">
+                        <a href="mailto:hr@rukapay.co.ug" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>hr@rukapay.co.ug</span>
+                        </a>
+                        <a href="mailto:info@rukapay.co.ug" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@rukapay.co.ug</span>
+                        </a>
+                        <a href="tel:+256200244407" class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <span>+256 200 244 407</span>
+                        </a>
+                        <a href="https://www.rukapay.co.ug" target="_blank" class="contact-method">
+                            <i class="fas fa-globe"></i>
+                            <span>www.rukapay.co.ug</span>
+                        </a>
+                    </div>
+
+                    <button class="apply-button" onclick="applyForJob()">Apply Now</button>
+                </div>
+            </div>
+
+            <!-- Apply Section -->
+            <div class="apply-section">
+                <h3>Ready to Join Our Team?</h3>
+                <p>We're looking for passionate individuals who are excited about transforming the future of digital payments in Uganda. If you're ready to make a difference and grow with us, we'd love to hear from you!</p>
+                <button class="apply-button" onclick="applyForJob()">Submit Your Application</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer enhanced-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RukaPay</h3>
+                    <p>Secure, reliable, advanced payment solutions for Ugandan businesses.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/rukapay.ug?mibextid=wwXIfr&rdid=NRSNTPzqwpnCBJp3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16G2dBLQWx%2F%3Fmibextid%3DwwXIfr#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/rukapay_ug" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frukapay.ug%2F%3Figsh%3DdWFhbm5nZ2YybWF4&is_from_rle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/rhino-payment-company?trk=public_profile_topcard-current-company" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@RukaPay-p4v" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                   <p>Scan to Pay</p>
+                  <p>Tap to Pay</p>
+                  <p>USSD Payments</p>
+                  <p>Merchant Services</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                  <p>TMT Atrium Building 2nd Floor</p>
+                <p>Naguru-Bukoto, kira rd, Kampala</p>
+                <p>Po BOX 111498</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+256200244400" style="color: #fff !important; text-decoration: none;">0200 244 400</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@rukapay.co.ug" style="color: #fff !important; text-decoration: none;">info@rukapay.co.ug</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <p>Licensed Payment Service Provider / Payment System Operator</p>
+                    <p>
+                        <a href="privacy-policies.html" style="color: #fff !important; text-decoration: none;">Privacy Policy</a>
+                    </p>
+                    <p>
+                        <a href="privacy-policies.html#terms-and-conditions" style="color: #fff !important; text-decoration: none;">Terms and Conditions</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rhino Payment Services Ltd (trading as RukaPay). All rights reserved.</p>
+                <p>Licensed Payment Service Provider / Payment System Operator by the Bank of Uganda</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const menuIcon = mobileMenuToggle.querySelector('i');
+            
+            // Toggle mobile menu
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Change menu icon
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close menu when clicking on a link
+            const navLinksItems = document.querySelectorAll('.nav-link');
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        });
+
+        // Apply for job functionality
+        function applyForJob() {
+            // You can customize this to open an application form or redirect to an application page
+            alert('Thank you for your interest! Please send your application to hr@rukapay.co.ug or info@rukapay.co.ug with your CV and cover letter.');
+        }
+    </script>
+    
+    <!-- Zoho Chat Bot -->
+    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){ try{ $zoho.salesiq.floatbutton.position("bottom","left"); }catch(e){} }}</script><script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siq298cc5c1d39f347fd62bceb23118cf84d227e61e0b44aeb1cc8c8ee95274944e" defer></script>
+    
+    <script>
+        // Force Zoho chat close button markup to the requested span
+        (function() {
+            function updateZohoCloseButton() {
+                var closeButton = document.getElementById('zs_fl_close');
+                if (!closeButton) return false;
+                closeButton.className = 'siqico-close zsiq-close-icn';
+                closeButton.setAttribute('role', 'button');
+                closeButton.setAttribute('aria-label', 'Minimize live chat window');
+                closeButton.setAttribute('tabindex', '-1');
+                return true;
+            }
+
+            if (!updateZohoCloseButton()) {
+                var observer = new MutationObserver(function(mutations, obs) {
+                    if (updateZohoCloseButton()) {
+                        obs.disconnect();
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+                setTimeout(function() { observer.disconnect(); }, 15000);
+            }
+        })();
+    </script>
+
+    <!-- Custom CSS to position Zoho chat widget on left bottom -->
+    <style>
+        /* Position Zoho chat widget on left bottom */
+        #zsiqwidget {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Ensure it doesn't interfere with other elements */
+        #zsiqwidget iframe {
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+        }
+        
+        /* Mobile responsive positioning */
+        @media (max-width: 768px) {
+            #zsiqwidget {
+                left: 15px !important;
+                bottom: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>
